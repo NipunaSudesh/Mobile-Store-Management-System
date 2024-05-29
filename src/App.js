@@ -1,13 +1,14 @@
 
 import './App.css';
-import { NavBar } from './Components/NavBar';
-
+import  {NavBar}  from './Components/NavBar';
+import  {AdSwiper} from './Components/AdSwiper';
 
 
 function App() {
   return (
-<div>
+<div className='flex  flex-col gap-5 items-center justify-center'>
   <NavBar />
+  <AdSwiper />
 </div>
   );
 }
