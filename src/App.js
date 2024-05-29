@@ -6,7 +6,7 @@ import  {AdSwiper} from './Components/AdSwiper';
 
 function App() {
   return (
-<div className='flex  flex-col gap-5 items-center justify-center'>
+<div className='flex  flex-col gap-5 items-center '>
   <NavBar />
   <AdSwiper />
 </div>
