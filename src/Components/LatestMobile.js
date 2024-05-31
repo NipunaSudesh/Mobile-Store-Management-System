@@ -5,7 +5,7 @@ export const LatestMobile = () => {
   return (
     <div className='flex flex-col'>
         <div>
-            <Header Title='Latest Mobile' />
+            <Header Title='LATEST MOBILE PHONES' />
         </div>
     </div>
   )
