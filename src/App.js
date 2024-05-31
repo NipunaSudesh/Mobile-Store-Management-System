@@ -3,6 +3,8 @@ import './App.css';
 import  {NavBar}  from './Components/NavBar';
 import  {AdSwiper} from './Components/AdSwiper';
 import {ProductCategory} from './Components/ProductCategory';
+import {LatestMobile} from './Components/LatestMobile';
+
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
   <NavBar />
   <AdSwiper />
   <ProductCategory />
+  <LatestMobile />
 </div>
   );
 }
