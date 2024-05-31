@@ -7,7 +7,14 @@ export const ProductCard = ({title,price,image}) => {
     bg-gradient-to-r from-[#f5faf6] to-[#b3f8ab] group hover:bg-gradient-to-b
     hover: from-gray-900, hover:gray-900 transition-colors duration-1000 rounded-[5%] my-10'>
       <div>
-     
+      <div className='w-full h-[90%] overflow-hidden rounded-lg'>
+            <img className='w-60 h-60 rounded-lg object-cover group-hover:scale-110 duration-300' 
+             src={image} alt='src'/>
+        </div>
+        <div className='hidden group-hover:block mt-2 ml-2 transition-opacity duration-500 opacity-0 group-hover:opacity-100'>
+        <button type="button" class="text-white bg-blue-500 w-[120px]  hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" name='addCard'>Add To Card</button>
+          <button type="button" class="text-white w-[120px] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none duration-500 dark:focus:ring-blue-800" name='buy'>Buy</button>
+        </div>
       </div>
 
     </div>
