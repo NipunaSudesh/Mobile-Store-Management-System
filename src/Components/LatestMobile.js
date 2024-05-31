@@ -1,7 +1,12 @@
 import React from 'react'
+import { Header } from './Header'
 
 export const LatestMobile = () => {
   return (
-    <div>LatestMobile</div>
+    <div className='flex flex-col'>
+        <div>
+            <Header Title='Latest Mobile' />
+        </div>
+    </div>
   )
 }
