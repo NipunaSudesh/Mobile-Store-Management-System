@@ -1,6 +1,6 @@
 import React from 'react'
-import { Header } from '../Header'
-import { LatestCard } from './LatestCard'
+import { Header } from './Header'
+import { ProductCard } from './ProductCard'
 
 export const LatestMobile = () => {
   return (
@@ -9,7 +9,7 @@ export const LatestMobile = () => {
             <Header Title='LATEST MOBILE PHONES' />
         </div>
         <div>
-          <LatestCard />
+          <ProductCard />
         </div>
     </div>
   )
