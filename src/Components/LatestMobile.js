@@ -1,6 +1,7 @@
 import React from 'react'
 import { Header } from './Header'
-import { ProductCard } from './ProductCard'
+import { ProductCard } from './ProductCard';
+import {apple13} from '../assets/index';
 
 export const LatestMobile = () => {
   return (
