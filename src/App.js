@@ -3,7 +3,7 @@ import './App.css';
 import  {NavBar}  from './Components/NavBar';
 import  {AdSwiper} from './Components/AdSwiper';
 import {ProductCategory} from './Components/ProductCategory';
-import {LatestMobile} from './Components/LatestMobile';
+import {LatestMobile} from './Components/LatestMobile/LatestMobile';
 
 
 function App() {
