@@ -5,6 +5,7 @@ import  {AdSwiper} from './Components/AdSwiper';
 import {ProductCategory} from './Components/ProductCategory';
 import {LatestMobile} from './Components/LatestMobile';
 import {Featurchs} from './Components/Featurchs';
+import {FeaturedMobile} from './Components/FeaturedMobile';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   <ProductCategory />
   <LatestMobile />
   <Featurchs />
+  <FeaturedMobile />
 </div>
   );
 }
