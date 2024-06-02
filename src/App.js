@@ -4,6 +4,7 @@ import  {NavBar}  from './Components/NavBar';
 import  {AdSwiper} from './Components/AdSwiper';
 import {ProductCategory} from './Components/ProductCategory';
 import {LatestMobile} from './Components/LatestMobile';
+import {Featurchs} from './Components/Featurchs';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   <AdSwiper />
   <ProductCategory />
   <LatestMobile />
+  <Featurchs />
 </div>
   );
 }
