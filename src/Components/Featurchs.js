@@ -4,6 +4,7 @@ import { VscFeedback } from "react-icons/vsc";
 import { MdVerifiedUser } from "react-icons/md";
 import { FaClipboardCheck } from "react-icons/fa";
 import { GiReceiveMoney } from "react-icons/gi";
+import { IoIosPhonePortrait } from "react-icons/io";
 export const Featurchs = () => {
   return (
     <div className='grid md:grid-cols-3 mdl:grip-cols-2 lgl:grid-cols-5' >
@@ -36,7 +37,7 @@ export const Featurchs = () => {
         </div>
         <div className='flex gap-2 p-4 border-2 rounded '>
             <div className='text-blue-500'>
-                <FaClipboardCheck className='w-10 h-10'/>
+                <IoIosPhonePortrait className='w-10 h-10'/>
             </div>
             <div  className='text-center'>
                 <h2 className='font-semibold'>Genuine Devices</h2>
