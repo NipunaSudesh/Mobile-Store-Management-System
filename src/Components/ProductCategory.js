@@ -18,7 +18,7 @@ export const ProductCategory = () => {
         id: 3, logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ9dXLNC7ZD88yfXGBfEmIF6VkIKz6HjVPPg&s'
     },
     {
-        id: 4, logo: 'https://m-cdn.phonearena.com/images/manufacturers/157-1200/OnePlus-phones-news-and-reviews.jpg'
+        id: 4, logo: 'https://pngimagesfree.com/wp-content/uploads/Oneplus-PNG-Logo-1.png'
     },
     {
         id: 5, logo: 'https://styles.redditmedia.com/t5_3fy38/styles/communityIcon_4h9nc2tj54u51.jpg?format=pjpg&s=5850d2f6614d2d739dad06fd3db2bc03732a1654'
@@ -33,13 +33,22 @@ export const ProductCategory = () => {
  ];
 
   return (
-    <div className="max-w-[1400px] w-full px-10 mx-auto px-4 relative">
+    <div className="max-w-[1400px] w-full mx-auto px-4 relative">
       <Swiper
         modules={[ Autoplay]}
         spaceBetween={30}
         slidesPerView={6}
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000 }}
+        breakpoints={{
+          100: { slidesPerView: 1 },
+          320: { slidesPerView: 2 },
+          480: { slidesPerView: 3 },
+          550: { slidesPerView: 4 },
+          900: { slidesPerView: 5 },
+          1200: { slidesPerView: 6 },
+          1400: { slidesPerView: 6 },
+        }}
         loop
       >
         {productLogo.map(logo => (
