@@ -17,7 +17,7 @@ const ads = [
 
 export const AdSwiper = () => {
   return (
-    <div className="max-w-[1400px] w-full  mx-auto px-4 relative">
+    <div className="lgl:max-w-[1300px] w-full  mx-auto px-4 relative">
       <Swiper
         modules={[Pagination, Navigation, Autoplay]}
         spaceBetween={50}
@@ -30,7 +30,7 @@ export const AdSwiper = () => {
         {ads.map(ad => (
           <SwiperSlide key={ad.id}>
             <a href={ad.link} target="_blank" rel="noopener noreferrer">
-              <img src={ad.image} alt={`Advertisement ${ad.id}`} className="w-full h-[500px] rounded-2xl bg-center bg-cover" />
+              <img src={ad.image} alt={`Advertisement ${ad.id}`} className="w-full h-[530px] rounded-2xl bg-center bg-cover" />
             </a>
           </SwiperSlide>
         ))}
