@@ -25,9 +25,7 @@ export const LatestMobile = () => {
           <ProductCard name={"Apple iPhone 13 Pro Max 256GB"}
           price={"RS.350000"}
           image={apple13}/>
-          <ProductCard name={"Apple iPhone 13 Pro Max 256GB"}
-          price={"RS.350000"}
-          image={apple13}/>
+
 
 
         </div>
