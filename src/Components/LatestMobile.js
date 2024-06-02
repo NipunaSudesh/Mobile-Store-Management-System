@@ -9,7 +9,7 @@ export const LatestMobile = () => {
         <div>
             <Header Title='LATEST MOBILE PHONES' />
         </div>
-        <div className='grid md:grid-cols-2 lgl:grid-cols-5 gap-4'>
+        <div className='grid md:grid-cols-3 mdl:grip-cols-2 lgl:grid-cols-5 gap-4'>
           <ProductCard name={"Apple iPhone 13 Pro Max 256GB"}
           price={"RS.350000"}
           image={apple13}/>

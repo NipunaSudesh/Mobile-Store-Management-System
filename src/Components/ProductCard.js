@@ -3,13 +3,13 @@ import React from 'react'
 
 export const ProductCard = ({name,price,image}) => {
   return (
-    <div className='h-auto w-[270px] items-center  py-4 rounded-5g shadow-md flex flex-col
+    <div className='h-auto w-full items-center  rounded-5g shadow-md flex flex-col
     bg-gradient-to-r from-[#eff1ef] to-[#939493] group hover:bg-gradient-to-b
     hover: from-gray-900, hover:gray-900 transition-colors duration-1000 rounded-[5%] my-10'>
       
-      <div className="relative w-full overflow-hidden rounded-lg group">
+      <div className="relative w-full m-1 overflow-hidden rounded-lg group">
   <img
-    className="mx-auto w-60 h-60 rounded-lg object-cover transition-transform duration-500 group-hover:scale-110"
+    className="mx-auto w-60 h-55 rounded-lg object-cover transition-transform duration-500 group-hover:scale-110"
     src={image}
     alt="src"
   />
