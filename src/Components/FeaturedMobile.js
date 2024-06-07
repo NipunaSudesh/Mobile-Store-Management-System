@@ -17,12 +17,11 @@ export const FeaturedMobile = () => {
       </div>
       <div className="lgl:max-w-[1300px] w-full mx-auto px-4 relative">
         <Swiper
-          modules={[Pagination, Navigation, Autoplay]}
+          modules={[Pagination, Navigation, Autoplay ]}
           spaceBetween={10}
           slidesPerView={5}
-          slidesPerColumn={5} 
-          //pagination={{ clickable: true }}
-          //navigation
+          slidesPerColumn={2} 
+
           breakpoints={{
             320: { slidesPerView: 1 }, 
             480: { slidesPerView: 1 }, 
