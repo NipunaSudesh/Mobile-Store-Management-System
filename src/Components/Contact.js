@@ -6,7 +6,7 @@ import { MdMobileScreenShare } from "react-icons/md";
 
 export const Contact = () => {
   return (
-    <div className=' flex flex-col w-full bg-gray-200 h-[500px]'>
+    <div className='flex gap-8 w-full bg-gray-200 h-[500px]'>
         <div className='w-1/3 mt-4 items-center'>
         <img src={logo1} alt='logo' width="80" height="80" className='mx-auto mb-1 logo '/>
             <h2 className='text-2xl text-center'>Smart Mobile(Pvt) Ltd</h2>
@@ -31,7 +31,15 @@ export const Contact = () => {
         </div>
         
         
-        <div className='w-1/4 '></div>
+        <div className='w-1/3 mt-10'>
+            <h2 className='text-xl '>CUSTOMER CARE</h2>
+            <p className='gap-2 mt-2 hover:text-blue-500'>My Account</p>
+            <p className='gap-2 mt-2 hover:text-blue-500'>Privacy Policy</p>
+            <p className='gap-2 mt-2 hover:text-blue-500'>Returns and Refunds</p>
+            <p className='gap-2 mt-2 hover:text-blue-500'>Terms & Conditions</p>
+            <p className='gap-2 mt-2 hover:text-blue-500'>Online Payments</p>
+        </div>
+
         <div className='w-1/2 '></div>
     </div>
   )
