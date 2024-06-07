@@ -31,7 +31,7 @@ export const ProductCard = ({name,price,image}) => {
   </div>
 </div>
 
-      <div className="flex flex-col gap-1 mt-2 items-center">
+      <div className="flex flex-col gap-1 mt-2 items-center text-center">
         <h2 className='font-semibold'>{name}</h2>
         <h3><span className='text-blue-700'>{price}</span></h3>
       </div>
@@ -39,7 +39,3 @@ export const ProductCard = ({name,price,image}) => {
   )
 }
 
-// ml-3 -mt-10 transition-opacity duration-500 opacity-0 group-hover:opacity-100
-// absolute left-0 bottom-0 w-full h-0 bg-gradient-to-t from-[#ff3700] to-[rgba(24, 23, 23, 0.6)] flex items-center justify-center text-center p-4 rounded-lg transition-[height] duration-500 group-hover:h-full
-
-// hidden group-hover:block mt-2 ml-2 transition-opacity duration-500 opacity-0 group-hover:opacity-100

@@ -12,7 +12,7 @@ import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 export const FeaturedMobile = () => {
   return (
     <div className="flex flex-col gap-5">
-      <div>
+      <div className='text-center'>
         <Header Title="Featured Mobile" />
       </div>
       <div className="lgl:max-w-[1300px] w-full mx-auto px-4 relative">
