@@ -11,18 +11,17 @@ import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 export const FeaturedMobile = () => {
   return (
-    <div className="flex flex-col max-w-[1300px]">
+    <div className="flex flex-col max-w-[1200px]">
       <div className='text-center'>
         <Header Title="Featured Mobile" />
       </div>
       <div className="lgl:max-w-[1300px] w-full mx-auto px-4 relative">
         <Swiper
-          modules={[Pagination, Navigation, Autoplay]}
+          modules={[Pagination, Navigation, Autoplay ]}
           spaceBetween={10}
           slidesPerView={5}
-          slidesPerColumn={5} 
-          //pagination={{ clickable: true }}
-          //navigation
+          slidesPerColumn={2} 
+
           breakpoints={{
             320: { slidesPerView: 1 }, 
             480: { slidesPerView: 1 }, 

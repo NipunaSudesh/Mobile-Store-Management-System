@@ -6,6 +6,7 @@ import {ProductCategory} from './Components/ProductCategory';
 import {LatestMobile} from './Components/LatestMobile';
 import {Featurchs} from './Components/Featurchs';
 import {FeaturedMobile} from './Components/FeaturedMobile';
+import {Contact} from './Components/Contact';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   <LatestMobile />
   <Featurchs />
   <FeaturedMobile />
+  <Contact />
 </div>
   );
 }
