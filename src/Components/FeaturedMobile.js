@@ -11,7 +11,7 @@ import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 export const FeaturedMobile = () => {
   return (
-    <div className="flex flex-col max-w-[1300px]">
+    <div className="flex flex-col max-w-[1200px]">
       <div className='text-center'>
         <Header Title="Featured Mobile" />
       </div>
