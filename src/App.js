@@ -7,6 +7,7 @@ import {LatestMobile} from './Components/LatestMobile';
 import {Featurchs} from './Components/Featurchs';
 import {FeaturedMobile} from './Components/FeaturedMobile';
 import {Contact} from './Components/Contact';
+import { Footer } from './Components/Footer ';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   <Featurchs />
   <FeaturedMobile />
   <Contact />
+  <Footer />
 </div>
   );
 }
