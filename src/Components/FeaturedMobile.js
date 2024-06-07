@@ -11,7 +11,7 @@ import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 export const FeaturedMobile = () => {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col max-w-[1300px]">
       <div className='text-center'>
         <Header Title="Featured Mobile" />
       </div>
@@ -20,12 +20,63 @@ export const FeaturedMobile = () => {
           modules={[Pagination, Navigation, Autoplay]}
           spaceBetween={10}
           slidesPerView={5}
-          slidesPerColumn={2} 
-          pagination={{ clickable: true }}
-          navigation
-          autoplay={{ delay: 3000 }}
+          slidesPerColumn={5} 
+          //pagination={{ clickable: true }}
+          //navigation
+          breakpoints={{
+            320: { slidesPerView: 1 }, 
+            480: { slidesPerView: 1 }, 
+            640: { slidesPerView: 2 }, 
+            768: { slidesPerView: 3 }, 
+            1024: { slidesPerView: 4 },
+            1280: { slidesPerView: 5 }, 
+           
+          }}
+          autoplay={{ delay: 2000 }}
           loop
         >
+          <SwiperSlide>
+            <ProductCard
+              name={"Apple iPhone 13 Pro Max 256GB"}
+              price={"RS.350000"}
+              image={apple13}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductCard
+              name={"Apple iPhone 13 Pro Max 256GB"}
+              price={"RS.350000"}
+              image={apple13}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductCard
+              name={"Apple iPhone 13 Pro Max 256GB"}
+              price={"RS.350000"}
+              image={apple13}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductCard
+              name={"Apple iPhone 13 Pro Max 256GB"}
+              price={"RS.350000"}
+              image={apple13}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductCard
+              name={"Apple iPhone 13 Pro Max 256GB"}
+              price={"RS.350000"}
+              image={apple13}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductCard
+              name={"Apple iPhone 13 Pro Max 256GB"}
+              price={"RS.350000"}
+              image={apple13}
+            />
+          </SwiperSlide>
           <SwiperSlide>
             <ProductCard
               name={"Apple iPhone 13 Pro Max 256GB"}
