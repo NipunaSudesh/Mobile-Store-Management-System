@@ -1,8 +1,21 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 export const SignUp = () => {
+    const navigate = useNavigate();
+
+    const handleCancel = () => {
+      navigate('/');
+    };
+
+    const handleLoginRedirect = (e) => {
+        e.preventDefault();
+        navigate('/login');
+      };
   return (
-    <div className=' flex flex-col items-center justify-center  py-2 bg-blue-100'>
+    <div className='flex h-screen items-center justify-center'>
+    <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-sm border-2'>
         <h1 className='text-center text-2xl mb-4'>Register</h1>
         <form className='w-full max-w-sm'>
             <div className='mb-4'>
@@ -45,6 +58,7 @@ export const SignUp = () => {
                 required
                 />
             </div>
+            <div className='flex gap-10 items-center justify-center'>
             <div className="flex items-center justify-between">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -53,7 +67,28 @@ export const SignUp = () => {
             Register
           </button>
         </div>
+            <div className="flex items-center justify-between">
+          <button
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            onClick={handleCancel}
+          >
+            Cansal
+          </button>
+        </div>
+        </div>
+        <div className='mt-4 text-center'>
+        <a 
+            href='./login' 
+            className='text-blue-500 hover:text-blue-700'
+            onClick={handleLoginRedirect}
+            >
+            Already Have Account
+            </a>
+          </div>
         </form>
+    </div>
+    
     </div>
   )
 }
