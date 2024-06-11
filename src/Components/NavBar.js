@@ -3,8 +3,20 @@ import React from 'react'; // Remove duplicate import
 import { logo1 } from '../assets/index';
 import { RiAccountCircleFill } from "react-icons/ri";
 import { MdShoppingCart } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 
 export const NavBar = () => {
+
+  const navigate = useNavigate();
+
+  const handleAccount= ()=>{
+    navigate('/signup');
+  };
+
+  const handleAddCard =()=>{
+    navigate('/addcard');
+  };
+
   return (
     <div className='shadow sticky top-0 z-40 px-16 bg-bodyColor border-b-[2px] border-b-black flex w-full h-15 mx-auto justify-between items-center font-normal'>
       <div>
@@ -37,10 +49,13 @@ export const NavBar = () => {
           </div>
       </div>
       <div className='flex gap-4'>
-      <div className='w-10 h-10 bg-black bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-md shadow-shadowOne hover:bg-opacity-40 hover:text-designColor cursor-pointer duration-300'>   
+      <div className='w-10 h-10 bg-black bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-md shadow-shadowOne hover:bg-opacity-40 hover:text-designColor cursor-pointer duration-300'
+      onClick={handleAddCard}>   
           <MdShoppingCart/>
       </div>
-      <div className='w-10 h-10 bg-black bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-md shadow-shadowOne hover:bg-opacity-40 hover:text-designColor cursor-pointer duration-300'>   
+      <div className='w-10 h-10 bg-black bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-md shadow-shadowOne hover:bg-opacity-40 hover:text-designColor cursor-pointer duration-300' 
+      onClick={handleAccount}
+      >   
              <RiAccountCircleFill/>
       </div>
       </div>

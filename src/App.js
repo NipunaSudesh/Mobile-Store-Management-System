@@ -8,9 +8,11 @@ import {Featurchs} from './Components/Featurchs';
 import {FeaturedMobile} from './Components/FeaturedMobile';
 import {Contact} from './Components/Contact';
 import { Footer } from './Components/Footer ';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { SignUp } from './Pages/SignUp';
+import { AddCard } from './Pages/AddCard';
 
-
-function App() {
+function Home() {
   return (
 <div className='flex  flex-col gap-5 items-center '>
   <NavBar />
@@ -22,6 +24,21 @@ function App() {
   <Contact />
   <Footer />
 </div>
+
+  );
+}
+
+
+function App(){
+  return(
+    <Router>
+  <Routes>
+    <Route path='/' element={<Home />} />
+    <Route path='/signup' element={<SignUp />} />
+    <Route path='/addcard' element={<AddCard />} />
+  </Routes>
+</Router>
+
   );
 }
 
