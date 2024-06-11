@@ -10,6 +10,7 @@ import {Contact} from './Components/Contact';
 import { Footer } from './Components/Footer ';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { SignUp } from './Pages/SignUp';
+import { AddCard } from './Pages/AddCard';
 
 function Home() {
   return (
@@ -34,6 +35,7 @@ function App(){
   <Routes>
     <Route path='/' element={<Home />} />
     <Route path='/signup' element={<SignUp />} />
+    <Route path='/addcard' element={<AddCard />} />
   </Routes>
 </Router>
 
