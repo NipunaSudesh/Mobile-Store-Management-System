@@ -87,7 +87,7 @@ export const SignUp = () => {
             className='text-blue-500 hover:text-blue-700'
             onClick={handleLoginRedirect}
             >
-            Already Have Account
+            Already Have Account?Login
             </a>
           </div>
         </form>
