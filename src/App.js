@@ -11,6 +11,7 @@ import { Footer } from './Components/Footer ';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { SignUp } from './Pages/SignUp';
 import { AddCard } from './Pages/AddCard';
+import { Login } from './Pages/Login';
 
 function Home() {
   return (
@@ -36,6 +37,7 @@ function App(){
     <Route path='/' element={<Home />} />
     <Route path='/signup' element={<SignUp />} />
     <Route path='/addcard' element={<AddCard />} />
+    <Route path='/login' element={<Login />} />
   </Routes>
 </Router>
 
