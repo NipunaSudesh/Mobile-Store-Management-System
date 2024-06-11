@@ -15,7 +15,7 @@ export const SignUp = () => {
       };
   return (
     <div className='flex h-screen items-center justify-center'>
-    <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-sm border-2'>
+    <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4'>Register</h1>
         <form className='w-full max-w-sm'>
             <div className='mb-4'>
@@ -25,6 +25,7 @@ export const SignUp = () => {
                 id='username'
                 type='text'
                 name='username'
+                placeholder='Enter Your User Name'
                 required
                 />
             </div>
@@ -35,6 +36,7 @@ export const SignUp = () => {
                 id='email'
                 type='email'
                 name='email'
+                placeholder='Enter Your Email'
                 required
                 />
             </div>
@@ -45,6 +47,7 @@ export const SignUp = () => {
                 id='password'
                 type='password'
                 name='password'
+                placeholder='Enter Your Password'
                 required
                 />
             </div>
@@ -55,6 +58,7 @@ export const SignUp = () => {
                 id='cpassword'
                 name='cpassword'
                 type='password'
+                placeholder='Enter Confirm Password'
                 required
                 />
             </div>
