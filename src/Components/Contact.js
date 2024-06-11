@@ -40,7 +40,59 @@ export const Contact = () => {
             <p className='gap-2 mt-2 hover:text-blue-500'>Online Payments</p>
         </div>
 
-        <div className='w-1/2 '></div>
+        <div className='w-1/2 '>
+        <div className='flex m-4 '>
+    <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
+        <h1 className='text-center text-2xl mb-4'>Send Massage</h1>
+        <form className='w-full max-w-sm'>
+
+            <div className='mb-4'>
+                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="name">Full Name</lable>
+                <input 
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                id='name'
+                type='text'
+                name='name'
+                placeholder='Enter Your Name'
+                required
+                />
+            </div>
+            <div className='mb-4'>
+                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Email</lable>
+                <input 
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                id='email'
+                type='email'
+                name='email'
+                placeholder='Enter Your Email'
+                required
+                />
+            </div>
+            <div className='mb-4'>
+                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Massage</lable>
+                <textarea 
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                id='msg'
+                type='text'
+                name='msg'
+                placeholder='Enter Your Massage'
+                required
+                />
+            </div>
+
+            <div className="flex items-center justify-between w-full">
+          <button
+            className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Send Massage
+          </button>
+        </div>
+        </form>
+    </div>
+    
+    </div>
+            </div>
     </div>
   )
 }

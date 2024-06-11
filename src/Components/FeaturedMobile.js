@@ -24,8 +24,8 @@ export const FeaturedMobile = () => {
 
           breakpoints={{
             320: { slidesPerView: 1 }, 
-            480: { slidesPerView: 1 }, 
-            640: { slidesPerView: 2 }, 
+            480: { slidesPerView: 2 }, 
+            640: { slidesPerView: 3 }, 
             768: { slidesPerView: 3 }, 
             1024: { slidesPerView: 4 },
             1280: { slidesPerView: 5 }, 

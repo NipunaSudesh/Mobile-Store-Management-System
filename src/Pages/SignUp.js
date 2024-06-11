@@ -30,7 +30,7 @@ export const SignUp = () => {
                 />
             </div>
             <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Email</lable>
+                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="email">Email</lable>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='email'
@@ -41,7 +41,7 @@ export const SignUp = () => {
                 />
             </div>
             <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Password</lable>
+                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="password">Password</lable>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='password'
@@ -52,7 +52,7 @@ export const SignUp = () => {
                 />
             </div>
             <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Confirm Password</lable>
+                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="cpassword">Confirm Password</lable>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='cpassword'
