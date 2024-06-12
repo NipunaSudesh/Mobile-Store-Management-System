@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 
 export const SignUp = () => {
+    const [username ,setUserName]=useState();
+    const [email ,setEmail]=useState();
+    const [password ,setPassword]=useState();
+    const [cpassword ,setCPassword]=useState();
+
     const navigate = useNavigate();
 
     const handleCancel = () => {
@@ -27,6 +32,7 @@ export const SignUp = () => {
                 name='username'
                 placeholder='Enter Your User Name'
                 required
+                onChange={(e)=>setUserName(e.target.value)}
                 />
             </div>
             <div className='mb-4'>
@@ -38,6 +44,7 @@ export const SignUp = () => {
                 name='email'
                 placeholder='Enter Your Email'
                 required
+                onChange={(e)=>setEmail(e.target.value)}
                 />
             </div>
             <div className='mb-4'>
@@ -49,6 +56,7 @@ export const SignUp = () => {
                 name='password'
                 placeholder='Enter Your Password'
                 required
+                onChange={(e)=>setPassword(e.target.value)}
                 />
             </div>
             <div className='mb-4'>
@@ -60,6 +68,7 @@ export const SignUp = () => {
                 type='password'
                 placeholder='Enter Confirm Password'
                 required
+                onChange={(e)=>setCPassword(e.target.value)}
                 />
             </div>
             <div className='flex gap-10 items-center justify-center'>
