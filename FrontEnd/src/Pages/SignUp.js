@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 
 export const SignUp = () => {
+    const [username ,setUserName]=useState();
+    const [email ,setEmail]=useState();
+    const [password ,setPassword]=useState();
+    const [cpassword ,setCPassword]=useState();
+
     const navigate = useNavigate();
 
     const handleCancel = () => {
@@ -13,11 +18,20 @@ export const SignUp = () => {
         e.preventDefault();
         navigate('/login');
       };
+
+      const handleSubmit =(e) =>{
+          e.preventDefault()
+          axios.post('',{username,email,password,cpassword})
+          .then(result =>console.log(result))
+          .catch(err =>console.log(err))
+      };
+
+
   return (
     <div className='flex h-screen items-center justify-center'>
     <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4'>Register</h1>
-        <form className='w-full max-w-sm'>
+        <form className='w-full max-w-sm' onSubmit={handleSubmit}>
             <div className='mb-4'>
                 <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">User Name</lable>
                 <input 
@@ -27,6 +41,7 @@ export const SignUp = () => {
                 name='username'
                 placeholder='Enter Your User Name'
                 required
+                onChange={(e)=>setUserName(e.target.value)}
                 />
             </div>
             <div className='mb-4'>
@@ -38,6 +53,7 @@ export const SignUp = () => {
                 name='email'
                 placeholder='Enter Your Email'
                 required
+                onChange={(e)=>setEmail(e.target.value)}
                 />
             </div>
             <div className='mb-4'>
@@ -49,6 +65,7 @@ export const SignUp = () => {
                 name='password'
                 placeholder='Enter Your Password'
                 required
+                onChange={(e)=>setPassword(e.target.value)}
                 />
             </div>
             <div className='mb-4'>
@@ -60,6 +77,7 @@ export const SignUp = () => {
                 type='password'
                 placeholder='Enter Confirm Password'
                 required
+                onChange={(e)=>setCPassword(e.target.value)}
                 />
             </div>
             <div className='flex gap-10 items-center justify-center'>
