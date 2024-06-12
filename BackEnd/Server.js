@@ -17,8 +17,8 @@ const url ="mongodb+srv://nipuna:pass123@cluster0.lvhm2yt.mongodb.net/smartMobil
 
 mongoose.connect(url,
     {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+        // useNewUrlParser: true,
+        // useUnifiedTopology: true,
     }
 );
 
