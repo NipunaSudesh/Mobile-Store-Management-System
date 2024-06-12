@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 
 export const SignUp = () => {
     const [username ,setUserName]=useState();
@@ -18,11 +18,17 @@ export const SignUp = () => {
         e.preventDefault();
         navigate('/login');
       };
+
+      const handleSubmit =(e) =>{
+
+      };
+
+
   return (
     <div className='flex h-screen items-center justify-center'>
     <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4'>Register</h1>
-        <form className='w-full max-w-sm'>
+        <form className='w-full max-w-sm' onSubmit={handleSubmit}>
             <div className='mb-4'>
                 <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">User Name</lable>
                 <input 
