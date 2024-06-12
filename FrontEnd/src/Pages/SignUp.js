@@ -20,7 +20,10 @@ export const SignUp = () => {
       };
 
       const handleSubmit =(e) =>{
-
+          e.preventDefault()
+          axios.post('',{username,email,password,cpassword})
+          .then(result =>console.log(result))
+          .catch(err =>console.log(err))
       };
 
 
