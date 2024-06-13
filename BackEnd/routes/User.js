@@ -4,7 +4,7 @@ const User =require("../models/User");
 
 router.post("/users",async (req,res) => {
     const user =new User({
-        name :"test",
+        userName :"test",
         email:"text@gmail.com",
         password:"123"
     })
