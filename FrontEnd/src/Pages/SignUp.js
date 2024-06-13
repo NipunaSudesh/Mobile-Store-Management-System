@@ -6,7 +6,7 @@ export const SignUp = () => {
     const [username ,setUserName]=useState();
     const [email ,setEmail]=useState();
     const [password ,setPassword]=useState();
-    const [cpassword ,setCPassword]=useState();
+    //const [cpassword ,setCPassword]=useState();
 
     const navigate = useNavigate();
 
@@ -19,11 +19,18 @@ export const SignUp = () => {
         navigate('/login');
       };
 
-      const handleSubmit =(e) =>{
-          e.preventDefault()
-          axios.post('',{username,email,password,cpassword})
-          .then(result =>console.log(result))
-          .catch(err =>console.log(err))
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          const response = await axios.post('http://localhost:5000/users', {
+            userName: username,
+            email,
+            password
+          });
+          console.log(response.data);
+        } catch (error) {
+          console.error(error);
+        }
       };
 
 
@@ -68,18 +75,7 @@ export const SignUp = () => {
                 onChange={(e)=>setPassword(e.target.value)}
                 />
             </div>
-            <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="cpassword">Confirm Password</lable>
-                <input 
-                className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                id='cpassword'
-                name='cpassword'
-                type='password'
-                placeholder='Enter Confirm Password'
-                required
-                onChange={(e)=>setCPassword(e.target.value)}
-                />
-            </div>
+
             <div className='flex gap-10 items-center justify-center'>
             <div className="flex items-center justify-between">
           <button
@@ -114,3 +110,15 @@ export const SignUp = () => {
     </div>
   )
 }
+{/* <div className='mb-4'>
+<lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="cpassword">Confirm Password</lable>
+<input 
+className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+id='cpassword'
+name='cpassword'
+type='password'
+placeholder='Enter Confirm Password'
+required
+onChange={(e)=>setCPassword(e.target.value)}
+/>
+</div> */}
