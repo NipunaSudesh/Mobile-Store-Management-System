@@ -4,7 +4,7 @@ const User =require("../model/user");
 
 
 
-router.post("/users",async (req,res)=>{
+router.post("/register",async (req,res)=>{
     const user =new User(req.body);
     try{
         await user.save()
@@ -13,6 +13,18 @@ router.post("/users",async (req,res)=>{
         res.status(400).send(error)
     }
 });
+
+
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+
+    if (password === 'password') {
+      return res.status(200).json({ message: 'Login successful' });
+    } else {
+      return res.status(401).json({ message: 'Login failed. Invalid credentials.' });
+    }
+  });
+  
 
 
 
