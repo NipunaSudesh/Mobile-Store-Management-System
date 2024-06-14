@@ -44,7 +44,7 @@ export const SignUp = () => {
   return (
     <div className='flex h-screen items-center justify-center'>
     <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
-        <h1 className='text-center text-2xl mb-4'>Register</h1>
+        <h1 className='text-center text-2xl mb-4 py-2 bg-green-400 w-full'>Register</h1>
         {message && (
             <div className='mb-4 text-center text-green-500'>
             {message}
@@ -90,7 +90,7 @@ export const SignUp = () => {
             <div className='flex gap-10 items-center justify-center'>
             <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Register
