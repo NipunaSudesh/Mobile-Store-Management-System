@@ -1,9 +1,16 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const AddProduct = () => {
-    const navigate = useNavigate();
-
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState('');
+    const [imageURL, setImageURL] = useState('');
+    const [year, setYear] = useState('');
+    const [brand, setBrand] = useState('');
+    const [description, setDescription] = useState('');
+    const [message, setMessage] = useState('');
+    const [navigate] =useNavigate('')
+ 
     const handleCancel =()=>{
         navigate('/');
     }
@@ -31,7 +38,7 @@ export const AddProduct = () => {
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='Price'
                 type='text'
-                value={Price}
+                value={price}
                 name='Price'
                 placeholder='Enter product Price'
                 required
@@ -42,7 +49,7 @@ export const AddProduct = () => {
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='Brand'
-                value={Brand}
+                value={brand}
                 type='text'
                 name='Brand'
                 placeholder='Enter product Brand'
@@ -54,7 +61,7 @@ export const AddProduct = () => {
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='Year'
-                value={Year}
+                value={year}
                 type='text'
                 name='Year'
                 placeholder='Enter product Year'
@@ -66,7 +73,7 @@ export const AddProduct = () => {
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='ImageURL'
-                value={ImageURL}
+                value={imageURL}
                 type='text'
                 name='ImageURL'
                 placeholder='Enter Image URL'
