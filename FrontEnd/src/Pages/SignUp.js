@@ -23,7 +23,7 @@ export const SignUp = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post('http://localhost:5000/users', { name, email, password });
+          const response = await axios.post('http://localhost:5000/register', { name, email, password });
           console.log(response.data);
           setMessage('Registration successful! Redirecting to login...');
           setTimeout(() => {
@@ -51,13 +51,13 @@ export const SignUp = () => {
           </div>)}
         <form className='w-full max-w-sm' onSubmit={handleSubmit}>
             <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">User Name</lable>
+                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Name</lable>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                id='username'
+                id='name'
                 type='text'
-                name='username'
-                placeholder='Enter Your User Name'
+                name='name'
+                placeholder='Enter Your Name'
                 required
                 onChange={(e)=>setName(e.target.value)}
                 />

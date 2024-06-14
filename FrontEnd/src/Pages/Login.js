@@ -1,8 +1,12 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 
 export const Login = () => {
+    const [email,setEmail] =useState('');
+    const [password,setPassword] =useState('');
+    const [message,setMessage] =useState('');
 
     const navigate = useNavigate();
 
@@ -14,11 +18,39 @@ export const Login = () => {
         e.preventDefault();
         navigate('/signup');
       };
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          const response = await axios.post('http://localhost:5000/login', {
+            email,
+            password
+          });
+          if (response.status === 200) {
+            setMessage('Login successful! Redirecting...');
+            setTimeout(() => {
+              navigate('/');
+            }, 2000);
+          } else {
+            setMessage('Login failed! Please check your credentials and try again.');
+          }
+        } catch (error) {
+          console.error('Login error:', error);
+          if (error.response && error.response.data) {
+            setMessage(`Login failed! ${error.response.data.message}`);
+          } else {
+            setMessage('Login failed! Please try again.');
+          }
+        }
+      };
+      
+
   return (
     <div className='flex h-screen items-center justify-center'>
     <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4'>Login</h1>
-        <form className='w-full max-w-sm'>
+        {message && <div className="mb-4 text-center text-green-500">{message}</div>}
+        <form className='w-full max-w-sm' onSubmit={handleSubmit}>
 
             <div className='mb-4'>
                 <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Email</lable>
@@ -29,6 +61,7 @@ export const Login = () => {
                 name='email'
                 placeholder='Enter Your Email'
                 required
+                onChange={(e)=>setEmail(e.target.value)}
                 />
             </div>
             <div className='mb-4'>
@@ -40,6 +73,7 @@ export const Login = () => {
                 name='password'
                 placeholder='Enter Your Password'
                 required
+                onChange={(e)=>setPassword(e.target.value)}
                 />
             </div>
   
