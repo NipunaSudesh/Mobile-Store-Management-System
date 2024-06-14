@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { SignUp } from './Pages/SignUp';
 import { AddCard } from './Pages/AddCard';
 import { Login } from './Pages/Login';
+import { AddProduct } from './Pages/AddProduct';
 
 function Home() {
   return (
@@ -38,6 +39,7 @@ function App(){
     <Route path='/signup' element={<SignUp />} />
     <Route path='/addcard' element={<AddCard />} />
     <Route path='/login' element={<Login />} />
+    <Route path='/addproduct' element={<AddProduct />} />
   </Routes>
 </Router>
 
