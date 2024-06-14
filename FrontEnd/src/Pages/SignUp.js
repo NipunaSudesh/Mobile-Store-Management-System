@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export const SignUp = () => {
-    const [username ,setUserName]=useState();
+    const [name ,setName]=useState();
     const [email ,setEmail]=useState();
     const [password ,setPassword]=useState();
+    const [message, setMessage] = useState('');
     //const [cpassword ,setCPassword]=useState();
 
     const navigate = useNavigate();
@@ -22,22 +23,32 @@ export const SignUp = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post('http://localhost:5000/users', {
-            userName: username,
-            email,
-            password
-          });
+          const response = await axios.post('http://localhost:5000/users', { name, email, password });
           console.log(response.data);
+          setMessage('Registration successful! Redirecting to login...');
+          setTimeout(() => {
+            navigate('/login');
+          }, 2000); 
         } catch (error) {
           console.error(error);
+          if (error.response && error.response.data) {
+            setMessage(`Registration failed! ${error.response.data.message}`);
+          } else {
+            setMessage('Registration failed! Please try again.');
+          }
         }
       };
+      
 
 
   return (
     <div className='flex h-screen items-center justify-center'>
     <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4'>Register</h1>
+        {message && (
+            <div className='mb-4 text-center text-green-500'>
+            {message}
+          </div>)}
         <form className='w-full max-w-sm' onSubmit={handleSubmit}>
             <div className='mb-4'>
                 <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">User Name</lable>
@@ -48,7 +59,7 @@ export const SignUp = () => {
                 name='username'
                 placeholder='Enter Your User Name'
                 required
-                onChange={(e)=>setUserName(e.target.value)}
+                onChange={(e)=>setName(e.target.value)}
                 />
             </div>
             <div className='mb-4'>
@@ -91,7 +102,7 @@ export const SignUp = () => {
             type="button"
             onClick={handleCancel}
           >
-            Cansal
+            Cancel
           </button>
         </div>
         </div>
@@ -110,15 +121,3 @@ export const SignUp = () => {
     </div>
   )
 }
-{/* <div className='mb-4'>
-<lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="cpassword">Confirm Password</lable>
-<input 
-className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-id='cpassword'
-name='cpassword'
-type='password'
-placeholder='Enter Confirm Password'
-required
-onChange={(e)=>setCPassword(e.target.value)}
-/>
-</div> */}
