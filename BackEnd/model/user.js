@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const jwt =require("jsonwebtoken");
 
 const usersSchema = new mongoose.Schema({
     name: {
@@ -16,7 +17,12 @@ const usersSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
-    }
+    },
+    tokens:[
+        {
+            token:String,
+        }
+    ]
 });
 
 usersSchema.pre("save", async function(next) {
@@ -42,6 +48,8 @@ usersSchema.statics.findByCredentials = async (email, password) => {
     }
     return user;
 };
+
+
 
 const User = mongoose.model("User", usersSchema);
 module.exports = User;

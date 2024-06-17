@@ -27,22 +27,5 @@ router.post("/login", async (req, res) => {
     }
 });
 
-    //   const { email, password } = req.body;
-    // User.findOne({email,password})
-    // .then(user =>{
-    //     if(user){
-    //         if(user.password===password){
-    //             return res.status(200).json({ message: 'Login successful' });
-    //         }
-    //         else{
-    //             return res.status(401).json({ message: 'Login failed. Invalid credentials.' });
-    //         }
-    //     }else{
-    //         return res.status(401).json({ message: 'Login failed!. Invalid credentials' });
-    //     }
-    // });
-
-
-
 
 module.exports =router;
