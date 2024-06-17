@@ -16,23 +16,31 @@ router.post("/register",async (req,res)=>{
 
 
 router.post("/login", async (req, res) => {
-    const { email, password } = req.body;
-    User.findOne({email,password})
-    .then(user =>{
-        if(user){
-            if(user.password===password){
-                return res.status(200).json({ message: 'Login successful' });
-            }
-            else{
-                return res.status(401).json({ message: 'Login failed. Invalid credentials.' });
-            }
-        }else{
-            return res.status(401).json({ message: 'Login failed!. Invalid credentials' });
-        }
-    });
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password);
+        res.status(200).json({ 
+            message: 'Login successful',
+            user: user 
+        });
+    } catch (error) {
+        res.status(401).json({ message: 'Invalid credentials' });
+    }
+});
 
-  });
-  
+    //   const { email, password } = req.body;
+    // User.findOne({email,password})
+    // .then(user =>{
+    //     if(user){
+    //         if(user.password===password){
+    //             return res.status(200).json({ message: 'Login successful' });
+    //         }
+    //         else{
+    //             return res.status(401).json({ message: 'Login failed. Invalid credentials.' });
+    //         }
+    //     }else{
+    //         return res.status(401).json({ message: 'Login failed!. Invalid credentials' });
+    //     }
+    // });
 
 
 
