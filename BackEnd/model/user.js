@@ -34,6 +34,14 @@ usersSchema.pre("save",async function(next){
 });
 
 
+usersSchema.statics.findByCredentials = async (email,password) =>{
+    const user =await User.findOne({email});
+
+    if(!user){
+        throw new Error()
+    }
+};
+
 const user =mongoose.model("User",usersSchema);
 module.exports=user;
 
