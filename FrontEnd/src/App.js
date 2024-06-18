@@ -13,6 +13,7 @@ import { SignUp } from './Pages/SignUp';
 import { AddCard } from './Pages/AddCard';
 import { Login } from './Pages/Login';
 import { AddProduct } from './Pages/AddProduct';
+import { Profile } from './Pages/Profile';
 
 function Home() {
   return (
@@ -39,6 +40,7 @@ function App(){
     <Route path='/signup' element={<SignUp />} />
     <Route path='/addcard' element={<AddCard />} />
     <Route path='/login' element={<Login />} />
+    <Route path='/profile' element={<Profile />} />
     <Route path='/addproduct' element={<AddProduct />} />
   </Routes>
 </Router>
