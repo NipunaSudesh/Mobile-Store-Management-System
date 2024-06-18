@@ -41,18 +41,21 @@ router.get("/users",async (req,res)=>{
     }
 });
 
- router.get("/user/:id" ,async (req,res) =>{
-    const _id= req.params.id;
+router.get("/users/:id", async (req, res) => {
+    const _id = req.params.id.trim(); 
     try {
-        const user =await User.findById(_id);
-        if(!user){
-            return res.status(404).send();
+        const user = await User.findById(_id);
+
+        if (!user) {
+            return res.status(404).send(); 
         }
-        return res.status(200).send();
+
+        res.status(200).send(user); 
+
     } catch (error) {
-        return res.status(400).send();
+        res.status(400).send(error);
     }
- });
+});
 
 
 module.exports =router;
