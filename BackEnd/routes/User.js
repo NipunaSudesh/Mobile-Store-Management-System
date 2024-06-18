@@ -1,10 +1,11 @@
 const express =require("express");
 const router =express.Router();
 const User =require("../model/user");
+const auth = require("../middleware/auth");
 
 
 
-router.post("/register",async (req,res)=>{
+router.post("/register",auth, async (req,res)=>{
     const user =new User(req.body);
     try{
         await user.save()

@@ -26,6 +26,7 @@ export const Login = () => {
             email,
             password
           });
+          localStorage.setItem('token', response.data.token);
           if (response.status === 200) {
             setMessage('Login successful! Redirecting...');
             setTimeout(() => {
