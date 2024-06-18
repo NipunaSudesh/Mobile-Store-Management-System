@@ -5,7 +5,7 @@ const cors=require("cors");
 const userRouter =require('./Routes/User');
 
 const app =express();
-
+app.use(express.json());
 app.use(cors());
 app.use(bodyPaeser.json());
 app.use(userRouter);
