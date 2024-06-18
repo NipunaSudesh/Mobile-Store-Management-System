@@ -31,5 +31,31 @@ router.post("/login", async (req, res) => {
     }
 });
 
+router.get("/users",async (req,res)=>{
+
+    try{
+        const users=await User.find({});
+        res.status(200).send(users)
+    }catch(error){
+        res.status(400).send(error)
+    }
+});
+
+router.get("/user/:id", async (req, res) => {
+    const _id = req.params.id.trim(); 
+    try {
+        const user = await User.findById(_id);
+
+        if (!user) {
+            return res.status(404).send(); 
+        }
+
+        res.status(200).send(user); 
+
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
 
 module.exports =router;
