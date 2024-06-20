@@ -86,5 +86,5 @@ router.patch("/update/me",auth,async (req,res) =>{
     }
  });
 
-
+// logout eka hdnn oni antim video eke 1.30 idn tiye
 module.exports =router;
