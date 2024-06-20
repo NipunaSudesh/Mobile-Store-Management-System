@@ -1,6 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const Profile = () => {
+ const navigate =useNavigate();
+
+
+const handleBack =()=>{
+ navigate('/');
+};
+
   return (
     <div className='flex h-screen items-center justify-center'>
     <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
@@ -77,7 +85,7 @@ export const Profile = () => {
             <div className="flex items-center justify-between">
           <button
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline  w-full"
-            type="button"
+            type="button" onClick={handleBack}
           >
             Back
           </button>
