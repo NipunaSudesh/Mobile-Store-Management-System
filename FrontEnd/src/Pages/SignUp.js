@@ -25,6 +25,8 @@ export const SignUp = () => {
         try {
           const response = await axios.post('http://localhost:5000/register', { name, email, password });
           console.log(response.data);
+          const {token} =response.data;;
+          localStorage.setItem('authToken',token);
           setMessage('Registration successful! Redirecting to login...');
           setTimeout(() => {
             navigate('/login');
@@ -51,7 +53,7 @@ export const SignUp = () => {
           </div>)}
         <form className='w-full max-w-sm' onSubmit={handleSubmit}>
             <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Name</lable>
+                <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Name</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='name'
@@ -63,7 +65,7 @@ export const SignUp = () => {
                 />
             </div>
             <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="email">Email</lable>
+                <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="email">Email</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='email'
@@ -75,7 +77,7 @@ export const SignUp = () => {
                 />
             </div>
             <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="password">Password</lable>
+                <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="password">Password</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='password'

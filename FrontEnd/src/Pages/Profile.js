@@ -1,9 +1,36 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 
 export const Profile = () => {
+  const [name,setName] =useState('');
+  const [email, setEmail] = useState('');
+  const [nPassword, setNPassword] = useState('');
+  const [cPassword, setCPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const [userDetails,setUserDetails] =useState('');
  const navigate =useNavigate();
+ const { userId } = useParams();
 
+useEffect(() => {
+  const fetchUser = async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/user/me',{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      setName(res.data.name);
+      setEmail(res.data.email);
+      setUserDetails(res.data);
+      console.log(res)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  fetchUser();
+},[]);
 
 const handleBack =()=>{
  navigate('/');
@@ -13,52 +40,71 @@ const handleBack =()=>{
     <div className='flex h-screen items-center justify-center'>
     <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4 py-2 bg-green-400 w-full'>My Profile</h1>
-        {/* {message && (
+         {message && (
             <div className='mb-4 text-center text-green-500'>
             {message}
-          </div>)} */}
+          </div>)} 
+
+          <div>
+          <h2>Profile</h2>
+      {userDetails ? (
+        <div>
+         <p><strong>neme:</strong> {userDetails.name}</p>
+          <p><strong>Email:</strong> {userDetails.email}</p>
+
+        </div>
+      ) : (
+        <p>Loading profile...</p>
+      )}
+    </div>
+
         <form className='w-full max-w-sm'
          //onSubmit={handleSubmit}
          >
                    <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Name</lable>
+                <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Name</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='name'
                 type='text'
                 name='name'
-
+                placeholder={userDetails.name || 'Enter Your Name'}
+                onChange={(e)=>setName(e.target.value)}
                 
                 />
                 </div>
                 <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="Email">Email</lable>
+                <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="Email">Email</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='email'
                 type='email'
                 name='email'
+                placeholder={userDetails.email || 'Enter Your Email'}
+                onChange={(e)=>setEmail(e.target.value)}
                 />
             </div>
             <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="Password">New Password</lable>
+                <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="Password">New Password</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='nPassword'
                 type='text'
                 name='nPassword'
-
+                placeholder='Enter New Password'
+                onChange={(e)=>setNPassword(e.target.value)}
                 
                 />
             </div>
             <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="cPassword">Confirm Password</lable>
+                <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="cPassword">Confirm Password</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='cPassword'
                 type='text'
                 name='cPassword'
-               
+                placeholder='Confirm Password'
+                onChange={(e)=>setCPassword(e.target.value)}
                 />
             </div>
 
