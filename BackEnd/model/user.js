@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt =require("jsonwebtoken");
 
-const usersSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
     },
     email: {
         type: String,
-        required: true,
+        required: true, 
         unique: true,
         trim: true
     },
@@ -18,23 +18,26 @@ const usersSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    tokens:[
+    tokens: [
         {
-            token:String,
+            token: {
+                type: String
+                 
+            }
         }
     ]
 });
 
-usersSchema.pre("save", async function(next) {
+userSchema.pre("save", async function(next) {
     const user = this;
-
     if (user.isModified("password")) {
         user.password = await bcrypt.hash(user.password, 8);
     }
     next();
 });
 
-usersSchema.statics.findByCredentials = async (email, password) => {
+
+userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -49,14 +52,33 @@ usersSchema.statics.findByCredentials = async (email, password) => {
     return user;
 };
 
-usersSchema.methods.generateAuthToken =async function(){
+userSchema.methods.generateAuthToken =async function (){
     const user =this;
-    const token =jwt.sign({_id:user._id.toString()},"mysecret")
-    user.tokens=user.tokens.concat({token})
-
+   
+    const payload = {
+       _id: user._id.toString(),
+       name: user.name, 
+       email: user.email 
+   };
+   
+    const token=jwt.sign(payload,"mysecret");
+    user.tokens = user.tokens.concat({token});
+   
     await user.save();
+   
     return token;
-};
+   }
 
-const User = mongoose.model("User", usersSchema);
+// userSchema.methods.generateAuthToken = async function() {
+//     const user = this;
+//     const token = jwt.sign({ _id: user._id.toString() }, "mysecret");
+//     console.log("Generated token:", token); 
+//     user.tokens.push({ token });
+//     await user.save();
+//     return token;
+//   };
+  
+
+
+const User = mongoose.model("User", userSchema);
 module.exports = User;

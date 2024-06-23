@@ -54,7 +54,7 @@ export const Login = () => {
         <form className='w-full max-w-sm' onSubmit={handleSubmit}>
 
             <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Email</lable>
+                <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Email</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='email'
@@ -66,7 +66,7 @@ export const Login = () => {
                 />
             </div>
             <div className='mb-4'>
-                <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="Password">Password</lable>
+                <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="Password">Password</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='password'
