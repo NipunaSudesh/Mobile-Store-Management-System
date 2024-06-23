@@ -5,7 +5,7 @@ const auth = require("../middleware/auth");
 
 
 
-router.post("/register", async (req,res)=>{
+router.post("/user/register", async (req,res)=>{
     const user =new User(req.body);
     try{
         await user.save()
@@ -18,16 +18,13 @@ router.post("/register", async (req,res)=>{
 });
 
 
-router.post("/login", async (req, res) => {
+router.post("/user/login", async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password);
 
         const token = await user.generateAuthToken()
         res.send({ user, token });
-        // res.status(200).json({ 
-        //     message: 'Login successful',
-        //     user: user 
-        // });
+
     } catch (error) {
         res.status(500).json({error:error.massage|| 'Server error' });
     }
@@ -43,23 +40,7 @@ router.get("/users",async (req,res)=>{
     }
 });
 
-// router.get("/user/:_id", async (req, res) => {
-//     const _id = req.params._id;
-//    // const _id =req.user._id;
-//     try {
-//         const user = await User.findById(_id);
 
-//         if (!user) {
-//             return res.status(404).send({ message: 'Invalid credentials' }); 
-//         }
-//         console.log(user);
-//         res.status(200).send(user); 
-
-//     } catch (error) {
-//         console.error('Error fetching user:', error);
-//         res.status(500).send({ error: 'Server error' })
-//     }
-// });
 router.get("/user/me",auth, async (req, res) => {
    // const _id = req.params._id;
     const _id =req.user._id;
@@ -78,7 +59,7 @@ router.get("/user/me",auth, async (req, res) => {
     }
 });
 
-router.patch("/update/:id",auth,async (req,res) =>{
+router.patch("/user/update/:id",auth,async (req,res) =>{
    //const _id =req.user._id;
      const _id=req.params.id.trim()
     try {
@@ -93,7 +74,7 @@ router.patch("/update/:id",auth,async (req,res) =>{
         return res.status(500).send({ error: 'Server error' });
     }
 });
- router.delete("/delete/:id",auth,async (req,res) =>{
+ router.delete("/user/delete/:id",auth,async (req,res) =>{
     // const _id =req.user._id;
     const _id=req.params.id.trim()
     try {
