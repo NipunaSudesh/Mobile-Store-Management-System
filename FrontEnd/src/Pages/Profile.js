@@ -10,12 +10,12 @@ export const Profile = () => {
   const [message, setMessage] = useState('');
   const [userDetails,setUserDetails] =useState('');
  const navigate =useNavigate();
- const { userId } = useParams();
+ //const { userId } = useParams();
 
 useEffect(() => {
   const fetchUser = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/user/me',{
+      const res = await axios.get('http://localhost:5000/user/me"',{
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
