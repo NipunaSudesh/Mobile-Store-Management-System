@@ -1,5 +1,5 @@
 import React from 'react'; // Remove duplicate import
-
+import Cookies from 'js-cookie';
 import { logo1 } from '../assets/index';
 import { RiAccountCircleFill } from "react-icons/ri";
 import { IoBagAdd } from "react-icons/io5";
@@ -7,11 +7,16 @@ import { MdShoppingCart } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 
 export const NavBar = () => {
-
+  const token = Cookies.get('token');
   const navigate = useNavigate();
 
   const handleAccount= ()=>{
+    if(!token){
     navigate('/signup');
+    }
+    else{
+      navigate('/profile');
+    }
   };
 
   const handleAddCard =()=>{
