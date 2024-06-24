@@ -14,13 +14,11 @@ export const Profile = () => {
 
 
   const token = Cookies.get('token');
-  console.log('Token fetched from cookies:'); 
-  console.log(token)
   useEffect(() => {
     const fetchUser = async () => {
       if (!token) {
         console.log('No token found, please login.');
-       // navigate('/login');
+        navigate('/login');
         return;
       }
       try {
@@ -32,7 +30,7 @@ export const Profile = () => {
         setName(res.data.name);
         setEmail(res.data.email);
         setUserDetails(res.data);
-        console.log('User data fetched:', res.data); 
+      //  console.log('User data fetched:', res.data); 
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
