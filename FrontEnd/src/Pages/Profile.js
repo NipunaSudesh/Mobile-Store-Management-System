@@ -9,6 +9,7 @@ export const Profile = () => {
   const [nPassword, setNPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [eMessage, setEMessage] = useState('');
   const [userDetails, setUserDetails] = useState('');
   const navigate = useNavigate();
 
@@ -42,7 +43,8 @@ export const Profile = () => {
   const handleUpdate= async (e)=>{
     e.preventDefault();
     if (nPassword !== cPassword) {
-      setMessage('New Password and Confirm Password do not match.');
+      setEMessage(' Password do not match !');
+      clearMessageAfterTimeout();
       return;
     }
     try {
@@ -59,15 +61,23 @@ export const Profile = () => {
       });
       
       setMessage("Profile Updated Successfully");
+      clearMessageAfterTimeout();
       console.log("updated!")
     } catch (error) {
-      setMessage("Failed to update profile");
+      setEMessage("Failed to update profile");
+      clearMessageAfterTimeout();
       console.log("Failed to update profile");
     }
   };
 
   const handleBack = () => {
     navigate('/');
+  };
+
+  const clearMessageAfterTimeout = () => {
+    setTimeout(() => {
+      setMessage('');
+    }, 60000); // 60000 ms = 1 minute
   };
 
   return (
@@ -77,6 +87,11 @@ export const Profile = () => {
         {message && (
           <div className='mb-4 text-center text-green-500'>
             {message}
+          </div>
+        )}
+        {eMessage && (
+          <div className='mb-4 text-center text-red-500'>
+            {eMessage}
           </div>
         )}
 

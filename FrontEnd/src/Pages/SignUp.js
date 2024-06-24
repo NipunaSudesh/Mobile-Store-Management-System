@@ -7,6 +7,7 @@ export const SignUp = () => {
     const [email ,setEmail]=useState();
     const [password ,setPassword]=useState();
     const [message, setMessage] = useState('');
+    const [eMessage, setEMessage] = useState('');
     //const [cpassword ,setCPassword]=useState();
 
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ export const SignUp = () => {
           const {token} =response.data;;
           localStorage.setItem('authToken',token);
           setMessage('Registration successful! Redirecting to login...');
+          clearMessageAfterTimeout();
           setTimeout(() => {
             navigate('/login');
           }, 2000); 
@@ -35,12 +37,18 @@ export const SignUp = () => {
           console.error(error);
           if (error.response && error.response.data) {
             setMessage(`Registration failed! ${error.response.data.message}`);
+            clearMessageAfterTimeout();
           } else {
             setMessage('Registration failed! Please try again.');
+            clearMessageAfterTimeout();
           }
         }
       };
-      
+      const clearMessageAfterTimeout = () => {
+        setTimeout(() => {
+          setMessage('');
+        }, 60000); // 60000 ms = 1 minute
+      };
 
 
   return (

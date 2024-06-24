@@ -8,6 +8,7 @@ export const Login = () => {
     const [email,setEmail] =useState('');
     const [password,setPassword] =useState('');
     const [message,setMessage] =useState('');
+    const [eMessage, setEMessage] = useState('');
     
 
     const navigate = useNavigate();
@@ -32,20 +33,29 @@ export const Login = () => {
          // localStorage.setItem('token', response.data.token);
           if (response.status === 200) {
             setMessage('Login successful! Redirecting...');
+            clearMessageAfterTimeout();
             setTimeout(() => {
               navigate('/profile');
             }, 2000);
           } else {
             setMessage('Login failed! Please check your credentials and try again.');
+            clearMessageAfterTimeout();
           }
         } catch (error) {
           console.error('Login error:', error);
           if (error.response && error.response.data) {
             setMessage(`Login failed! ${error.response.data.message}`);
+            clearMessageAfterTimeout();
           } else {
             setMessage('Login failed! Please try again.');
+            clearMessageAfterTimeout();
           }
         }
+      };
+      const clearMessageAfterTimeout = () => {
+        setTimeout(() => {
+          setMessage('');
+        }, 60000); // 60000 ms = 1 minute
       };
       
 
