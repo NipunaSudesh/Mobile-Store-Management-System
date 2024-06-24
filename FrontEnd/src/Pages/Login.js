@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 
 export const Login = () => {
     const [email,setEmail] =useState('');
     const [password,setPassword] =useState('');
     const [message,setMessage] =useState('');
+    
 
     const navigate = useNavigate();
 
@@ -16,21 +18,22 @@ export const Login = () => {
 
     const handleLoginRedirect = (e) => {
         e.preventDefault();
-        navigate('/signup');
+        navigate('/profile');
       };
 
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post('http://localhost:5000/login', {
+          const response = await axios.post('http://localhost:5000/user/login', {
             email,
             password
           });
-          localStorage.setItem('token', response.data.token);
+          Cookies.set('token', response.data.token, { expires: 1 });
+         // localStorage.setItem('token', response.data.token);
           if (response.status === 200) {
             setMessage('Login successful! Redirecting...');
             setTimeout(() => {
-              navigate('/');
+              navigate('/profile');
             }, 2000);
           } else {
             setMessage('Login failed! Please check your credentials and try again.');

@@ -23,7 +23,7 @@ export const SignUp = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post('http://localhost:5000/register', { name, email, password });
+          const response = await axios.post('http://localhost:5000/user/register', { name, email, password });
           console.log(response.data);
           const {token} =response.data;;
           localStorage.setItem('authToken',token);

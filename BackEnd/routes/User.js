@@ -15,8 +15,8 @@ router.post("/user/register", async (req,res)=>{
         }
         else{
         await user.save()
-        const token = await user.generateAuthToken();
-        res.status(201).send({user,token})
+        //const token = await user.generateAuthToken();
+        res.status(201).send(user)
         }
     }catch(error){
         console.error('Error during registration:', error);
