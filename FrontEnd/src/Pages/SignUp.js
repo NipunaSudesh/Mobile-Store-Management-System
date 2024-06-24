@@ -7,6 +7,8 @@ export const SignUp = () => {
     const [email ,setEmail]=useState();
     const [password ,setPassword]=useState();
     const [message, setMessage] = useState('');
+    const [eMessage, setEMessage] = useState('');
+    const [isMsgError, setIsMsgError,] = useState(false);
     //const [cpassword ,setCPassword]=useState();
 
     const navigate = useNavigate();
@@ -28,6 +30,8 @@ export const SignUp = () => {
           const {token} =response.data;;
           localStorage.setItem('authToken',token);
           setMessage('Registration successful! Redirecting to login...');
+          setIsMsgError(false);
+          clearMessageAfterTimeout();
           setTimeout(() => {
             navigate('/login');
           }, 2000); 
@@ -35,12 +39,20 @@ export const SignUp = () => {
           console.error(error);
           if (error.response && error.response.data) {
             setMessage(`Registration failed! ${error.response.data.message}`);
+            setIsMsgError(true);
+            clearMessageAfterTimeout();
           } else {
             setMessage('Registration failed! Please try again.');
+            setIsMsgError(true);
+            clearMessageAfterTimeout();
           }
         }
       };
-      
+      const clearMessageAfterTimeout = () => {
+        setTimeout(() => {
+          setMessage('');
+        }, 60000); // 60000 ms = 1 minute
+      };
 
 
   return (
@@ -48,7 +60,7 @@ export const SignUp = () => {
     <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4 py-2 bg-green-400 w-full'>Register</h1>
         {message && (
-            <div className='mb-4 text-center text-green-500'>
+            <div className={`mb-4 text-center ${isMsgError ? 'text-red-500' : 'text-green-500'}`}>
             {message}
           </div>)}
         <form className='w-full max-w-sm' onSubmit={handleSubmit}>

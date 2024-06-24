@@ -9,6 +9,7 @@ export const Profile = () => {
   const [nPassword, setNPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [isMsgError, setIsMsgError,] = useState(false);
   const [userDetails, setUserDetails] = useState('');
   const navigate = useNavigate();
 
@@ -42,7 +43,9 @@ export const Profile = () => {
   const handleUpdate= async (e)=>{
     e.preventDefault();
     if (nPassword !== cPassword) {
-      setMessage('New Password and Confirm Password do not match.');
+      setMessage(' Password do not match !');
+      setIsMsgError(true);
+      clearMessageAfterTimeout();
       return;
     }
     try {
@@ -59,9 +62,13 @@ export const Profile = () => {
       });
       
       setMessage("Profile Updated Successfully");
+      setIsMsgError(false);
+      clearMessageAfterTimeout();
       console.log("updated!")
     } catch (error) {
       setMessage("Failed to update profile");
+      setIsMsgError(true);
+      clearMessageAfterTimeout();
       console.log("Failed to update profile");
     }
   };
@@ -70,12 +77,18 @@ export const Profile = () => {
     navigate('/');
   };
 
+  const clearMessageAfterTimeout = () => {
+    setTimeout(() => {
+      setMessage('');
+    }, 60000); // 60000 ms = 1 minute
+  };
+
   return (
     <div className='flex h-screen items-center justify-center'>
       <div className='flex h-auto w-[500px] flex-col items-center justify-center py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4 py-2 bg-green-400 w-full'>My Profile</h1>
         {message && (
-          <div className='mb-4 text-center text-green-500'>
+          <div className={`mb-4 text-center ${isMsgError ?'text-red-500' :'text-green-500'}`}>
             {message}
           </div>
         )}
