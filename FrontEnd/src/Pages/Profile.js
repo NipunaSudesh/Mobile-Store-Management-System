@@ -39,6 +39,29 @@ export const Profile = () => {
     fetchUser();
   }, [token, navigate]);
 
+  const handleUpdate= async (e)=>{
+    e.preventDefault();
+    try {
+      const updateUser ={
+        name,
+        email,
+        newPassword: nPassword,
+        confirmPassword: cPassword,
+      };
+      const res = await axios.patch("http://localhost:5000/user/update/me",updateUser,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
+      setMessage("Profile Updated Successfully");
+      console.log("updated!")
+    } catch (error) {
+      setMessage("Failed to update profile");
+      console.log("Failed to update profile");
+    }
+  };
+
   const handleBack = () => {
     navigate('/');
   };
@@ -53,13 +76,14 @@ export const Profile = () => {
           </div>
         )}
 
-        <form className='w-full max-w-sm'>
+        <form className='w-full max-w-sm' onSubmit={handleUpdate}>
           <div className='mb-4'>
             <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Name</label>
             <input
               className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
               id='name'
               type='text'
+              value={name}
               name='name'
               placeholder={userDetails.name || 'Enter Your Name'}
               onChange={(e) => setName(e.target.value)}
@@ -71,6 +95,7 @@ export const Profile = () => {
               className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
               id='email'
               type='email'
+              value={email}
               name='email'
               placeholder={userDetails.email || 'Enter Your Email'}
               onChange={(e) => setEmail(e.target.value)}
@@ -82,6 +107,7 @@ export const Profile = () => {
               className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
               id='nPassword'
               type='password'
+              value={nPassword}
               name='nPassword'
               placeholder='Enter New Password'
               onChange={(e) => setNPassword(e.target.value)}
@@ -93,6 +119,7 @@ export const Profile = () => {
               className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
               id='cPassword'
               type='password' 
+              value={cPassword}
               name='cPassword'
               placeholder='Confirm Password'
               onChange={(e) => setCPassword(e.target.value)}
@@ -104,7 +131,7 @@ export const Profile = () => {
               <div className="flex items-center justify-between w-full">
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-                  type="button"
+                  type="submit"
                 >
                   Update
                 </button>
