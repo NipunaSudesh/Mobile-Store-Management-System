@@ -7,10 +7,17 @@ const auth = require("../middleware/auth");
 
 router.post("/user/register", async (req,res)=>{
     const user =new User(req.body);
+
     try{
+        const dbUser =await user.findByCredentials(user.email);
+        if(dbUser){
+            return res.status(400).json({ message: 'User already exists' });
+        }
+        else{
         await user.save()
-        const token = await user.generateAuthToken();
-        res.status(201).send({user,token})
+        //const token = await user.generateAuthToken();
+        res.status(201).send(user)
+        }
     }catch(error){
         console.error('Error during registration:', error);
         res.status(500).send({error:error.massage || 'Server error' })
