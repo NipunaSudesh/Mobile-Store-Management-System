@@ -66,9 +66,9 @@ router.get("/user/me",auth, async (req, res) => {
     }
 });
 
-router.patch("/user/update/:id",auth,async (req,res) =>{
-   //const _id =req.user._id;
-     const _id=req.params.id.trim()
+router.patch("/user/update/me",auth,async (req,res) =>{
+   const _id =req.user._id;
+     //const _id=req.params.id.trim()
     try {
         const udpateUser =await User.findByIdAndUpdate(_id,req.body,{
             new:true
