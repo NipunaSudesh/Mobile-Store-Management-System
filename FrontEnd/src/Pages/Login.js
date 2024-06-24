@@ -8,7 +8,7 @@ export const Login = () => {
     const [email,setEmail] =useState('');
     const [password,setPassword] =useState('');
     const [message,setMessage] =useState('');
-    const [eMessage, setEMessage] = useState('');
+    const [isMsgError, setIsMsgError,] = useState(false);
     
 
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const Login = () => {
 
     const handleLoginRedirect = (e) => {
         e.preventDefault();
-        navigate('/profile');
+        navigate('/');
       };
 
       const handleSubmit = async (e) => {
@@ -33,21 +33,25 @@ export const Login = () => {
          // localStorage.setItem('token', response.data.token);
           if (response.status === 200) {
             setMessage('Login successful! Redirecting...');
+            setIsMsgError(false);
             clearMessageAfterTimeout();
             setTimeout(() => {
               navigate('/profile');
             }, 2000);
           } else {
             setMessage('Login failed! Please check your credentials and try again.');
+            setIsMsgError(true);
             clearMessageAfterTimeout();
           }
         } catch (error) {
           console.error('Login error:', error);
           if (error.response && error.response.data) {
             setMessage(`Login failed! ${error.response.data.message}`);
+            setIsMsgError(true);
             clearMessageAfterTimeout();
           } else {
             setMessage('Login failed! Please try again.');
+            setIsMsgError(true);
             clearMessageAfterTimeout();
           }
         }
@@ -63,7 +67,7 @@ export const Login = () => {
     <div className='flex h-screen items-center justify-center'>
     <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4 w-full py-2 bg-green-400'>Login</h1>
-        {message && <div className="mb-4 text-center text-green-500">{message}</div>}
+        {message && <div className={`mb-4 text-center ${isMsgError ?'text-red-500' : 'text-green-500'}`}>{message}</div>}
         <form className='w-full max-w-sm' onSubmit={handleSubmit}>
 
             <div className='mb-4'>

@@ -9,7 +9,7 @@ export const Profile = () => {
   const [nPassword, setNPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [eMessage, setEMessage] = useState('');
+  const [isMsgError, setIsMsgError,] = useState(false);
   const [userDetails, setUserDetails] = useState('');
   const navigate = useNavigate();
 
@@ -43,7 +43,8 @@ export const Profile = () => {
   const handleUpdate= async (e)=>{
     e.preventDefault();
     if (nPassword !== cPassword) {
-      setEMessage(' Password do not match !');
+      setMessage(' Password do not match !');
+      setIsMsgError(true);
       clearMessageAfterTimeout();
       return;
     }
@@ -61,10 +62,12 @@ export const Profile = () => {
       });
       
       setMessage("Profile Updated Successfully");
+      setIsMsgError(false);
       clearMessageAfterTimeout();
       console.log("updated!")
     } catch (error) {
-      setEMessage("Failed to update profile");
+      setMessage("Failed to update profile");
+      setIsMsgError(true);
       clearMessageAfterTimeout();
       console.log("Failed to update profile");
     }
@@ -85,13 +88,8 @@ export const Profile = () => {
       <div className='flex h-auto w-[500px] flex-col items-center justify-center py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4 py-2 bg-green-400 w-full'>My Profile</h1>
         {message && (
-          <div className='mb-4 text-center text-green-500'>
+          <div className={`mb-4 text-center ${isMsgError ?'text-red-500' :'text-green-500'}`}>
             {message}
-          </div>
-        )}
-        {eMessage && (
-          <div className='mb-4 text-center text-red-500'>
-            {eMessage}
           </div>
         )}
 
