@@ -41,6 +41,10 @@ export const Profile = () => {
 
   const handleUpdate= async (e)=>{
     e.preventDefault();
+    if (nPassword !== cPassword) {
+      setMessage('New Password and Confirm Password do not match.');
+      return;
+    }
     try {
       const updateUser ={
         name,
