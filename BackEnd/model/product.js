@@ -29,12 +29,12 @@ const productSchema = new mongoose.Schema({
     imgURL:{
         type:String,
         require:true,
-        // validate: {
-        //     validator: function(v) {
-        //         return /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(v);
-        //     },
-        //     message: props => `${props.value} is not a valid URL!`
-        // }   
+        validate: {
+            validator: function(v) {
+                return /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(v);
+            },
+            message: props => `${props.value} is not a valid URL!`
+        }   
     },
     description:{
         type:String,
