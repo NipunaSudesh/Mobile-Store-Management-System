@@ -13,4 +13,26 @@ router.post('/product/add',async (req,res) =>{
     }
 });
 
+router.get('/product/get' ,async (req,res) =>{
+    try {
+        const products= await Product.find();
+        res.status(201).send(products);
+    } catch (error) {
+        res.status(400).send({ error: 'Failed to get products', message: error.message })
+    }
+});
+
+router.get('/product/get/:id' ,async (req,res) =>{
+    const _id =req.params.id;
+    try {
+        const product = await Product.findById(_id);
+        if(!product){
+            res.status(404).send('product not found');
+        }
+        res.status(201).send(product);
+    } catch (error) {
+        res.status(400).send({ error: 'Failed to get product', message: error.message })
+    }
+});
+
 module.exports=router;
