@@ -51,7 +51,7 @@ export const SignUp = () => {
       const clearMessageAfterTimeout = () => {
         setTimeout(() => {
           setMessage('');
-        }, 60000); // 60000 ms = 1 minute
+        }, 60000); 
       };
 
 
