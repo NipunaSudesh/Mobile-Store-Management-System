@@ -7,12 +7,12 @@ const productSchema = new mongoose.Schema({
         trim: true
     },
     price:{
-        type:String,
+        type:Number,
         require:true,
         min: 0
     },
     year:{
-        type:String,
+        type:Number,
         require:true,
         min: 1990,
     },
@@ -21,15 +21,20 @@ const productSchema = new mongoose.Schema({
         require:true,
         trim: true     
     },
+    details:{
+        type:String,
+        require:true,
+        trim: true 
+    },
     imgURL:{
         type:String,
         require:true,
-        validate: {
-            validator: function(v) {
-                return /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(v);
-            },
-            message: props => `${props.value} is not a valid URL!`
-        }   
+        // validate: {
+        //     validator: function(v) {
+        //         return /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(v);
+        //     },
+        //     message: props => `${props.value} is not a valid URL!`
+        // }   
     },
     description:{
         type:String,
