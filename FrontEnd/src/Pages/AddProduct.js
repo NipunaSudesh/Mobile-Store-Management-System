@@ -22,7 +22,7 @@ export const AddProduct = () => {
       });
       setMessage('Added Product successful! Redirecting to home...');
       setIsMsgError(false);
-      //clearMessageAfterTimeout();
+      clearMessageAfterTimeout();
       setTimeout(() => {
         navigate('/');
       }, 2000); 
@@ -31,10 +31,14 @@ export const AddProduct = () => {
     } catch (error) {
       setMessage('Registration failed! Please try again.');
       setIsMsgError(true);
-      //clearMessageAfterTimeout();
+      clearMessageAfterTimeout();
     }
   };
-
+  const clearMessageAfterTimeout = () => {
+    setTimeout(() => {
+      setMessage('');
+    }, 60000); 
+  };
  
     const handleCancel = () => {
         navigate('/');
