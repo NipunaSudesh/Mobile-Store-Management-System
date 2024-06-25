@@ -35,4 +35,17 @@ router.get('/product/get/:id' ,async (req,res) =>{
     }
 });
 
+router.patch('/product/update/:id' ,async (req,res) =>{
+    const _id =req.params.id;
+    try {
+        const product = await Product.findByIdAndUpdate(_id);
+        if(!product){
+            res.status(404).send('product not found');
+        }
+        res.status(201).send();
+    } catch (error) {
+        res.status(400).send({ error: 'Failed to update product', message: error.message })
+    }
+});
+
 module.exports=router;
