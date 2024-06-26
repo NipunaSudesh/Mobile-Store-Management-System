@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Header } from './Header'
 import { ProductCard } from './ProductCard';
-import {apple13} from '../assets/index';
 import axios from 'axios';
 
 export const LatestMobile = () => {
