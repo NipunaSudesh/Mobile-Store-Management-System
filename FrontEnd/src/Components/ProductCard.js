@@ -2,6 +2,7 @@ import React from 'react'
 
 
 export const ProductCard = ({name,deltails,price,image}) => {
+  const discountedPrice = price * 0.9;
   return (
     <div className='h-auto w-full items-center  rounded-5g shadow-md flex flex-col
     bg-gradient-to-r from-[#eff1ef] to-[#939493] group hover:bg-gradient-to-b
@@ -9,7 +10,7 @@ export const ProductCard = ({name,deltails,price,image}) => {
       
       <div className="relative w-full m-1 overflow-hidden rounded-lg group">
   <img
-    className="mx-auto w-60 h-55 rounded-lg object-cover transition-transform duration-500 group-hover:scale-110"
+    className="mx-auto w-60 h-[250px] rounded-lg object-cover transition-transform duration-500 group-hover:scale-110"
     src={image}
     alt="src"
   />
@@ -31,10 +32,14 @@ export const ProductCard = ({name,deltails,price,image}) => {
   </div>
 </div>
 
-      <div className="flex flex-col gap-1 mt-2 items-center text-center">
+      <div className="flex flex-col mb-2 mt-2 items-center text-center">
         <h2 className='font-semibold'>{name}</h2>
-        <h2 className='font-semibold'>{deltails}</h2>
-        <h3><span className='text-blue-700'>{price}</span></h3>
+        <h2 className='font-normal'>{deltails}</h2>
+        <div className='flex gap-4'>
+            <h3><span className='text-red-600 line-through'>RS.{discountedPrice}</span></h3>
+            <h3><span className='text-blue-600'>RS.{price}</span></h3>
+        </div>
+
       </div>
     </div>
   )
