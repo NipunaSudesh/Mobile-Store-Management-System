@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export const ProductCard = ({name,price,image}) => {
+export const ProductCard = ({name,deltails,price,image}) => {
   return (
     <div className='h-auto w-full items-center  rounded-5g shadow-md flex flex-col
     bg-gradient-to-r from-[#eff1ef] to-[#939493] group hover:bg-gradient-to-b
@@ -33,6 +33,7 @@ export const ProductCard = ({name,price,image}) => {
 
       <div className="flex flex-col gap-1 mt-2 items-center text-center">
         <h2 className='font-semibold'>{name}</h2>
+        <h2 className='font-semibold'>{deltails}</h2>
         <h3><span className='text-blue-700'>{price}</span></h3>
       </div>
     </div>

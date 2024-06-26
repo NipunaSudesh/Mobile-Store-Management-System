@@ -23,9 +23,7 @@ export const AddProduct = () => {
       setMessage('Added Product successful! Redirecting to home...');
       setIsMsgError(false);
       clearMessageAfterTimeout();
-      setTimeout(() => {
-        navigate('/');
-      }, 2000); 
+      window.location.reload();
       console.log(res.data);
 
     } catch (error) {
