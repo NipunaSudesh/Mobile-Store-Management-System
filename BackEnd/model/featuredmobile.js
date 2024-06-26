@@ -43,5 +43,6 @@ const featuredmobileSchema = new mongoose.Schema({
     }
 })
 
+
 const FeaturedMobile = mongoose.model("FeaturedMobile", featuredmobileSchema);
 module.exports = FeaturedMobile;
