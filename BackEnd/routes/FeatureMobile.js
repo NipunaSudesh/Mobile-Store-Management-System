@@ -1,6 +1,6 @@
 const express =require("express");
 const router =express.Router();
-const Product =require("../model/product");
+const Product =require("../model/featuredmobile");
 
 router.post('/featuredmobile/add',async (req,res) =>{
     const product = new Product(req.body);
