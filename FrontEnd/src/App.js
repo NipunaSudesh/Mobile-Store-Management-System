@@ -14,6 +14,7 @@ import { AddCard } from './Pages/AddCard';
 import { Login } from './Pages/Login';
 import { AddProduct } from './Pages/AddProduct';
 import { Profile } from './Pages/Profile';
+import { AddMobile } from './Pages/AddMobile';
 
 function Home() {
   return (
@@ -42,6 +43,7 @@ function App(){
     <Route path='/login' element={<Login />} />
     <Route path='/profile' element={<Profile />} />
     <Route path='/addproduct' element={<AddProduct />} />
+    <Route path='/addmobile' element={<AddMobile />} />
   </Routes>
 </Router>
 
