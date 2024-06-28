@@ -5,7 +5,7 @@ const auth = require("../middleware/auth");
 
 
 
-router.post("/user/register", async (req,res)=>{
+router.post("/register", async (req,res)=>{
     const { email, name, password } = req.body;
 
     try{
@@ -24,7 +24,7 @@ router.post("/user/register", async (req,res)=>{
 });
 
 
-router.post("/user/login", async (req, res) => {
+router.post("/login", async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password);
 
@@ -47,7 +47,7 @@ router.get("/users",async (req,res)=>{
 });
 
 
-router.get("/user/me",auth, async (req, res) => {
+router.get("/me",auth, async (req, res) => {
    // const _id = req.params._id;
     const _id =req.user._id;
     try {
@@ -65,7 +65,7 @@ router.get("/user/me",auth, async (req, res) => {
     }
 });
 
-router.patch("/user/update/me",auth,async (req,res) =>{
+router.patch("/update/me",auth,async (req,res) =>{
    const _id =req.user._id;
      //const _id=req.params.id.trim()
     try {
@@ -80,7 +80,7 @@ router.patch("/user/update/me",auth,async (req,res) =>{
         return res.status(500).send({ error: 'Server error' });
     }
 });
- router.delete("/user/delete/:id",auth,async (req,res) =>{
+ router.delete("/delete/:id",auth,async (req,res) =>{
     // const _id =req.user._id;
     const _id=req.params.id.trim()
     try {

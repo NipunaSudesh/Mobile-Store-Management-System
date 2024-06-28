@@ -1,61 +1,66 @@
-const express =require("express");
-const router =express.Router();
-const Product =require("../model/featuredmobile");
+const express = require("express");
+const router = express.Router();
+const FeaturedMobile = require("../model/featuredmobile");
 
-router.post('/featuredmobile/add',async (req,res) =>{
-    const product = new Product(req.body);
+//---------------------Featured Mobile-------------------
+
+router.post('/add', async (req, res) => {
+    const product = new FeaturedMobile(req.body);
     try {
-        const saveProduct=await product.save();
-        res.status(201).send(saveProduct);
+        const savedProduct = await product.save();
+        res.status(201).send(savedProduct);
     } catch (error) {
         res.status(400).send({ error: 'Failed to add product', message: error.message });
-
     }
 });
 
-router.get('/featuredmobile/get' ,async (req,res) =>{
+router.get('/get', async (req, res) => {
     try {
-        const products= await Product.find();
-        res.status(201).send(products);
+        const products = await FeaturedMobile.find();
+        res.status(200).send(products); 
     } catch (error) {
-        res.status(400).send({ error: 'Failed to get products', message: error.message })
+        res.status(400).send({ error: 'Failed to get products', message: error.message });
     }
 });
 
-router.get('/featuredmobile/get/:id' ,async (req,res) =>{
-    const _id =req.params.id;
+router.get('/get/:id', async (req, res) => {
+    const _id = req.params.id;
     try {
-        const product = await Product.findById(_id);
-        if(!product){
-            res.status(404).send('product not found');
+        const product = await FeaturedMobile.findById(_id);
+        if (!product) {
+            return res.status(404).send('Product not found');
         }
-        res.status(201).send(product);
+        res.status(200).send(product); 
     } catch (error) {
-        res.status(400).send({ error: 'Failed to get product', message: error.message })
+        res.status(400).send({ error: 'Failed to get product', message: error.message });
     }
 });
 
-router.patch('/featuredmobile/update/:id' ,async (req,res) =>{
-    const _id =req.params.id;
+router.patch('/update/:id', async (req, res) => {
+    const _id = req.params.id;
+    const updates = req.body;
     try {
-        const product = await Product.findByIdAndUpdate(_id);
-        if(!product){
-            res.status(404).send('product not found');
+        const product = await FeaturedMobile.findByIdAndUpdate(_id, updates, { new: true });
+        if (!product) {
+            return res.status(404).send('Product not found');
         }
-        res.status(201).send();
+        res.status(200).send(product); 
     } catch (error) {
-        res.status(400).send({ error: 'Failed to update product', message: error.message })
+        res.status(400).send({ error: 'Failed to update product', message: error.message });
     }
 });
- router.delete('/featuredmobile/delete/:id', async (req,res) =>{
-    const _id=req.params.id;
+
+router.delete('/delete/:id', async (req, res) => {
+    const _id = req.params.id;
     try {
-        const deleteProduct = await Product.findByIdAndDelete(_id);
-        res.status(201).send('deleted successful!');
+        const deleteProduct = await FeaturedMobile.findByIdAndDelete(_id);
+        if (!deleteProduct) {
+            return res.status(404).send('Product not found');
+        }
+        res.status(200).send('Deleted successfully');
     } catch (error) {
-        res.status(400).send({ error: 'Failed to delete product', message: error.message })
+        res.status(400).send({ error: 'Failed to delete product', message: error.message });
     }
- });
+});
 
-
-module.exports=router;
+module.exports = router;
