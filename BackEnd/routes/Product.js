@@ -1,19 +1,29 @@
 const express =require("express");
 const router =express.Router();
 const Product =require("../model/product");
+const FeaturedMobile =require("../model/featuredmobile");
 
-router.post('/product/add',async (req,res) =>{
-    const product = new Product(req.body);
+// --------------------latest mobile--------------------------------- 
+
+router.post('/add', async (req, res) => {
+    const productData = req.body;
     try {
-        const saveProduct=await product.save();
-        res.status(201).send(saveProduct);
-    } catch (error) {
-        res.status(400).send({ error: 'Failed to add product', message: error.message });
+        const newProduct = new Product(productData);
+        const newFeaturedMobile = new FeaturedMobile(productData);
 
+        const savedProduct = await newProduct.save();
+        const savedFeaturedMobile = await newFeaturedMobile.save();
+
+        res.status(201).json({
+            product: savedProduct,
+            featuredMobile: savedFeaturedMobile
+        });
+    } catch (error) {
+        res.status(400).send({ error: 'Failed to add products', message: error.message });
     }
 });
 
-router.get('/product/get' ,async (req,res) =>{
+router.get('/get' ,async (req,res) =>{
     try {
         const products= await Product.find();
         res.status(201).send(products);
@@ -22,7 +32,7 @@ router.get('/product/get' ,async (req,res) =>{
     }
 });
 
-router.get('/product/get/:id' ,async (req,res) =>{
+router.get('/get/:id' ,async (req,res) =>{
     const _id =req.params.id;
     try {
         const product = await Product.findById(_id);
@@ -35,7 +45,7 @@ router.get('/product/get/:id' ,async (req,res) =>{
     }
 });
 
-router.patch('/product/update/:id' ,async (req,res) =>{
+router.patch('/:id' ,async (req,res) =>{
     const _id =req.params.id;
     try {
         const product = await Product.findByIdAndUpdate(_id);
@@ -47,7 +57,7 @@ router.patch('/product/update/:id' ,async (req,res) =>{
         res.status(400).send({ error: 'Failed to update product', message: error.message })
     }
 });
- router.delete('/product/delete/:id', async (req,res) =>{
+ router.delete('/delete/:id', async (req,res) =>{
     const _id=req.params.id;
     try {
         const deleteProduct = await Product.findByIdAndDelete(_id);
