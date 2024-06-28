@@ -13,7 +13,7 @@ export const FeaturedMobile = () => {
   return (
     <div className="flex flex-col max-w-[1400px]">
       <div className='text-center'>
-        <Header Title="Featured Mobile" />
+        <Header Title="Featured Mobile PHONES" />
       </div>
       <div className="lgl:max-w-[1300px] w-full mx-auto px-4 relative">
         <Swiper
