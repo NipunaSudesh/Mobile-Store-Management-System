@@ -62,83 +62,14 @@ const fetchData = async ()=>{
         </SwiperSlide>
       ))}
      
+       
           {/* <SwiperSlide>
             <ProductCard
               name={"Apple iPhone 13 Pro Max 256GB"}
               price={"RS.350000"}
               image={apple13}
             />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard
-              name={"Apple iPhone 13 Pro Max 256GB"}
-              price={"RS.350000"}
-              image={apple13}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard
-              name={"Apple iPhone 13 Pro Max 256GB"}
-              price={"RS.350000"}
-              image={apple13}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard
-              name={"Apple iPhone 13 Pro Max 256GB"}
-              price={"RS.350000"}
-              image={apple13}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard
-              name={"Apple iPhone 13 Pro Max 256GB"}
-              price={"RS.350000"}
-              image={apple13}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard
-              name={"Apple iPhone 13 Pro Max 256GB"}
-              price={"RS.350000"}
-              image={apple13}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard
-              name={"Apple iPhone 13 Pro Max 256GB"}
-              price={"RS.350000"}
-              image={apple13}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard
-              name={"Apple iPhone 13 Pro Max 256GB"}
-              price={"RS.350000"}
-              image={apple13}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard
-              name={"Apple iPhone 13 Pro Max 256GB"}
-              price={"RS.350000"}
-              image={apple13}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard
-              name={"Apple iPhone 13 Pro Max 256GB"}
-              price={"RS.350000"}
-              image={apple13}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard
-              name={"Apple iPhone 13 Pro Max 256GB"}
-              price={"RS.350000"}
-              image={apple13}
-            />
-          </SwiperSlide> */}
+          </SwiperSlide>  */}
         </Swiper>
       </div>
     </div>
