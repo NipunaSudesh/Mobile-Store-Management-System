@@ -44,3 +44,26 @@ router.get("/users",async (req,res)=>{
         res.status(500).send({ error: 'Server error' })
     }
 });
+
+router.get("/me",auth, async (req, res) => {
+    // const _id = req.params._id;
+     const _id =req.user._id;
+     try {
+         const user = await User.findById(_id);
+ 
+         if (!user) {
+             return res.status(404).send({ message: 'Invalid credentials' }); 
+         }
+         console.log(user);
+         res.status(200).send(user); 
+ 
+     } catch (error) {
+         console.error('Error fetching user:', error);
+         res.status(500).send({ error: 'Server error' })
+     }
+ });
+ 
+
+ 
+ // logout eka hdnn oni antim video eke 1.30 idn tiye
+ module.exports =router;
