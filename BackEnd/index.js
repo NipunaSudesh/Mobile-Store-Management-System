@@ -5,6 +5,7 @@ const cors=require("cors");
 const userRouter =require('./Routes/User');
 const productRouter =require('./Routes/Product');
 const FeatureMobile =require('./Routes/FeatureMobile');
+const adminRoute =require('./Routes/Admin');
 
 const app =express();
 app.use(express.json());
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 app.use('/user', userRouter); 
 app.use('/product', productRouter);
 app.use('/feature-mobile', FeatureMobile);
+app.use('/admin',adminRoute);
 const port=5000;
 
 app.listen(port,()=>{
