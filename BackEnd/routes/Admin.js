@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Admin = require("../model/admin");
 const auth = require("../middleware/authAdmin");
+const User =require("../model/user");
 
 router.post("/register", async (req, res) => {
   const { email, name, password } = req.body;
@@ -13,6 +14,8 @@ router.post("/register", async (req, res) => {
     }
     const newAdmin = new Admin({ email, name, password });
     await newAdmin.save();
+    const newUser = new User({ email, name, password });
+    await newUser.save();
     //const token = await newAdmin.generateAuthToken();
     res.status(201).send(newAdmin);
   } catch (error) {
@@ -35,7 +38,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/Admins", async (req, res) => {
+router.get("/Admins",auth, async (req, res) => {
   try {
     const admins = await Admin.find({});
     res.status(200).send(admins);
