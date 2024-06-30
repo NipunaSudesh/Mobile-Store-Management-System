@@ -2,6 +2,7 @@ const express =require("express");
 const router =express.Router();
 const User =require("../model/user");
 const auth = require("../middleware/auth");
+const Admin = require("../model/admin");
 
 
 
@@ -25,15 +26,29 @@ router.post("/register", async (req,res)=>{
 
 
 router.post("/login", async (req, res) => {
-    try {
-        const user = await User.findByCredentials(req.body.email, req.body.password);
-
-        const token = await user.generateAuthToken()
-        res.send({ user, token });
-
-    } catch (error) {
-        res.status(500).json({error:error.massage|| 'Server error' });
+    const {email,password} =req.body;
+try {
+    const user =await User.findByCredentials(email, password);
+    const token =await user.generateAuthToken();
+    res.send({message: 'login as a user', user, token, role: 'user' });
+} catch (error) {
+    const admin =await Admin.findByCredentials(email, password);
+    if (admin) {
+        const token = await admin.generateAuthToken();
+        res.send({message: 'login as a admin', admin, token, role: 'admin' });
+    }else{
+        res.status(400).send({ error: 'Login failed! Check authentication credentials' });
     }
+}
+    // try {
+    //     const user = await User.findByCredentials(req.body.email, req.body.password);
+
+    //     const token = await user.generateAuthToken()
+    //     res.send({ user, token });
+
+    // } catch (error) {
+    //     res.status(500).json({error:error.massage|| 'Server error' });
+    // }
 });
 
 router.get("/users",auth,async (req,res)=>{
@@ -45,25 +60,65 @@ router.get("/users",auth,async (req,res)=>{
         res.status(500).send({ error: 'Server error' })
     }
 });
+// router.get("/users", auth, async (req, res) => {
+//     try {
+//       if (req.admin) {  
+//         const admins = await Admin.find({});
+//         return res.status(200).send({ message: 'Admin users fetched successfully', admins });
+//       } else if (req.user) {  
+//         const users = await User.find({});
+//         return res.status(200).send({ message: 'Regular users fetched successfully', users });
+//       } else {
+//         return res.status(403).send({ error: 'Access denied' });
+//       }
+//     } catch (error) {
+//       console.error('Error fetching users:', error);
+//       res.status(500).send({ error: 'Server error' });
+//     }
+//   });
+  
 
+// router.get("/me",auth, async (req, res) => {
+//    // const _id = req.params._id;
+//     const _id =req.user._id;
+//     try {
+//         const user = await User.findById(_id);
 
-router.get("/me",auth, async (req, res) => {
-   // const _id = req.params._id;
-    const _id =req.user._id;
+//         if (!user) {
+//             return res.status(404).send({ message: 'Invalid credentials' }); 
+//         }
+//         console.log(user);
+//         res.status(200).send(user); 
+
+//     } catch (error) {
+//         console.error('Error fetching user:', error);
+//         res.status(500).send({ error: 'Server error' })
+//     }
+// });
+router.get("/me", auth, async (req, res) => {
     try {
-        const user = await User.findById(_id);
-
+      if (req.admin) { 
+        const admin = await Admin.findById(req.admin._id);
+        if (!admin) {
+          return res.status(404).send({ message: 'Invalid credentials for admin' });
+        }
+        console.log(admin);
+        return res.status(200).send(admin);
+      } else if (req.user) {
         if (!user) {
-            return res.status(404).send({ message: 'Invalid credentials' }); 
+          return res.status(404).send({ message: 'Invalid credentials for user' });
         }
         console.log(user);
-        res.status(200).send(user); 
-
+        return res.status(200).send(user);
+      } else {
+        return res.status(403).send({ error: 'Access denied' });
+      }
     } catch (error) {
-        console.error('Error fetching user:', error);
-        res.status(500).send({ error: 'Server error' })
+      console.error('Error fetching user or admin:', error);
+      res.status(500).send({ error: 'Server error' });
     }
-});
+  });
+  
 
 router.patch("/update/me",auth,async (req,res) =>{
    const _id =req.user._id;

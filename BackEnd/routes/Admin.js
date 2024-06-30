@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Admin = require("../model/admin");
-const auth = require("../middleware/authAdmin");
+const auth = require("../middleware/auth");
 const User =require("../model/user");
 
 router.post("/register", async (req, res) => {
@@ -14,8 +14,8 @@ router.post("/register", async (req, res) => {
     }
     const newAdmin = new Admin({ email, name, password });
     await newAdmin.save();
-    const newUser = new User({ email, name, password });
-    await newUser.save();
+    // const newUser = new User({ email, name, password });
+    // await newUser.save();
     //const token = await newAdmin.generateAuthToken();
     res.status(201).send(newAdmin);
   } catch (error) {
