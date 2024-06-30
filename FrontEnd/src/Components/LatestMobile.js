@@ -32,7 +32,7 @@ export const LatestMobile = () => {
             name={product.name}
             price={product.price}
             image={product.imgURL}
-            deltails={product.details}
+            details={product.details}
             />
           ))}
 
