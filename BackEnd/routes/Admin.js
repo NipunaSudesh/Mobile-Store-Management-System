@@ -22,3 +22,15 @@ router.post("/register", async (req,res)=>{
         res.status(500).send({error:error.massage || 'Server error' })
     }
 });
+
+router.post("/login", async (req, res) => {
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password);
+
+        const token = await user.generateAuthToken()
+        res.send({ user, token });
+
+    } catch (error) {
+        res.status(500).json({error:error.massage|| 'Server error' });
+    }
+});
