@@ -62,6 +62,22 @@ router.get("/me",auth, async (req, res) => {
          res.status(500).send({ error: 'Server error' })
      }
  });
+ router.patch("/update/me",auth,async (req,res) =>{
+    const _id =req.user._id;
+      //const _id=req.params.id.trim()
+     try {
+         const udpateUser =await User.findByIdAndUpdate(_id,req.body,{
+             new:true
+         });
+         if(!udpateUser){
+             return res.status(404).send({ message: 'Invalid credentials' });
+         }
+         return res.status(200).send({ message: 'updated successful' });
+     } catch (error) {
+         return res.status(500).send({ error: 'Server error' });
+     }
+ });
+
  
 
  
