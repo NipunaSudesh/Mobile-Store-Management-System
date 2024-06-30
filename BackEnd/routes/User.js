@@ -94,5 +94,16 @@ router.patch("/update/me",auth,async (req,res) =>{
     }
  });
 
-// logout eka hdnn oni antim video eke 1.30 idn tiye
+ router.post("/logout", auth, async (req, res) => {
+    try {
+      req.user.tokens = req.user.tokens.filter((token) => token.token !== req.token);
+      await req.user.save();
+      res.status(200).send({ message: "Logged out successfully." });
+    } catch (error) {
+      console.error("Error during logout:", error);
+      res.status(500).send({ error: "Server error" });
+    }
+  });
+
+
 module.exports =router;
