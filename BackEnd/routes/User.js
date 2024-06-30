@@ -118,47 +118,111 @@ router.get("/me", auth, async (req, res) => {
       res.status(500).send({ error: 'Server error' });
     }
   });
-  
 
-router.patch("/update/me",auth,async (req,res) =>{
-   const _id =req.user._id;
-     //const _id=req.params.id.trim()
+  router.patch("/update/me", auth, async (req, res) => {
     try {
-        const udpateUser =await User.findByIdAndUpdate(_id,req.body,{
-            new:true
-        });
-        if(!udpateUser){
-            return res.status(404).send({ message: 'Invalid credentials' });
+      if (req.admin) {
+        const updatedAdmin = await Admin.findByIdAndUpdate(req.admin._id, req.body, { new: true });
+        if (!updatedAdmin) {
+          return res.status(404).send({ message: 'Invalid credentials for admin' });
         }
-        return res.status(200).send({ message: 'updated successful' });
+        return res.status(200).send({ message: 'Admin updated successfully' });
+      } else if (req.user) { 
+        const updatedUser = await User.findByIdAndUpdate(req.user._id, req.body, { new: true });
+        if (!updatedUser) {
+          return res.status(404).send({ message: 'Invalid credentials for user' });
+        }
+        return res.status(200).send({ message: 'User updated successfully' });
+      } else {
+        return res.status(403).send({ error: 'Access denied' });
+      }
     } catch (error) {
-        return res.status(500).send({ error: 'Server error' });
+      return res.status(500).send({ error: 'Server error' });
     }
-});
- router.delete("/delete/:id",auth,async (req,res) =>{
-    // const _id =req.user._id;
-    const _id=req.params.id.trim()
+  });
+
+  router.delete("/delete/:id", auth, async (req, res) => {
+    const _id = req.params.id.trim();
     try {
+      if (req.admin) {
+        const deleteAdmin = await Admin.findByIdAndDelete(_id);
+        if (!deleteAdmin) {
+          return res.status(404).send({ message: 'Admin not found' });
+        }
+        return res.status(200).send({ message: 'Admin deleted successfully' });
+      } else if (req.user) { 
         const deleteUser = await User.findByIdAndDelete(_id);
-        if(!deleteUser){
-            return res.status(404).send({massage:'Invalid credentials'});
+        if (!deleteUser) {
+          return res.status(404).send({ message: 'User not found' });
         }
-        return res.status(200).send({massage:'deleted successful'});
+        return res.status(200).send({ message: 'User deleted successfully' });
+      } else {
+        return res.status(403).send({ error: 'Access denied' });
+      }
     } catch (error) {
-        return res.status(500).send({massage:'Server error'});
+      return res.status(500).send({ error: 'Server error' });
     }
- });
-
- router.post("/logout", auth, async (req, res) => {
+  });
+  
+  router.post("/logout", auth, async (req, res) => {
     try {
-      req.user.tokens = req.user.tokens.filter((token) => token.token !== req.token);
-      await req.user.save();
-      res.status(200).send({ message: "Logged out successfully." });
+      if (req.admin) { 
+        req.admin.tokens = req.admin.tokens.filter((token) => token.token !== req.token);
+        await req.admin.save();
+        res.status(200).send({ message: "Admin logged out successfully." });
+      } else if (req.user) {
+        req.user.tokens = req.user.tokens.filter((token) => token.token !== req.token);
+        await req.user.save();
+        res.status(200).send({ message: "User logged out successfully." });
+      } else {
+        return res.status(403).send({ error: 'Access denied' });
+      }
     } catch (error) {
       console.error("Error during logout:", error);
       res.status(500).send({ error: "Server error" });
     }
   });
+  
+
+// router.patch("/update/me",auth,async (req,res) =>{
+//    const _id =req.user._id;
+//      //const _id=req.params.id.trim()
+//     try {
+//         const udpateUser =await User.findByIdAndUpdate(_id,req.body,{
+//             new:true
+//         });
+//         if(!udpateUser){
+//             return res.status(404).send({ message: 'Invalid credentials' });
+//         }
+//         return res.status(200).send({ message: 'updated successful' });
+//     } catch (error) {
+//         return res.status(500).send({ error: 'Server error' });
+//     }
+// });
+//  router.delete("/delete/:id",auth,async (req,res) =>{
+//     // const _id =req.user._id;
+//     const _id=req.params.id.trim()
+//     try {
+//         const deleteUser = await User.findByIdAndDelete(_id);
+//         if(!deleteUser){
+//             return res.status(404).send({massage:'Invalid credentials'});
+//         }
+//         return res.status(200).send({massage:'deleted successful'});
+//     } catch (error) {
+//         return res.status(500).send({massage:'Server error'});
+//     }
+//  });
+
+//  router.post("/logout", auth, async (req, res) => {
+//     try {
+//       req.user.tokens = req.user.tokens.filter((token) => token.token !== req.token);
+//       await req.user.save();
+//       res.status(200).send({ message: "Logged out successfully." });
+//     } catch (error) {
+//       console.error("Error during logout:", error);
+//       res.status(500).send({ error: "Server error" });
+//     }
+//   });
 
 
 module.exports =router;
