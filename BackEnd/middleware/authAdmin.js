@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const User = require("../model/user");
 const Admin = require("../model/admin");
 
 const auth = async (req, res, next) => {
@@ -15,14 +14,14 @@ const auth = async (req, res, next) => {
     const decoded = jwt.verify(token, "mysecret");
     console.log("Decoded token:", decoded);
 
-    const user = await User.findOne({ _id: decoded._id, "tokens.token": token });
-    console.log("Found user:", user);
+    const admin = await Admin.findOne({ _id: decoded._id, "tokens.token": token });
+    console.log("Found Admin:", admin);
 
-    if (!user) {
-      return res.status(401).send({ error: "User not found" });
+    if (!admin) {
+      return res.status(401).send({ error: "Admin not found" });
     }
 
-    req.user = user;
+    req.admin = admin;
     req.token = token;
     next();
   } catch (error) {
