@@ -33,7 +33,14 @@ export const AddProduct = () => {
       setMessage('Added Product successful!');
       setIsMsgError(false);
       clearMessageAfterTimeout();
-      window.location.reload();
+      setName('');
+      setPrice('');
+      setImgURL('');
+      setYear('');
+      setBrand('');
+      setDetails('');
+      setDescription('');
+     // window.location.reload();
       console.log(res.data);
     } catch (error) {
       console.error('Error:', error.response ? error.response.data : error.message);

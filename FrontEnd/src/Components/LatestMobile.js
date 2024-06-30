@@ -10,6 +10,7 @@ export const LatestMobile = () => {
     try {
       const res =await axios.get('http://localhost:5000/product/get');
       setData(res.data);
+      console.log(res.data)
     } catch (error) {
       console.error(error)
     }
