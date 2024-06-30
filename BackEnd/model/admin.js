@@ -29,42 +29,42 @@ const adminSchema = new mongoose.Schema({
 });
 
 adminSchema.pre("save", async function(next) {
-    const user = this;
-    if (user.isModified("password")) {
-        user.password = await bcrypt.hash(user.password, 8);
+    const admin = this;
+    if (admin.isModified("password")) {
+        admin.password = await bcrypt.hash(admin.password, 8);
     }
     next();
 });
 
 
 adminSchema.statics.findByCredentials = async (email, password) => {
-    const user = await User.findOne({ email });
+    const admin = await Admin.findOne({ email });
 
-    if (!user) {
-        throw new Error('User not found');
+    if (!admin) {
+        throw new Error('admin not found');
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, admin.password);
 
     if (!isMatch) {
         throw new Error('Invalid credentials');
     }
-    return user;
+    return admin;
 };
 
 adminSchema.methods.generateAuthToken =async function (){
-    const user =this;
+    const admin =this;
    
     const payload = {
-       _id: user._id.toString(),
-       name: user.name, 
-       email: user.email 
+       _id: admin._id.toString(),
+       name: admin.name, 
+       email: admin.email 
    };
    
     const token=jwt.sign(payload,"mysecret");
-    user.tokens = user.tokens.concat({token});
+    admin.tokens = admin.tokens.concat({token});
    
-    await user.save();
+    await admin.save();
    
     return token;
    }

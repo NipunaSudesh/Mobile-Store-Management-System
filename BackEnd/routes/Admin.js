@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Admin = require("../model/admin");
-const auth = require("../middleware/auth");
+const auth = require("../middleware/authAdmin");
 
 router.post("/register", async (req, res) => {
   const { email, name, password } = req.body;
@@ -25,6 +25,10 @@ router.post("/login", async (req, res) => {
   try {
     const admin = await Admin.findByCredentials(req.body.email, req.body.password);
     const token = await admin.generateAuthToken();
+    if (!admin) {
+        return res.status(404).send({ message: 'Invalid credentials' });
+      }
+    console.log(admin)
     res.send({ admin, token });
   } catch (error) {
     res.status(500).json({ error: error.message || 'Server error' });
@@ -41,7 +45,7 @@ router.get("/Admins", async (req, res) => {
 });
 
 router.get("/me", auth, async (req, res) => {
-  const _id = req.Admin._id;
+  const _id = req.admin._id;
   try {
     const admin = await Admin.findById(_id);
 
@@ -57,7 +61,7 @@ router.get("/me", auth, async (req, res) => {
 });
 
 router.patch("/update/me", auth, async (req, res) => {
-  const _id = req.Admin._id;
+    const _id = req.admin._id;
   try {
     const updatedAdmin = await Admin.findByIdAndUpdate(_id, req.body, {
       new: true
