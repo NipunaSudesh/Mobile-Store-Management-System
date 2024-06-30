@@ -18,6 +18,7 @@ const adminSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    role: { type: String, default: 'admin' },
     tokens: [
         {
             token: {
@@ -58,7 +59,8 @@ adminSchema.methods.generateAuthToken =async function (){
     const payload = {
        _id: admin._id.toString(),
        name: admin.name, 
-       email: admin.email 
+       email: admin.email ,
+       role: admin.role
    };
    
     const token=jwt.sign(payload,"mysecret");

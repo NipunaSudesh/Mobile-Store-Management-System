@@ -15,6 +15,7 @@ export const Profile = () => {
 
 
   const token = Cookies.get('token');
+  
   useEffect(() => {
     const fetchUser = async () => {
       if (!token) {
@@ -31,6 +32,7 @@ export const Profile = () => {
         setName(res.data.name);
         setEmail(res.data.email);
         setUserDetails(res.data);
+        console.log(res.data.role);
       //  console.log('User data fetched:', res.data); 
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -39,6 +41,13 @@ export const Profile = () => {
 
     fetchUser();
   }, [token, navigate]);
+console.log(userDetails.role)
+  let welcomeMessage;
+  if (userDetails.role === 'admin') {
+    welcomeMessage = `Welcome, admin ${name}!`;
+  } else {
+    welcomeMessage = `Welcome, user ${name}!`;
+  }
 
   const handleUpdate= async (e)=>{
     e.preventDefault();
@@ -110,6 +119,8 @@ export const Profile = () => {
             {message}
           </div>
         )}
+
+<div className="mb-4 text-center text-lg font-semibold">{welcomeMessage}</div>
 
         <form className='w-full max-w-sm' onSubmit={handleUpdate}>
           <div className='mb-4'>
