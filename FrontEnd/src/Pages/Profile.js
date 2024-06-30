@@ -73,6 +73,24 @@ export const Profile = () => {
     }
   };
 
+  const handleLogOut =async ()=>{
+    try {
+      await axios.post('http://localhost:5000/user/logout',{}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setMessage("LogOut Successfully");
+      setIsMsgError(false);
+      clearMessageAfterTimeout();
+      console.log("LogOut Successfully!")
+      Cookies.remove('token');
+      navigate('/');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
   const handleBack = () => {
     navigate('/');
   };
@@ -156,7 +174,7 @@ export const Profile = () => {
               <div className="flex items-center justify-between w-full">
                 <button
                   className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-                  type="button"
+                  type="button" onClick={handleLogOut}
                 >
                   Log Out
                 </button>
