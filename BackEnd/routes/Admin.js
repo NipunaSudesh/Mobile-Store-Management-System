@@ -75,6 +75,15 @@ router.patch("/update/me", auth, async (req, res) => {
   }
 });
 
-// logout implementation
+router.post("/logout", auth, async (req, res) => {
+    try {
+      req.admin.tokens = req.admin.tokens.filter((token) => token.token !== req.token);
+      await req.admin.save();
+      res.status(200).send({ message: "Logged out successfully." });
+    } catch (error) {
+      console.error("Error during logout:", error);
+      res.status(500).send({ error: "Server error" });
+    }
+  });
 
 module.exports = router;
