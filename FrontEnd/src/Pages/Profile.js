@@ -42,12 +42,7 @@ export const Profile = () => {
     fetchUser();
   }, [token, navigate]);
 console.log(userDetails.role)
-  let welcomeMessage;
-  if (userDetails.role === 'admin') {
-    welcomeMessage = `Welcome, admin ${name}!`;
-  } else {
-    welcomeMessage = `Welcome, user ${name}!`;
-  }
+
 
   const handleUpdate= async (e)=>{
     e.preventDefault();
@@ -120,7 +115,7 @@ console.log(userDetails.role)
           </div>
         )}
 
-<div className="mb-4 text-center text-lg font-semibold">{welcomeMessage}</div>
+
 
         <form className='w-full max-w-sm' onSubmit={handleUpdate}>
           <div className='mb-4'>
