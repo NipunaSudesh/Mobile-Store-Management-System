@@ -15,16 +15,36 @@ const auth = async (req, res, next) => {
     const decoded = jwt.verify(token, "mysecret");
     console.log("Decoded token:", decoded);
 
-    const user = await User.findOne({ _id: decoded._id, "tokens.token": token });
-    console.log("Found user:", user);
+    const admin = await Admin.findOne({ _id: decoded._id, 'tokens.token': token });
+    if (admin) {
+      req.admin = admin;
+      req.token = token;
+      return next();
+    }
 
-    if (!user) {
+
+    const user = await User.findOne({ _id: decoded._id, 'tokens.token': token });
+    if (user) {
+      req.user = user;
+      req.token = token;
+      return next();
+    }
+        if (!user && !admin) {
       return res.status(401).send({ error: "User not found" });
     }
 
-    req.user = user;
-    req.token = token;
-    next();
+    throw new Error('Authentication failed');
+    // const user = await User.findOne({ _id: decoded._id, "tokens.token": token });
+    // console.log("Found user:", user);
+
+    // if (!user) {
+    //   return res.status(401).send({ error: "User not found" });
+    // }
+
+    // req.user = user;
+    // req.token = token;
+    // next();
+
   } catch (error) {
     console.error("Error in auth middleware:", error);
     res.status(401).send({ error: "Please authenticate." });

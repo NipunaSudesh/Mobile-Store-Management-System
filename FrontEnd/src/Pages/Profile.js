@@ -15,6 +15,7 @@ export const Profile = () => {
 
 
   const token = Cookies.get('token');
+  
   useEffect(() => {
     const fetchUser = async () => {
       if (!token) {
@@ -31,6 +32,7 @@ export const Profile = () => {
         setName(res.data.name);
         setEmail(res.data.email);
         setUserDetails(res.data);
+        console.log(res.data.role);
       //  console.log('User data fetched:', res.data); 
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -39,6 +41,8 @@ export const Profile = () => {
 
     fetchUser();
   }, [token, navigate]);
+console.log(userDetails.role)
+
 
   const handleUpdate= async (e)=>{
     e.preventDefault();
@@ -73,6 +77,24 @@ export const Profile = () => {
     }
   };
 
+  const handleLogOut =async ()=>{
+    try {
+      await axios.post('http://localhost:5000/user/logout',{}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setMessage("LogOut Successfully");
+      setIsMsgError(false);
+      clearMessageAfterTimeout();
+      console.log("LogOut Successfully!")
+      Cookies.remove('token');
+      navigate('/');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
   const handleBack = () => {
     navigate('/');
   };
@@ -92,6 +114,8 @@ export const Profile = () => {
             {message}
           </div>
         )}
+
+
 
         <form className='w-full max-w-sm' onSubmit={handleUpdate}>
           <div className='mb-4'>
@@ -156,7 +180,7 @@ export const Profile = () => {
               <div className="flex items-center justify-between w-full">
                 <button
                   className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-                  type="button"
+                  type="button" onClick={handleLogOut}
                 >
                   Log Out
                 </button>
