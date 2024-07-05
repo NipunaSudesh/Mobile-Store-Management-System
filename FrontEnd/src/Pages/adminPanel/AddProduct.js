@@ -61,7 +61,7 @@ export const AddProduct = () => {
   };
 
   return (
-    <div className='flex h-screen items-center justify-center'>
+    <div id='addLatest' className='flex h-screen items-center justify-center'>
       <div className='flex h-auto w-[700px] flex-col items-center justify-center py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center py-2 bg-green-400 w-full text-2xl mb-4'>ADD LATEST MOBILE</h1>
         {message && (
