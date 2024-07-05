@@ -6,6 +6,7 @@ const userRouter =require('./Routes/User');
 const productRouter =require('./Routes/Product');
 const FeatureMobile =require('./Routes/FeatureMobile');
 const adminRoute =require('./Routes/Admin');
+const orderRoute =require('./Routes/Orders');
 
 const app =express();
 app.use(express.json());
@@ -15,6 +16,7 @@ app.use('/user', userRouter);
 app.use('/product', productRouter);
 app.use('/feature-mobile', FeatureMobile);
 app.use('/admin',adminRoute);
+app.use('/order',orderRoute);
 const port=5000;
 
 app.listen(port,()=>{
