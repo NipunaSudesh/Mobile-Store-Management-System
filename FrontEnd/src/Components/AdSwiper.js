@@ -17,7 +17,7 @@ const ads = [
 
 export const AdSwiper = () => {
   return (
-    <div className="lgl:max-w-[1300px] w-full  mx-auto px-4 relative">
+    <div className="lgl:max-w-[1300px] w-full  mx-auto px-4 relative " id='Home'>
       <Swiper
         modules={[Pagination, Navigation, Autoplay]}
         spaceBetween={50}

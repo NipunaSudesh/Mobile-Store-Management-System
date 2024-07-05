@@ -20,7 +20,7 @@ export const LatestMobile = () => {
   },[]);
 
   return (
-    <div className='flex flex-col'>
+    <div id='LatestMobile' className='flex flex-col'>
         <div className='text-center'>
             <Header Title='LATEST MOBILE PHONES' />
         </div>

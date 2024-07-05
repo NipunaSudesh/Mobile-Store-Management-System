@@ -33,7 +33,7 @@ export const ProductCategory = () => {
  ];
 
   return (
-    <div className="max-w-[1400px] w-full mx-auto px-4 relative">
+    <div id='Brand' className="max-w-[1400px] w-full mx-auto px-4 relative">
       <Swiper
         modules={[ Autoplay]}
         spaceBetween={30}

@@ -15,6 +15,7 @@ import { Login } from './Pages/Login';
 import { AddProduct } from './Pages/AddProduct';
 import { Profile } from './Pages/Profile';
 import { AddMobile } from './Pages/AddMobile';
+import { AdminPanel } from './Pages/AdminPanel';
 
 function Home() {
   return (
@@ -44,6 +45,7 @@ function App(){
     <Route path='/profile' element={<Profile />} />
     <Route path='/addproduct' element={<AddProduct />} />
     <Route path='/addmobile' element={<AddMobile />} />
+    <Route path='/adminpanel' element={<AdminPanel />} />
   </Routes>
 </Router>
 

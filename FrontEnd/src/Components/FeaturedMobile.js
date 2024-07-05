@@ -28,7 +28,7 @@ const fetchData = async ()=>{
   }
 
   return (
-    <div className="flex flex-col max-w-[1400px]">
+    <div id='FeaturedMobile' className="flex flex-col max-w-[1400px]">
       <div className='text-center'>
         <Header Title="Featured Mobile PHONES" />
       </div>

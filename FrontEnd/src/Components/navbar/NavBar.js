@@ -28,8 +28,8 @@ export const NavBar = () => {
   };
 
   return (
-    <div className='items-center justify-center w-full'>
-      <div className='shadow sticky top-0 z-40 px-16 bg-bodyColor border-b-black flex w-full h-15 mx-auto justify-between items-center font-normal'>
+    <div className='sticky top-0 z-40 items-center justify-center w-full'>
+      <div className='  shadow   px-16 bg-bodyColor border-b-black flex w-full h-15 mx-auto justify-between items-center font-normal'>
         <div>
           <img src={logo1} alt='logo' width="50" height="50" className='rounded-full logo'/>
         </div>
@@ -80,8 +80,8 @@ export const NavBar = () => {
           </div>
         </div>
       </div>
-      <div>
-        <BNavbar />
+      <div >
+        <BNavbar  />
       </div>
     </div>
   );
