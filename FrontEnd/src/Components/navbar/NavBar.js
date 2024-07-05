@@ -23,10 +23,6 @@ export const NavBar = () => {
     navigate('/addcard');
   };
 
-  const handleAddProduct = () => {
-    navigate('/addproduct');
-  };
-
   return (
     <div className='sticky top-0 z-40 items-center justify-center w-full'>
       <div className='  shadow   px-16 bg-bodyColor border-b-black flex w-full h-15 mx-auto justify-between items-center font-normal'>
@@ -72,12 +68,12 @@ export const NavBar = () => {
           >
             <RiAccountCircleFill/>
           </div>
-          <div
+          {/* <div
             className='w-10 h-10 bg-black bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-md shadow-shadowOne hover:bg-opacity-40 hover:text-designColor cursor-pointer duration-300'
             onClick={handleAddProduct}
           >
             <IoBagAdd/>
-          </div>
+          </div> */}
         </div>
       </div>
       <div >

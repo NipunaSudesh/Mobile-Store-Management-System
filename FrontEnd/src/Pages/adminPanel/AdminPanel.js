@@ -14,23 +14,6 @@ const handleHome = ()=>{
   navigate('/')
 }
 
-// useEffect(() => {
-//   const handleScroll = () => {
-//     const sections = ['dashboard', 'User', 'LatestMobile', 'FeaturedMobile', 'Orders'];
-//     const scrollPosition = window.scrollY + 200; 
-
-//     for (const section of sections) {
-//       const element = document.getElementById(section);
-//       if (element && scrollPosition >= element.offsetTop && scrollPosition < element.offsetTop + element.offsetHeight) {
-//         setActiveLink(section);
-//         break;
-//       }
-//     }
-//   };
-
-//   window.addEventListener('scroll', handleScroll);
-//   return () => window.removeEventListener('scroll', handleScroll);
-// }, []);
 
   return (
     <div className='w-full flex flex-col'>
