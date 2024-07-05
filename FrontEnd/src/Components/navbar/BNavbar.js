@@ -13,31 +13,21 @@ export const BNavbar = () => {
       const featuredMobileSection = document.getElementById('FeaturedMobile');
       const aboutUsSection = document.getElementById('AboutUs');
 
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 220;
 
-      if (
-        scrollPosition < brandSection.offsetTop &&
-        scrollPosition >= homeSection.offsetTop
-      ) {
+
+      if (scrollPosition >= homeSection.offsetTop && scrollPosition < brandSection.offsetTop) {
         setActiveLink('Home');
-      } else if (
-        scrollPosition < latestMobileSection.offsetTop &&
-        scrollPosition >= brandSection.offsetTop
-      ) {
+      } else if (scrollPosition >= brandSection.offsetTop && scrollPosition < latestMobileSection.offsetTop) {
         setActiveLink('Brand');
-      } else if (
-        scrollPosition < featuredMobileSection.offsetTop &&
-        scrollPosition >= latestMobileSection.offsetTop
-      ) {
+      } else if (scrollPosition >= latestMobileSection.offsetTop && scrollPosition < featuredMobileSection.offsetTop) {
         setActiveLink('LatestMobile');
-      } else if (
-        scrollPosition < aboutUsSection.offsetTop &&
-        scrollPosition >= featuredMobileSection.offsetTop
-      ) {
+      } else if (scrollPosition >= featuredMobileSection.offsetTop && scrollPosition < aboutUsSection.offsetTop) {
         setActiveLink('FeaturedMobile');
-      } else {
+      } else if (scrollPosition >= aboutUsSection.offsetTop) {
         setActiveLink('AboutUs');
       }
+
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -51,7 +41,7 @@ export const BNavbar = () => {
 
   return (
     <div className='bg-gray-200 py-1 nav-links items-center justify-center mx-auto shadow-md sticky top-0 z-40'>
-      <ul className='flex justify-center gap-10'>
+      <ul className='flex justify-center gap-2 mdl:gap-3 lgl:gap-10 sm:flex-nowrap'>
         <li className='p-1 hover:bg-gray-300 rounded-sm'>
           <a
             className={`text-base text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'Home' ? 'text-red-700 underline' : 'text-blue-500'}`}
@@ -90,7 +80,7 @@ export const BNavbar = () => {
         </li>
         <li className='p-1 hover:bg-gray-300 rounded-sm'>
           <a
-            className={`text-base text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'AboutUs' ? 'text-red-700 underline' : 'text-blue-500'}`}
+            className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'AboutUs' ? 'text-red-700 underline' : 'text-blue-500'}`}
             href="#AboutUs"
             onClick={() => setActiveLink('AboutUs')}
           >
@@ -99,7 +89,7 @@ export const BNavbar = () => {
         </li>
         <li className='p-1 hover:bg-gray-300 rounded-sm'>
           <button
-            className={`text-base text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'AdminPanal' ? 'text-red-700 underline' : 'text-blue-500'}`}
+            className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'AdminPanal' ? 'text-red-700 underline' : 'text-blue-500'}`}
             onClick={handleAdminPanel}
           >
             AdminPanel

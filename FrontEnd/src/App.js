@@ -12,10 +12,10 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { SignUp } from './Pages/SignUp';
 import { AddCard } from './Pages/AddCard';
 import { Login } from './Pages/Login';
-import { AddProduct } from './Pages/AddProduct';
+import { AddProduct } from './Pages/adminPanel/AddProduct';
 import { Profile } from './Pages/Profile';
-import { AddMobile } from './Pages/AddMobile';
-import { AdminPanel } from './Pages/AdminPanel';
+import { AddMobile } from './Pages/adminPanel/AddMobile';
+import { AdminPanel } from './Pages/adminPanel/AdminPanel';
 
 function Home() {
   return (
