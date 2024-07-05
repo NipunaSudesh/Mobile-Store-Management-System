@@ -8,7 +8,7 @@ import {Featurchs} from './Components/Featurchs';
 import {FeaturedMobile} from './Components/FeaturedMobile';
 import {Contact} from './Components/Contact';
 import { Footer } from './Components/Footer ';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { SignUp } from './Pages/SignUp';
 import { AddCard } from './Pages/AddCard';
 import { Login } from './Pages/Login';
@@ -16,6 +16,7 @@ import { AddProduct } from './Pages/adminPanel/AddProduct';
 import { Profile } from './Pages/Profile';
 import { AddMobile } from './Pages/adminPanel/AddMobile';
 import { AdminPanel } from './Pages/adminPanel/AdminPanel';
+import { DashBoard } from './Pages/adminPanel/DashBoard';
 
 function Home() {
   return (
@@ -46,6 +47,7 @@ function App(){
     <Route path='/addproduct' element={<AddProduct />} />
     <Route path='/addmobile' element={<AddMobile />} />
     <Route path='/adminpanel' element={<AdminPanel />} />
+    <Route path='/dashboard' element={<DashBoard />} />
   </Routes>
 </Router>
 
