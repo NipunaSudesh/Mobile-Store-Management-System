@@ -1,6 +1,6 @@
 
 import './App.css';
-import  {NavBar}  from './Components/NavBar';
+import  {NavBar}  from './Components/navbar/NavBar';
 import  {AdSwiper} from './Components/AdSwiper';
 import {ProductCategory} from './Components/ProductCategory';
 import {LatestMobile} from './Components/LatestMobile';
