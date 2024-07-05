@@ -8,6 +8,7 @@ export const AddProduct = () => {
   const [imgURL, setImgURL] = useState('');
   const [year, setYear] = useState('');
   const [brand, setBrand] = useState('');
+  const [quantity, setQuantity] = useState('');
   const [details, setDetails] = useState('');
   const [description, setDescription] = useState('');
   const [message, setMessage] = useState('');
@@ -22,6 +23,7 @@ export const AddProduct = () => {
         price: parseFloat(price),
         imgURL,
         year: parseInt(year), 
+        quantity:parseInt(quantity),
         brand,
         details,
         description
@@ -37,6 +39,7 @@ export const AddProduct = () => {
       setPrice('');
       setImgURL('');
       setYear('');
+      setQuantity('');
       setBrand('');
       setDetails('');
       setDescription('');
@@ -83,32 +86,62 @@ export const AddProduct = () => {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className='mb-4'>
-            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='price'>Product Price</label>
-            <input 
-              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-              id='price'
-              type='text'
-              value={price}
-              name='price'
-              placeholder='Enter product Price'
-              required
-              onChange={(e) => setPrice(e.target.value)}
-            />
-          </div>
-          <div className='mb-4'>
-            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='brand'>Product Brand</label>
-            <input 
-              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-              id='brand'
-              value={brand}
-              type='text'
-              name='brand'
-              placeholder='Enter product Brand'
-              required
-              onChange={(e) => setBrand(e.target.value)}
-            />
-          </div>
+          <div className='flex gap-4 '>
+              <div className='mb-4 w-full'>
+              <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='price'>Product Price</label>
+              <input 
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                id='price'
+                type='text'
+                value={price}
+                name='price'
+                placeholder='Enter product Price'
+                required
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </div>
+            <div className='mb-4 w-full'>
+              <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='brand'>Product Brand</label>
+              <input 
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                id='brand'
+                value={brand}
+                type='text'
+                name='brand'
+                placeholder='Enter product Brand'
+                required
+                onChange={(e) => setBrand(e.target.value)}
+              />
+            </div>
+              </div>
+              <div className='flex gap-4 '>
+              <div className='mb-4 w-full'>
+              <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='year'>Product Year</label>
+              <input 
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                id='year'
+                value={year}
+                type='text'
+                name='year'
+                placeholder='Enter product Year'
+                required
+                onChange={(e) => setYear(e.target.value)}
+              />
+            </div>
+            <div className='mb-4 w-full'>
+              <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='year'>Quantity</label>
+              <input 
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                id='Quantity'
+                value={quantity}
+                type='text'
+                name='Quantity'
+                placeholder='Enter Quantity'
+                required
+                onChange={(e) => setQuantity(e.target.value)}
+              />
+            </div>
+              </div>
           <div className='mb-4'>
             <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='details'>Product Details</label>
             <input 
@@ -122,19 +155,7 @@ export const AddProduct = () => {
               onChange={(e) => setDetails(e.target.value)}
             />
           </div>
-          <div className='mb-4'>
-            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='year'>Product Year</label>
-            <input 
-              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-              id='year'
-              value={year}
-              type='text'
-              name='year'
-              placeholder='Enter product Year'
-              required
-              onChange={(e) => setYear(e.target.value)}
-            />
-          </div>
+
           <div className='mb-4'>
             <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='imgURL'>Image URL</label>
             <input 
