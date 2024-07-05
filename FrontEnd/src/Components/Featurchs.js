@@ -7,7 +7,7 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { IoIosPhonePortrait } from "react-icons/io";
 export const Featurchs = () => {
   return (
-    <div className='grid md:grid-cols-3 mdl:grip-cols-2 lgl:grid-cols-5' >
+    <div  className='grid md:grid-cols-3 mdl:grip-cols-2 lgl:grid-cols-5' >
         <div className='flex gap-2 p-4 border-2 rounded '>
             <div className='text-blue-500'>
                 <TbTruckDelivery className='w-10 h-10'/>
