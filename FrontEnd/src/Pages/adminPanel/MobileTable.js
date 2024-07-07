@@ -69,9 +69,9 @@ const handleFeatureDelete = async (id)=>{
             >
               <th scope='row'>{index + 1}</th>
               <td><img src={phone.imgURL} alt='imgURL' className='w-16 h-16 object-cover'></img></td>
-              <td>{phone.name}</td>
-              <td>RS.{phone.price}</td>
-              <td>{phone.quantity}</td>
+              <td className='text-center'>{phone.name}</td>
+              <td className='text-center'>RS.{phone.price}</td>
+              <td className='text-center'>{phone.quantity}</td>
               <td>
                 <div className='grid grid-flow-row gap-1'>
                 {mobile.find(item => item._id === phone._id) ? (

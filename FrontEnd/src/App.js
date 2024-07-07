@@ -19,6 +19,7 @@ import { AdminPanel } from './Pages/adminPanel/AdminPanel';
 import { DashBoard } from './Pages/adminPanel/DashBoard';
 import { EditLatestMobile } from './Pages/adminPanel/EditLatestMobile';
 import { EditFeatureMobile } from './Pages/adminPanel/EditFeatureMobile';
+import { MobileTable } from './Pages/adminPanel/MobileTable';
 
 function Home() {
   return (
@@ -52,6 +53,7 @@ function App(){
     <Route path='/dashboard' element={<DashBoard />} />
     <Route path='/editlatest/:id' element={<EditLatestMobile />} />
     <Route path='/editfeature/:id' element={<EditFeatureMobile />} />
+    <Route path='/mobile' element={<MobileTable />} />
   </Routes>
 </Router>
 
