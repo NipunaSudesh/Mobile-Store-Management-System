@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export const MobileTable = () => {
 const [mobile,setMobile] =useState([]);
@@ -73,7 +74,7 @@ const handleFeatureDelete = async (id)=>{
               <td>{phone.quantity}</td>
               <td>
                 <div className='grid grid-flow-row gap-1'>
-                <button className='bg-blue-500 text-white gap-2 p-1 rounded'>Edit</button>
+                <Link to={`/edit/${phone._id}`} className='bg-blue-500 text-white p-1 rounded text-center'>Edit</Link>
                 {mobile.find(item => item._id === phone._id) ? (
                     <button className='bg-red-500 text-white p-1 rounded' onClick={() => handleDelete(phone._id)}>Delete</button>
                   ) : (

@@ -24,7 +24,7 @@ router.get('/get', async (req, res) => {
 });
 
 router.get('/get/:id', async (req, res) => {
-    const _id = req.params.id;
+    const _id = decodeURIComponent(req.params.id);
     try {
         const product = await FeaturedMobile.findById(_id);
         if (!product) {
@@ -37,21 +37,22 @@ router.get('/get/:id', async (req, res) => {
 });
 
 router.patch('/update/:id', async (req, res) => {
-    const _id = req.params.id;
-    const updates = req.body;
+    const _id = decodeURIComponent(req.params.id);
     try {
-        const product = await FeaturedMobile.findByIdAndUpdate(_id, updates, { new: true });
-        if (!product) {
+        const updatedProduct = await FeaturedMobile.findByIdAndUpdate(_id, req.body, { new: true });
+        if (!updatedProduct) {
             return res.status(404).send('Product not found');
         }
-        res.status(200).send(product); 
+        res.status(200).send(updatedProduct);
+        console.log('Product updated successfully');
     } catch (error) {
         res.status(400).send({ error: 'Failed to update product', message: error.message });
     }
 });
 
+
 router.delete('/delete/:id', async (req, res) => {
-    const _id = req.params.id;
+    const _id = decodeURIComponent(req.params.id);
     try {
         const deleteProduct = await FeaturedMobile.findByIdAndDelete(_id);
         if (!deleteProduct) {

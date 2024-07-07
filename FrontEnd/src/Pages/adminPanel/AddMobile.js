@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 
 export const AddMobile = () => {
     const [name, setName] = useState('');
@@ -14,6 +14,7 @@ export const AddMobile = () => {
     const [message, setMessage] = useState('');
     const [isMsgError, setIsMsgError] = useState(false);
     const navigate = useNavigate();
+ 
   
     const handleAddProduct = async (e) => {
       e.preventDefault();
