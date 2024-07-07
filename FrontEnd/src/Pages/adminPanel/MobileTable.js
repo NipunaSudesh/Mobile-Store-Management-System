@@ -74,7 +74,11 @@ const handleFeatureDelete = async (id)=>{
               <td>{phone.quantity}</td>
               <td>
                 <div className='grid grid-flow-row gap-1'>
-                <Link to={`/edit/${phone._id}`} className='bg-blue-500 text-white p-1 rounded text-center'>Edit</Link>
+                {mobile.find(item => item._id === phone._id) ? (
+                <Link to={`/editlatest/${phone._id}`} className='bg-blue-500 text-white p-1 rounded text-center'>Edit</Link>
+              ):(
+                <Link to={`/editfeature/${phone._id}`} className='bg-blue-500 text-white p-1 rounded text-center'>Edit</Link>
+                )}
                 {mobile.find(item => item._id === phone._id) ? (
                     <button className='bg-red-500 text-white p-1 rounded' onClick={() => handleDelete(phone._id)}>Delete</button>
                   ) : (
