@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from './Header';
 import { ProductCard } from './ProductCard';
-import { apple13 } from '../assets/index';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
