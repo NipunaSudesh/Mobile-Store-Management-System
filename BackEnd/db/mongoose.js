@@ -13,5 +13,5 @@ const connection =mongoose.connection
 mongoose.set('strictQuery',true);
 
 connection.once("open",()=>{
-    console.log("mogiDB connected!")
+    console.log("mongoDB connected!")
 });

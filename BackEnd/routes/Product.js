@@ -1,7 +1,7 @@
 const express =require("express");
 const router =express.Router();
 const Product =require("../model/product");
-const FeaturedMobile =require("../model/featuredmobile");
+// const FeaturedMobile =require("../model/featuredmobile");
 
 // --------------------latest mobile--------------------------------- 
 
@@ -9,14 +9,14 @@ router.post('/add', async (req, res) => {
     const productData = req.body;
     try {
         const newProduct = new Product(productData);
-        const newFeaturedMobile = new FeaturedMobile(productData);
+      //  const newFeaturedMobile = new FeaturedMobile(productData);
 
         const savedProduct = await newProduct.save();
-        const savedFeaturedMobile = await newFeaturedMobile.save();
+      //  const savedFeaturedMobile = await newFeaturedMobile.save();
 
         res.status(201).json({
-            product: savedProduct,
-            featuredMobile: savedFeaturedMobile
+            product: savedProduct
+          //  featuredMobile: savedFeaturedMobile
         });
     } catch (error) {
         res.status(400).send({ error: 'Failed to add products', message: error.message });
