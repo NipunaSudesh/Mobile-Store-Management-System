@@ -33,7 +33,8 @@ router.get('/get' ,async (req,res) =>{
 });
 
 router.get('/get/:id' ,async (req,res) =>{
-    const _id =req.params.id;
+    // const _id =req.params.id;
+    const _id = decodeURIComponent(req.params.id);
     try {
         const product = await Product.findById(_id);
         if(!product){
@@ -45,20 +46,23 @@ router.get('/get/:id' ,async (req,res) =>{
     }
 });
 
-router.patch('/:id' ,async (req,res) =>{
-    const _id =req.params.id;
+router.patch('/update/:id', async (req, res) => {
+    const _id = decodeURIComponent(req.params.id);
     try {
-        const product = await Product.findByIdAndUpdate(_id);
-        if(!product){
-            res.status(404).send('product not found');
+        const updatedProduct = await Product.findByIdAndUpdate(_id, req.body, { new: true });
+        if (!updatedProduct) {
+            return res.status(404).send('Product not found');
         }
-        res.status(201).send();
+        res.status(200).send(updatedProduct);
+        console.log('Product updated successfully');
     } catch (error) {
-        res.status(400).send({ error: 'Failed to update product', message: error.message })
+        res.status(400).send({ error: 'Failed to update product', message: error.message });
     }
 });
+
  router.delete('/delete/:id', async (req,res) =>{
-    const _id=req.params.id;
+    // const _id=req.params.id;
+    const _id = decodeURIComponent(req.params.id);
     try {
         const deleteProduct = await Product.findByIdAndDelete(_id);
         res.status(201).send('deleted successful!');
