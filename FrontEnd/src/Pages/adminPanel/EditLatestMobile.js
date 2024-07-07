@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
-export const EditMobile = () => {
+export const EditLatestMobile = () => {
     const [mobile, setMobile] = useState({
         name: '',
         price: '',
