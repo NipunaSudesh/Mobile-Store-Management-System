@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
+
+
 export const EditLatestMobile = () => {
     const [mobile, setMobile] = useState({
         name: '',
@@ -19,6 +21,7 @@ export const EditLatestMobile = () => {
     const navigate = useNavigate();
     const { id } = useParams();
 
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -33,6 +36,7 @@ export const EditLatestMobile = () => {
     };
 
     const handleCancel = () => {
+        
         navigate('/adminpanel');
     };
 
