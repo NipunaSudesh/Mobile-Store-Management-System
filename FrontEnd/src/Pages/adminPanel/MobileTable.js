@@ -7,10 +7,10 @@ const [Fmobile,setFMobile] =useState([]);
 
 useEffect(()=>{
   FetchLatesMobile();
-  FeachMobile();
+  fetchFeatureMobile ();
 },[]);
 
-const FetchLatesMobile  = async()=>{
+const FetchLatesMobile  = async ()=>{
   try {
     const res =await axios.get('http://localhost:5000/product/get');
     setMobile(res.data);
@@ -19,7 +19,7 @@ const FetchLatesMobile  = async()=>{
     console.error("Error loading mobile:", error);
   }
 };
-const FeachMobile  = async()=>{
+const fetchFeatureMobile   = async ()=>{
   try {
     const res =await axios.get('http://localhost:5000/feature-mobile/get');
     setFMobile(res.data);
@@ -28,12 +28,30 @@ const FeachMobile  = async()=>{
   }
 };
 
+const handleDelete = async (id)=>{
+  try {
+    await axios.delete(`http://localhost:5000/product/delete/${id}`);
+    FetchLatesMobile();
+  } catch (error) {
+    console.error('Error deleting mobile:', error);
+  }
+}
+const handleFeatureDelete = async (id)=>{
+  try {
+    await axios.delete(`http://localhost:5000/feature-mobile/delete/${id}`);
+    fetchFeatureMobile();
+  } catch (error) {
+    console.error('Error deleting mobile:', error);
+  }
+}
+
+
 
   return (
     <div className='flex items-center justify-center'>
       <table className='shadow-lg border w-full mt-4'>
         <thead >
-          <tr>
+          <tr className='sticky top-20 z-40'>
             <th scope='col' className='bg-green-600 text-white p-2'>#</th>
             <th scope='col' className='bg-green-600 text-white p-2'>image</th>
             <th scope='col' className='bg-green-600 text-white p-2'>Mobile Name</th>
@@ -51,12 +69,16 @@ const FeachMobile  = async()=>{
               <th scope='row'>{index + 1}</th>
               <td><img src={phone.imgURL} alt='imgURL' className='w-16 h-16 object-cover'></img></td>
               <td>{phone.name}</td>
-              <td>{phone.price}</td>
+              <td>RS.{phone.price}</td>
               <td>{phone.quantity}</td>
               <td>
                 <div className='grid grid-flow-row gap-1'>
                 <button className='bg-blue-500 text-white gap-2 p-1 rounded'>Edit</button>
-                <button className='bg-red-500 text-white p-1 rounded'>Delete</button>
+                {mobile.find(item => item._id === phone._id) ? (
+                    <button className='bg-red-500 text-white p-1 rounded' onClick={() => handleDelete(phone._id)}>Delete</button>
+                  ) : (
+                    <button className='bg-red-500 text-white p-1 rounded' onClick={() => handleFeatureDelete(phone._id)}>Delete</button>
+                  )}
                 </div>
 
               </td>
