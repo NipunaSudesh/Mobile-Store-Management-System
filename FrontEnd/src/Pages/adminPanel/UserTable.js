@@ -2,20 +2,21 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 export const UserTable = () => {
-const [user,setUser]=useState('');
+const [users,setUsers]=useState([]);
 
-useEffect(()=>{
-  fatchUser();
-},[]);
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-const fatchUser =async ()=>{
-  try {
-    const res = await axios.get('http://localhost:5000/user/users');
-    setUser(res.data);
-  } catch (error) {
-    console.error("Error loading Users:", error);
-  }
-}
+  const fetchUsers = async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/user/users');
+      setUsers(res.data);
+      console.log(res.data);
+    } catch (error) {
+      console.error("Error loading Users:", error);
+    }
+  };
 
 
   return (
@@ -23,15 +24,26 @@ const fatchUser =async ()=>{
       <table className='shadow-lg border w-[70%] mt-4'>
         <thead>
           <tr>
-            <td scope='col' className='bg-green-500 text-white p-2 '>#</td>
-            <td scope='col' className='bg-green-500 text-white p-2 '>Name</td>
-            <td scope='col' className='bg-green-500 text-white p-2 '>Email</td>
-            <td scope='col' className='bg-green-500 text-white p-2 '>Action</td>
+            <th scope='col' className='bg-green-500 text-white p-2 '>#</th>
+            <th scope='col' className='bg-green-500 text-white p-2 '>Name</th>
+            <th scope='col' className='bg-green-500 text-white p-2 '>Email</th>
+            <th scope='col' className='bg-green-500 text-white p-2 '>Action</th>
 
           </tr>
         </thead>
         <tbody>
-
+        {users.map((user, index) => (
+            <tr key={index}
+            className={`${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}`}
+            >
+              <th scope='row' >{index + 1}</th>
+              <td className='text-center'>{user.name}</td>
+              <td className='text-center'>{user.email}</td>
+              <td>
+                <button className='text-center bg-red-500 text-white rounded-sm p-1 hover:bg-red-700'>Delete</button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

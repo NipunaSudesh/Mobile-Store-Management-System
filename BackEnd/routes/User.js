@@ -40,18 +40,10 @@ try {
         res.status(400).send({ error: 'Login failed! Check authentication credentials' });
     }
 }
-    // try {
-    //     const user = await User.findByCredentials(req.body.email, req.body.password);
 
-    //     const token = await user.generateAuthToken()
-    //     res.send({ user, token });
-
-    // } catch (error) {
-    //     res.status(500).json({error:error.massage|| 'Server error' });
-    // }
 });
 
-router.get("/users",auth,async (req,res)=>{
+router.get("/users",async (req,res)=>{
 
     try{
         const users=await User.find({});
