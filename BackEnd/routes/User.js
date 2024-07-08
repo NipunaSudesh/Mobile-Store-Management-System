@@ -97,6 +97,8 @@ router.get("/me", auth, async (req, res) => {
         console.log(admin);
         return res.status(200).send(admin);
       } else if (req.user) {
+        const user = await User.findById(req.user._id);
+
         if (!user) {
           return res.status(404).send({ message: 'Invalid credentials for user' });
         }

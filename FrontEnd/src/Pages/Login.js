@@ -29,8 +29,8 @@ export const Login = () => {
             email,
             password
           });
-          Cookies.set('token', response.data.token, { expires: 1 });
-         // localStorage.setItem('token', response.data.token);
+         // Cookies.set('token', response.data.token, { expires: 1 });
+          localStorage.setItem('token', response.data.token);
           if (response.status === 200) {
             setMessage('Login successful! Redirecting...');
             setIsMsgError(false);
