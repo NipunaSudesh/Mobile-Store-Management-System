@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
+
 export const UserTable = () => {
 const [users,setUsers]=useState([]);
+
 
   useEffect(() => {
     fetchUsers();
@@ -17,6 +19,30 @@ const [users,setUsers]=useState([]);
       console.error("Error loading Users:", error);
     }
   };
+
+  const handleDelete = async (id) => {
+    try {
+      const token = localStorage.getItem('authToken'); // Fetch auth token from local storage
+      await axios.delete(`http://localhost:5000/user/delete/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      // After successful deletion, fetch updated user list
+      fetchUsers();
+      console.log(`User with ID ${id} deleted successfully.`);
+    } catch (error) {
+      console.error(`Error deleting user with ID ${id}:`, error);
+    }
+  };
+  // const handeleDelete =async (id) =>{
+  //   try {
+  //     await axios.delete(`http://localhost:5000/user/delete/${id}`);
+  //     console.log('deleted!!');
+  //   } catch (error) {
+  //     console.log('error delete user :',error)
+  //   }
+  // }
 
 
   return (
@@ -40,7 +66,7 @@ const [users,setUsers]=useState([]);
               <td className='text-center'>{user.name}</td>
               <td className='text-center'>{user.email}</td>
               <td>
-                <button className='text-center bg-red-500 text-white rounded-sm p-1 hover:bg-red-700'>Delete</button>
+                <button className='text-center bg-red-500 text-white rounded-sm p-1 hover:bg-red-700' onClick={()=>handleDelete(user._id)}>Delete</button>
               </td>
             </tr>
           ))}

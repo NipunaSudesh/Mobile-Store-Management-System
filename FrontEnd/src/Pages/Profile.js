@@ -14,8 +14,9 @@ export const Profile = () => {
   const navigate = useNavigate();
 
 
-  const token = Cookies.get('token');
-  
+  // const token = Cookies.get('token');
+  const token = localStorage.getItem('authToken');
+
   useEffect(() => {
     const fetchUser = async () => {
       if (!token) {
