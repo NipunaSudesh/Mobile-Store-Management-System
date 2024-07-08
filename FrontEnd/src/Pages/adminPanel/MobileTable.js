@@ -65,7 +65,7 @@ const handleFeatureDelete = async (id)=>{
         <tbody>
         {[...mobile,...Fmobile].map((phone, index) => (
             <tr key={index}
-            className={`${index % 2 === 0 ? 'bg-gray-200' : 'bg-white'}`}
+            className={`${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}`}
             >
               <th scope='row'>{index + 1}</th>
               <td><img src={phone.imgURL} alt='imgURL' className='w-16 h-16 object-cover'></img></td>
@@ -75,14 +75,14 @@ const handleFeatureDelete = async (id)=>{
               <td>
                 <div className='grid grid-flow-row gap-1'>
                 {mobile.find(item => item._id === phone._id) ? (
-                <Link to={`/editlatest/${phone._id}`} className='bg-blue-500 text-white p-1 rounded text-center'>Edit</Link>
+                <Link to={`/editlatest/${phone._id}`} className='bg-blue-500 hover:bg-blue-700 text-white p-1 rounded text-center'>Edit</Link>
               ):(
-                <Link to={`/editfeature/${phone._id}`} className='bg-blue-500 text-white p-1 rounded text-center'>Edit</Link>
+                <Link to={`/editfeature/${phone._id}`} className='bg-blue-500 hover:bg-blue-700 text-white p-1 rounded text-center'>Edit</Link>
                 )}
                 {mobile.find(item => item._id === phone._id) ? (
-                    <button className='bg-red-500 text-white p-1 rounded' onClick={() => handleDelete(phone._id)}>Delete</button>
+                    <button className='bg-red-500 hover:bg-red-700 text-white p-1 rounded' onClick={() => handleDelete(phone._id)}>Delete</button>
                   ) : (
-                    <button className='bg-red-500 text-white p-1 rounded' onClick={() => handleFeatureDelete(phone._id)}>Delete</button>
+                    <button className='bg-red-500 hover:bg-red-700 text-white p-1 rounded' onClick={() => handleFeatureDelete(phone._id)}>Delete</button>
                   )}
                 </div>
 
