@@ -135,26 +135,37 @@ router.get("/me", auth, async (req, res) => {
     }
   });
 
-  router.delete("/delete/:id", auth, async (req, res) => {
-    const _id = req.params.id.trim();
+  // router.delete("/delete/:id", auth, async (req, res) => {
+  //   const _id = req.params.id.trim();
+  //   try {
+  //     if (req.admin) {
+  //       const deleteAdmin = await Admin.findByIdAndDelete(_id);
+  //       if (!deleteAdmin) {
+  //         return res.status(404).send({ message: 'Admin not found' });
+  //       }
+  //       return res.status(200).send({ message: 'Admin deleted successfully' });
+  //     } else if (req.user) { 
+  //       const deleteUser = await User.findByIdAndDelete(_id);
+  //       if (!deleteUser) {
+  //         return res.status(404).send({ message: 'User not found' });
+  //       }
+  //       return res.status(200).send({ message: 'User deleted successfully' });
+  //     } else {
+  //       return res.status(403).send({ error: 'Access denied' });
+  //     }
+  //   } catch (error) {
+  //     return res.status(500).send({ error: 'Server error' });
+  //   }
+  // });
+
+  router.delete("/delete/:id",async (req,res)=>{
     try {
-      if (req.admin) {
-        const deleteAdmin = await Admin.findByIdAndDelete(_id);
-        if (!deleteAdmin) {
-          return res.status(404).send({ message: 'Admin not found' });
-        }
-        return res.status(200).send({ message: 'Admin deleted successfully' });
-      } else if (req.user) { 
-        const deleteUser = await User.findByIdAndDelete(_id);
-        if (!deleteUser) {
-          return res.status(404).send({ message: 'User not found' });
-        }
-        return res.status(200).send({ message: 'User deleted successfully' });
-      } else {
-        return res.status(403).send({ error: 'Access denied' });
-      }
+      const _id = req.params.id.trim();
+      const deleteUser = await User.findByIdAndDelete(_id);
+      return res.status(200).send({ message: 'User deleted successfully' });
     } catch (error) {
       return res.status(500).send({ error: 'Server error' });
+      console.error("Error during deleting:", error);
     }
   });
   
