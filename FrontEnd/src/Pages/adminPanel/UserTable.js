@@ -20,29 +20,31 @@ const [users,setUsers]=useState([]);
     }
   };
 
-  const handleDelete = async (id) => {
+  // const handleDelete = async (id) => {
+  //   try {
+  //     const token = localStorage.getItem('authToken'); 
+  //     console.log(token)
+  //     await axios.delete(`http://localhost:5000/user/delete/${id}`, {
+  //       headers: {
+  //         'Authorization': `Bearer ${token}`
+  //       }
+  //     });
+     
+  //     fetchUsers();
+  //     console.log(`User with ID ${id} deleted successfully.`);
+  //   } catch (error) {
+  //     console.error(`Error deleting user with ID ${id}:`, error);
+  //   }
+  // };
+  const handleDelete =async (id) =>{
     try {
-      const token = localStorage.getItem('authToken'); // Fetch auth token from local storage
-      await axios.delete(`http://localhost:5000/user/delete/${id}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      // After successful deletion, fetch updated user list
+      await axios.delete(`http://localhost:5000/user/delete/${id}`);
+      console.log('deleted!!');
       fetchUsers();
-      console.log(`User with ID ${id} deleted successfully.`);
     } catch (error) {
       console.error(`Error deleting user with ID ${id}:`, error);
     }
-  };
-  // const handeleDelete =async (id) =>{
-  //   try {
-  //     await axios.delete(`http://localhost:5000/user/delete/${id}`);
-  //     console.log('deleted!!');
-  //   } catch (error) {
-  //     console.log('error delete user :',error)
-  //   }
-  // }
+  }
 
 
   return (
@@ -65,7 +67,7 @@ const [users,setUsers]=useState([]);
               <th scope='row' >{index + 1}</th>
               <td className='text-center'>{user.name}</td>
               <td className='text-center'>{user.email}</td>
-              <td>
+              <td className='text-center'>
                 <button className='text-center bg-red-500 text-white rounded-sm p-1 hover:bg-red-700' onClick={()=>handleDelete(user._id)}>Delete</button>
               </td>
             </tr>
