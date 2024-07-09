@@ -89,4 +89,13 @@ router.post("/logout", auth, async (req, res) => {
     }
   });
 
+  router.get("/count",async (res,req)=>{
+    try {
+      const count = await Admin.countDocuments();
+      res.json({ count });
+    } catch (error) {
+      res.status(500).json({ error: 'An error occurred' });
+    }
+  });
+
 module.exports = router;
