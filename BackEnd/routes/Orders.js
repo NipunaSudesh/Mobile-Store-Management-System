@@ -1,7 +1,7 @@
 const express =require("express");
 const router =express.Router();
 const Order =require('../model/orders');
-const { route } = require("./Admin");
+
 
 router.post('/add',async(req,res)=>{
     const order =req.body;
