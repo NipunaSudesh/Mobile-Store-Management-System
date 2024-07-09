@@ -9,13 +9,12 @@ export const Profile = () => {
   const [nPassword, setNPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [isMsgError, setIsMsgError,] = useState(false);
-  const [userDetails, setUserDetails] = useState('');
+  const [isMsgError, setIsMsgError] = useState(false);
+  const [userDetails, setUserDetails] = useState({});
   const navigate = useNavigate();
 
-
-  // const token = Cookies.get('token');
-  const token = localStorage.getItem('authToken');
+   const token = Cookies.get('token');
+  //const token = localStorage.getItem('authToken');
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -34,7 +33,6 @@ export const Profile = () => {
         setEmail(res.data.email);
         setUserDetails(res.data);
         console.log(res.data.role);
-      //  console.log('User data fetched:', res.data); 
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -42,55 +40,53 @@ export const Profile = () => {
 
     fetchUser();
   }, [token, navigate]);
-console.log(userDetails.role)
 
-
-  const handleUpdate= async (e)=>{
+  const handleUpdate = async (e) => {
     e.preventDefault();
     if (nPassword !== cPassword) {
-      setMessage(' Password do not match !');
+      setMessage('Passwords do not match!');
       setIsMsgError(true);
       clearMessageAfterTimeout();
       return;
     }
     try {
-      const updateUser ={
+      const updateUser = {
         name,
         email,
         newPassword: nPassword,
         confirmPassword: cPassword,
       };
-      const res = await axios.patch("http://localhost:5000/user/update/me",updateUser,{
+      const res = await axios.patch('http://localhost:5000/user/update/me', updateUser, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      
-      setMessage("Profile Updated Successfully");
+      setMessage('Profile Updated Successfully');
       setIsMsgError(false);
       clearMessageAfterTimeout();
-      console.log("updated!")
+      console.log('updated!');
     } catch (error) {
-      setMessage("Failed to update profile");
+      setMessage('Failed to update profile');
       setIsMsgError(true);
       clearMessageAfterTimeout();
-      console.log("Failed to update profile");
+      console.log('Failed to update profile');
     }
   };
 
-  const handleLogOut =async ()=>{
+  const handleLogOut = async () => {
     try {
-      await axios.post('http://localhost:5000/user/logout',{}, {
+      await axios.post('http://localhost:5000/user/logout', {}, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setMessage("LogOut Successfully");
+      setMessage('LogOut Successfully');
       setIsMsgError(false);
       clearMessageAfterTimeout();
-      console.log("LogOut Successfully!")
+      console.log('LogOut Successfully!');
       Cookies.remove('token');
-      navigate('/');
+      localStorage.removeItem('authToken');
+      navigate('/login');
     } catch (error) {
       console.error('Error logging out:', error);
     }
@@ -103,7 +99,7 @@ console.log(userDetails.role)
   const clearMessageAfterTimeout = () => {
     setTimeout(() => {
       setMessage('');
-    }, 60000); // 60000 ms = 1 minute
+    }, 6000); 
   };
 
   return (

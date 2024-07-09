@@ -1,23 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import axios from 'axios';
+
 
 export const BNavbar = () => {
   const [activeLink, setActiveLink] = useState('Home');
+  const [role, setRole] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
+  const token = Cookies.get('token');
 
-
-
-  useEffect(()=>{
-    const token = localStorage.getItem('authToken');
-      if(token){
-        const user =JSON.parse(localStorage.getItem('user'));
-        if(user && user.role==='admin'){
-          setIsAdmin(true);
-        }
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (!token) {
+        console.log('No token found, please login.');
+        navigate('/login');
+        return;
       }
+      try {
+        const res = await axios.get('http://localhost:5000/user/me', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setRole(res.data.role);
+        console.log(res.data.role);
+          if(res.data.role==='admin'){
+            setIsAdmin(true);
+          }
 
-  },[]);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUser();
+  }, [token, navigate]);
+
+
+  //useEffect(()=>{
+  //   const token = Cookies.get('token');
+  //   console.log(token);
+  //   console.log(token.role)
+    
+  //     if(token){
+  //       const user = Cookies.get('user');
+  //       if(user && user.role==='admin'){
+  //         setIsAdmin(true);
+  //       }
+  //     }
+
+  // },[]);
 
   useEffect(() => {
     const handleScroll = () => {
