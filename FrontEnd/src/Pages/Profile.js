@@ -8,6 +8,7 @@ export const Profile = () => {
   const [email, setEmail] = useState('');
   const [nPassword, setNPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
+  const [role,setRole ] = useState('');
   const [message, setMessage] = useState('');
   const [isMsgError, setIsMsgError] = useState(false);
   const [userDetails, setUserDetails] = useState({});
@@ -32,7 +33,9 @@ export const Profile = () => {
         setName(res.data.name);
         setEmail(res.data.email);
         setUserDetails(res.data);
-        console.log(res.data.role);
+        setRole(res.data.role)
+        console.log(role);
+        
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -105,7 +108,14 @@ export const Profile = () => {
   return (
     <div className='flex h-screen items-center justify-center'>
       <div className='flex h-auto w-[500px] flex-col items-center justify-center py-2 rounded shadow-2xl border-2'>
-        <h1 className='text-center text-2xl mb-4 py-2 bg-green-400 w-full'>My Profile</h1>
+        <h1 className='text-center text-2xl mb-4 py-2 bg-green-400 w-full'>{name} Profile</h1>
+        
+        { 
+       <div className='bg-slate-200 w-full text-center mb-2'>
+          <h2>Login As A <span className='text-green-600'>{role}</span></h2>
+        </div>
+        }
+
         {message && (
           <div className={`mb-4 text-center ${isMsgError ?'text-red-500' :'text-green-500'}`}>
             {message}
