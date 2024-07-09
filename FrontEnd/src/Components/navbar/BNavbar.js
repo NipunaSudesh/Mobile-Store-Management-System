@@ -1,9 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import axios from 'axios';
+
 
 export const BNavbar = () => {
   const [activeLink, setActiveLink] = useState('Home');
+  const [role, setRole] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
+  const token = Cookies.get('token');
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (!token) {
+        console.log('No token found, please login.');
+        navigate('/login');
+        return;
+      }
+      try {
+        const res = await axios.get('http://localhost:5000/user/me', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setRole(res.data.role);
+        console.log(res.data.role);
+          if(res.data.role==='admin'){
+            setIsAdmin(true);
+          }
+
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUser();
+  }, [token, navigate]);
+
+
+  //useEffect(()=>{
+  //   const token = Cookies.get('token');
+  //   console.log(token);
+  //   console.log(token.role)
+    
+  //     if(token){
+  //       const user = Cookies.get('user');
+  //       if(user && user.role==='admin'){
+  //         setIsAdmin(true);
+  //       }
+  //     }
+
+  // },[]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +92,7 @@ export const BNavbar = () => {
       <ul className='flex justify-center gap-2 mdl:gap-3 lgl:gap-10 sm:flex-nowrap'>
         <li className='p-1 hover:bg-gray-300 rounded-sm'>
           <a
-            className={`text-base text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'Home' ? 'text-red-700 underline' : 'text-blue-500'}`}
+            className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'Home' ? 'text-red-700 underline' : 'text-blue-500'}`}
             href="#Home"
             onClick={() => setActiveLink('Home')}
           >
@@ -53,7 +101,7 @@ export const BNavbar = () => {
         </li>
         <li className='p-1 hover:bg-gray-300 rounded-sm'>
           <a
-            className={`text-base text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'Brand' ? 'text-red-700 underline' : 'text-blue-500'}`}
+            className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'Brand' ? 'text-red-700 underline' : 'text-blue-500'}`}
             href="#Brand"
             onClick={() => setActiveLink('Brand')}
           >
@@ -62,7 +110,7 @@ export const BNavbar = () => {
         </li>
         <li className='p-1 hover:bg-gray-300 rounded-sm'>
           <a
-            className={`text-base text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'LatestMobile' ? 'text-red-700 underline' : 'text-blue-500'}`}
+            className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'LatestMobile' ? 'text-red-700 underline' : 'text-blue-500'}`}
             href="#LatestMobile"
             onClick={() => setActiveLink('LatestMobile')}
           >
@@ -71,7 +119,7 @@ export const BNavbar = () => {
         </li>
         <li className='p-1 hover:bg-gray-300 rounded-sm'>
           <a
-            className={`text-base text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'FeaturedMobile' ? 'text-red-700 underline' : 'text-blue-500'}`}
+            className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'FeaturedMobile' ? 'text-red-700 underline' : 'text-blue-500'}`}
             href="#FeaturedMobile"
             onClick={() => setActiveLink('FeaturedMobile')}
           >
@@ -87,14 +135,19 @@ export const BNavbar = () => {
             AboutUs
           </a>
         </li>
-        <li className='p-1 hover:bg-gray-300 rounded-sm'>
-          <button
-            className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'AdminPanal' ? 'text-red-700 underline' : 'text-blue-500'}`}
-            onClick={handleAdminPanel}
-          >
-            AdminPanel
-          </button>
-        </li>
+        {
+          isAdmin && (
+            <li className='p-1 hover:bg-gray-300 rounded-sm'>
+            <button
+              className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'AdminPanal' ? 'text-red-700 underline' : 'text-blue-500'}`}
+              onClick={handleAdminPanel}
+            >
+              AdminPanel
+            </button>
+          </li>
+          )
+
+        }
       </ul>
     </div>
   );
