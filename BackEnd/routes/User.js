@@ -187,6 +187,15 @@ router.get("/me", auth, async (req, res) => {
       res.status(500).send({ error: "Server error" });
     }
   });
+
+  router.get("/count",async (res,req)=>{
+    try {
+      const count = await User.countDocuments();
+      res.json({ count });
+    } catch (error) {
+      res.status(500).json({ error: 'An error occurred' });
+    }
+  });
   
 
 // router.patch("/update/me",auth,async (req,res) =>{
@@ -228,6 +237,7 @@ router.get("/me", auth, async (req, res) => {
 //       res.status(500).send({ error: "Server error" });
 //     }
 //   });
+
 
 
 module.exports =router;
