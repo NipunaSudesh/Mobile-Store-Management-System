@@ -70,7 +70,7 @@ router.patch('/update/:id', async (req, res) => {
         res.status(400).send({ error: 'Failed to delete product', message: error.message })
     }
  });
- router.get("/count",async (res,req)=>{
+ router.get("/count",async (req,res)=>{
     try {
       const count = await Product.countDocuments();
       res.json({ count });

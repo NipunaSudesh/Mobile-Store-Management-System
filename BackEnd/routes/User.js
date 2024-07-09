@@ -188,10 +188,10 @@ router.get("/me", auth, async (req, res) => {
     }
   });
 
-  router.get("/count",async (res,req)=>{
+  router.get('/count', async (req, res) => {
     try {
       const count = await User.countDocuments();
-      res.json({ count });
+      res.status(200).send({ count });
     } catch (error) {
       res.status(500).json({ error: 'An error occurred' });
     }
