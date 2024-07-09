@@ -4,6 +4,7 @@ import { UserTable } from './UserTable';
 import { AddProduct } from './AddProduct';
 import { AddMobile } from './AddMobile';
 import { MobileTable } from './MobileTable';
+import { OrderTable } from './OrderTable';
 import { useNavigate } from 'react-router-dom';
 
 export const AdminPanel = () => {
@@ -109,6 +110,10 @@ const handleHome = ()=>{
       <div id="FeaturedMobile" className={`p-4 ${activeLink === 'FeaturedMobile' ? 'block' : 'hidden'}`}>
 
         <AddMobile />
+      </div>
+      <div id="Orders" className={`p-4 ${activeLink === 'Orders' ? 'block' : 'hidden'}`}>
+
+        <OrderTable />
       </div>
       </div>
     </div>

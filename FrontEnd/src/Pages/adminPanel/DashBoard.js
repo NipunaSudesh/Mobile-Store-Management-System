@@ -11,13 +11,14 @@ const [featureCount,setFeatureCount] =useState(0);
 const [orderCount,setOrderCount] =useState(0);
 
 useEffect(()=>{
-  fetchUserCount();
-  fetchLatestCount();
-  fetchFeatureCount();
+  fetchUsersCount();
+  fetchLatestsCount();
+  fetchFeaturesCount();
+  fetchOrdersCount();
 
 },[]);
 
-const fetchUserCount = async ()=>{
+const fetchUsersCount = async ()=>{
   try {
     const res =await axios.get('http://localhost:5000/user/count');
     setUserCount(res.data.count);
@@ -25,7 +26,7 @@ const fetchUserCount = async ()=>{
     console.error('Error fetching user count:', error);
   }
 }
-const fetchLatestCount = async ()=>{
+const fetchLatestsCount = async ()=>{
   try {
     const res =await axios.get('http://localhost:5000/product/count');
     setLatestCount(res.data.count);
@@ -33,10 +34,18 @@ const fetchLatestCount = async ()=>{
     console.error('Error fetching user count:', error);
   }
 }
-const fetchFeatureCount = async ()=>{
+const fetchFeaturesCount = async ()=>{
   try {
     const res =await axios.get('http://localhost:5000/feature-mobile/count');
     setFeatureCount(res.data.count);
+  } catch (error) {
+    console.error('Error fetching user count:', error);
+  }
+}
+const fetchOrdersCount = async ()=>{
+  try {
+    const res =await axios.get('http://localhost:5000/order/count');
+    setOrderCount(res.data.count);
   } catch (error) {
     console.error('Error fetching user count:', error);
   }
@@ -64,7 +73,7 @@ const fetchFeatureCount = async ()=>{
           <div className='bg-gray-300 w-[200px] h-[200px] flex items-center justify-center text-white gap-2 flex-col'>
             <MdEmail className='w-8 h-8' />
             <h1 className='text-gray-800 text-xl'>Orders</h1>
-            <h2 className='text-blue-500 text-2xl'>1233</h2>
+            <h2 className='text-blue-500 text-2xl'>{orderCount}</h2>
           </div>
           </div>
 
