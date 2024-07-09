@@ -46,6 +46,19 @@ router.get('/get/:id' ,async (req,res) =>{
     }
 });
 
+router.get('/get/brand/:brand', async (req, res) => {
+    const brand = req.params.brand;
+    try {
+      const brandItems = await Product.find({ brand: brand });
+      if (brandItems.length === 0) {
+        return res.status(404).send('No items found for the specified brand');
+      }
+      res.status(200).send(brandItems);
+    } catch (error) {
+      res.status(500).json({ error: 'An error occurred', message: error.message });
+    }
+  });
+
 router.patch('/update/:id', async (req, res) => {
     const _id = decodeURIComponent(req.params.id);
     try {
