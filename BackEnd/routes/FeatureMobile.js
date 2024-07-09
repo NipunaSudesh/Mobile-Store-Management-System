@@ -64,11 +64,11 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
-outer.get('/count', async (req, res) => {
+router.get("/count",async (req,res)=>{
     try {
       const count = await FeaturedMobile.countDocuments();
       res.json({ count });
-    } catch (err) {
+    } catch (error) {
       res.status(500).json({ error: 'An error occurred' });
     }
   });
