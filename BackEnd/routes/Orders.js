@@ -23,6 +23,16 @@ router.get('/get',async (req,res)=>{
     }
 });
 
+router.delete('/delete/:id',async(req,res)=>{
+    const id =req.params.id;
+try {
+    const deleteOrder =await Order.findByIdAndDelete(id);
+    res.status(201).send('deleted successful!');
+} catch (error) {
+    res.status(400).send({ error: 'Failed to delete order', message: error.message });
+}
+});
+
 router.get('/count', async (req, res) => {
     try {
       const count = await Order.countDocuments();
