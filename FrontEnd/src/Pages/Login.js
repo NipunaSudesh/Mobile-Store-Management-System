@@ -19,7 +19,7 @@ export const Login = () => {
 
     const handleLoginRedirect = (e) => {
         e.preventDefault();
-        navigate('/');
+        navigate('/signup');
       };
 
       const handleSubmit = async (e) => {
@@ -110,13 +110,14 @@ export const Login = () => {
             type="button"
             onClick={handleCancel}
           >
-            Cansal
+            Cancal
           </button>
         </div>
         </div>
         <div className='mt-4 text-center'>
         <a 
-            href='./login' 
+            
+            href='/signup' 
             className='text-blue-500 hover:text-blue-700'
             onClick={handleLoginRedirect}
             >

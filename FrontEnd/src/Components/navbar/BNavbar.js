@@ -13,11 +13,11 @@ export const BNavbar = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      if (!token) {
-        console.log('No token found, please login.');
-        navigate('/login');
-        return;
-      }
+      // if (!token) {
+      //   console.log('No token found, please login.');
+      //   navigate('/login');
+      //   return;
+      // }
       try {
         const res = await axios.get('http://localhost:5000/user/me', {
           headers: {
@@ -38,20 +38,6 @@ export const BNavbar = () => {
     fetchUser();
   }, [token, navigate]);
 
-
-  //useEffect(()=>{
-  //   const token = Cookies.get('token');
-  //   console.log(token);
-  //   console.log(token.role)
-    
-  //     if(token){
-  //       const user = Cookies.get('user');
-  //       if(user && user.role==='admin'){
-  //         setIsAdmin(true);
-  //       }
-  //     }
-
-  // },[]);
 
   useEffect(() => {
     const handleScroll = () => {
