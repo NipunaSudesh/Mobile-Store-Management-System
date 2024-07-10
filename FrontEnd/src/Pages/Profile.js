@@ -21,7 +21,7 @@ export const Profile = () => {
     const fetchUser = async () => {
       if (!token) {
         console.log('No token found, please login.');
-        navigate('/login');
+        navigate('/');
         return;
       }
       try {

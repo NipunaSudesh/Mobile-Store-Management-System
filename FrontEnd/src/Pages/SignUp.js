@@ -122,7 +122,7 @@ export const SignUp = () => {
         </div>
         <div className='mt-4 text-center'>
         <a 
-            href='./login' 
+            href='/login' 
             className='text-blue-500 hover:text-blue-700'
             onClick={handleLoginRedirect}
             >
