@@ -2,7 +2,7 @@
 import './App.css';
 import  {NavBar}  from './Components/navbar/NavBar';
 import  {AdSwiper} from './Components/AdSwiper';
-import {ProductCategory} from './Components/ProductCategory';
+import {Brands} from './Components/Brands';
 import {LatestMobile} from './Components/LatestMobile';
 import {Featurchs} from './Components/Featurchs';
 import {FeaturedMobile} from './Components/FeaturedMobile';
@@ -20,13 +20,14 @@ import { DashBoard } from './Pages/adminPanel/DashBoard';
 import { EditLatestMobile } from './Pages/adminPanel/EditLatestMobile';
 import { EditFeatureMobile } from './Pages/adminPanel/EditFeatureMobile';
 import { MobileTable } from './Pages/adminPanel/MobileTable';
+import { BrandItems } from './Pages/BrandItems';
 
 function Home() {
   return (
 <div className='flex  flex-col gap-5 items-center '>
   <NavBar />
   <AdSwiper />
-  <ProductCategory />
+  <Brands />
   <LatestMobile />
   <Featurchs />
   <FeaturedMobile />
@@ -54,6 +55,7 @@ function App(){
     <Route path='/editlatest/:id' element={<EditLatestMobile />} />
     <Route path='/editfeature/:id' element={<EditFeatureMobile />} />
     <Route path='/mobile' element={<MobileTable />} />
+    <Route path='/branditems' element={<BrandItems />} />
   </Routes>
 </Router>
 
