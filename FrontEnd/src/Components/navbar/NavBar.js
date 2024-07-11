@@ -26,9 +26,11 @@ export const NavBar = () => {
   return (
     <div className='sticky top-0 z-40 items-center justify-center w-full'>
       <div className='  shadow   px-16 bg-bodyColor border-b-black flex w-full h-15 mx-auto justify-between items-center font-normal'>
+        <a href='/'>
         <div>
           <img src={logo1} alt='logo' width="50" height="50" className='rounded-full logo'/>
         </div>
+        </a>
         <div className="mb-3 xl:w-96">
           <div className="relative mb-4 pt-4 flex w-full flex-wrap items-stretch">
             <input
