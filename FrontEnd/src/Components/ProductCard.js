@@ -4,8 +4,8 @@ import React from 'react'
 export const ProductCard = ({name,details,price,image}) => {
   const discountedWithOutPrice = price * 1.05;
   return (
-    <div className='h-auto w-full items-center rounded-5g shadow-lg flex flex-col transition-colors duration-1000 rounded-[5%] my-10 group hover:bg-gradient-to-b
-    hover:from-gray-900 hover:gray-900'>
+    <div className='h-auto w-[240px] items-center rounded-5g shadow-lg flex flex-col  rounded-[5%] my-10 group hover:bg-gradient-to-b
+    hover:from-gray-900 hover:gray-900 transition-colors duration-1000'>
       
       <div className="relative w-full m-1 overflow-hidden rounded-lg group
        ">
