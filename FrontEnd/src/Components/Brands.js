@@ -5,38 +5,38 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import { Autoplay } from 'swiper/modules';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Brands = () => {
   const navigate=useNavigate();
  const productLogo = [
     {
-        id: 1, brand: "apple",logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjqvprPWkD0AFap-C4otTt98AQSyRqS7mDNA&s'
+         brand: "apple",logoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjqvprPWkD0AFap-C4otTt98AQSyRqS7mDNA&s'
     },
     {
-        id: 2,brand: "samsung", logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFhim7QaX3BHLGy2ZLoiqxeGD914Y65pGZXA&s'
+        brand: "samsung", logoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFhim7QaX3BHLGy2ZLoiqxeGD914Y65pGZXA&s'
     },
     {
-        id: 3,brand: "huawei", logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ9dXLNC7ZD88yfXGBfEmIF6VkIKz6HjVPPg&s'
+        brand: "huawei", logoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ9dXLNC7ZD88yfXGBfEmIF6VkIKz6HjVPPg&s'
     },
     {
-        id: 4,brand: "oneplus", logo: 'https://pngimagesfree.com/wp-content/uploads/Oneplus-PNG-Logo-1.png'
+        brand: "oneplus", logoURL: 'https://pngimagesfree.com/wp-content/uploads/Oneplus-PNG-Logo-1.png'
     },
     {
-        id: 5,brand: "googlePixal", logo: 'https://styles.redditmedia.com/t5_3fy38/styles/communityIcon_4h9nc2tj54u51.jpg?format=pjpg&s=5850d2f6614d2d739dad06fd3db2bc03732a1654'
+        brand: "googlePixal", logoURL: 'https://styles.redditmedia.com/t5_3fy38/styles/communityIcon_4h9nc2tj54u51.jpg?format=pjpg&s=5850d2f6614d2d739dad06fd3db2bc03732a1654'
     },
     {
-        id: 6,brand: "xiaomi", logo: 'https://seeklogo.com/images/M/mi-mobile-logo-9F4E2AC84D-seeklogo.com.png'
+        brand: "xiaomi", logoURL: 'https://seeklogo.com/images/M/mi-mobile-logo-9F4E2AC84D-seeklogo.com.png'
     },
     {
-        id: 7,brand: "oppo", logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmam6bJjeGmYT5jGWv-qNN90B8A1UB_v-O4g&s'
+        brand: "oppo", logoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmam6bJjeGmYT5jGWv-qNN90B8A1UB_v-O4g&s'
     }
 
  ];
 
- const handleBrandData =()=>{
-  navigate('/branditems')
- };
+//  const handleBrandData =()=>{
+//   navigate('/branditems')
+//  };
 
   return (
     <div id='Brand' className="max-w-[1400px] w-full mx-auto px-4 relative">
@@ -59,12 +59,12 @@ export const Brands = () => {
       >
         {productLogo.map(logo => (
           <SwiperSlide key={logo.id}>
-            <a href={logo.link} target="_blank" rel="noopener noreferrer"
-            onClick={handleBrandData}
+            <Link href={logo.link} target="_blank" rel="noopener noreferrer"
+            to={`/brandItems/${logo.brand}`}
             >
               {/* <h2>{logo.brand}</h2> */}
-              <img src={logo.logo} alt={`Advertisement ${logo.id}`} className="w-full h-[200px]  rounded-2xl bg-center bg-cover" />
-            </a>
+              <img src={logo.logoURL} alt={`Advertisement ${logo.id}`} className="w-full h-[200px]  rounded-2xl bg-center bg-cover" />
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

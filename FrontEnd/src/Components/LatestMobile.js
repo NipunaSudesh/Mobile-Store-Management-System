@@ -25,7 +25,7 @@ export const LatestMobile = () => {
             <Header Title='LATEST MOBILE PHONES' />
         </div>
 
-        <div className='grid md:grid-cols-3 mdl:grip-cols-2 lgl:grid-cols-5 gap-x-4 '>
+        <div className='grid grid-cols-1 sml:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4  mx-auto'>
           {data.map((product) =>(
             <ProductCard 
             key={product._id}
