@@ -6,7 +6,7 @@ const auth = require("../middleware/authMobile");
 
 // --------------------latest mobile--------------------------------- 
 
-router.post('/add',auth, async (req, res) => {
+router.post('/add', async (req, res) => {
     const productData = req.body;
     try {
         const newProduct = new Product(productData);
@@ -14,7 +14,7 @@ router.post('/add',auth, async (req, res) => {
 
         const savedProduct = await newProduct.save();
       //  const savedFeaturedMobile = await newFeaturedMobile.save();
-      const token =generateAuthTokenMobile();
+      const token =await newProduct.generateAuthTokenMobile();
 
         res.status(201).json({
             product: savedProduct,
