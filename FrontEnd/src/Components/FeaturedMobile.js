@@ -53,10 +53,12 @@ const fetchData = async ()=>{
       {data.map((mobile) => (
         <SwiperSlide key={mobile._id}>
           <ProductCard
+          id={mobile._id}
             name={mobile.name}
             price={mobile.price}
             image={mobile.imgURL}
             details={mobile.details}
+            
           />
         </SwiperSlide>
       ))}

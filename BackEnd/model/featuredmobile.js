@@ -26,6 +26,11 @@ const featuredmobileSchema = new mongoose.Schema({
         require:true,
         trim: true     
     },
+    type: {
+         type: String,
+          default: 'feature'
+         },
+
     details:{
         type:String,
         require:true,
