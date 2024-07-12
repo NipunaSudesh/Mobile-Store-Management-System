@@ -1,14 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const FeaturedMobile = require("../model/featuredmobile");
+const auth = require("../middleware/authMobile");
 
 //---------------------Featured Mobile-------------------
 
-router.post('/add', async (req, res) => {
+router.post('/add',auth, async (req, res) => {
     const product = new FeaturedMobile(req.body);
     try {
         const savedProduct = await product.save();
-        res.status(201).send(savedProduct);
+        const token =generateAuthTokenMobile();
+        res.status(201).send({savedProduct,token});
     } catch (error) {
         res.status(400).send({ error: 'Failed to add product', message: error.message });
     }
@@ -23,16 +25,17 @@ router.get('/get', async (req, res) => {
     }
 });
 
-router.get('/get/:id', async (req, res) => {
+router.get('/get/:id' ,async (req,res) =>{
+    // const _id =req.params.id;
     const _id = decodeURIComponent(req.params.id);
     try {
         const product = await FeaturedMobile.findById(_id);
-        if (!product) {
-            return res.status(404).send('Product not found');
+        if(!product){
+            res.status(404).send('product not found');
         }
-        res.status(200).send(product); 
+        res.status(201).send(product);
     } catch (error) {
-        res.status(400).send({ error: 'Failed to get product', message: error.message });
+        res.status(400).send({ error: 'Failed to get product', message: error.message })
     }
 });
 

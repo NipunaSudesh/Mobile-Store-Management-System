@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export const View = () => {
   const [mobile, setMobile] = useState({
@@ -14,28 +15,44 @@ export const View = () => {
     details:'',
     description: ''
 });
+const[isLatest,setIsLatest]=useState(false)
   const { id } = useParams();
+
+  const type = Cookies.get('type');
 console.log('id :'.id);
+console.log(type)
 
-  useEffect(() => {
-    const fetchMobile = async () => {
-      try {
-        const res = await axios.get(`http://localhost:5000/product/get/${id}`);
+useEffect(() => {
+  const fetchMobile = async () => {
+    try {
+     // if (!isLatest) {
+        const res = await axios.get(`http://localhost:5000/feature-mobile/get/${id}`);
         setMobile(res.data);
-        console.log('Product Data:', res.data);
+        console.log('Feature Mobile Data:', res.data);
+    //  }
+    } catch (error) {
+      console.log('Failed to fetch mobile', error);
+    }
+  };
 
-        if (res.data.type !== 'latest') {
-          const res = await axios.get(`http://localhost:5000/feature-mobile/get/${id}`);
-          setMobile(res.data);
-          console.log('Feature Mobile Data:', res.data);
-        }
-      } catch (error) {
-        console.log('Failed to fetch mobile', error);
-      }
-    };
+  // const fetchLatestMobile = async () => {
+  //   try {
+  //     if (isLatest) {
+  //       const latest = await axios.get(`http://localhost:5000/product/get/${id}`);
+  //       setMobile(latest.data);
+  //       console.log('Product Data:', latest.data);
+  //       setIsLatest(true);
+  //     }
+  //   } catch (error) {
+  //     console.log('Failed to fetch mobile', error);
+  //   }
+  // };
 
-    fetchMobile();
-  }, [id]);
+  fetchMobile();
+  //fetchLatestMobile();
+}, [id, isLatest]);
+
+
 
 
 

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Admin = require("../model/admin");
 const auth = require("../middleware/auth");
-const User =require("../model/user");
+
 
 router.post("/register", async (req, res) => {
   const { email, name, password } = req.body;
