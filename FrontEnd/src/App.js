@@ -21,6 +21,7 @@ import { EditLatestMobile } from './Pages/adminPanel/EditLatestMobile';
 import { EditFeatureMobile } from './Pages/adminPanel/EditFeatureMobile';
 import { MobileTable } from './Pages/adminPanel/MobileTable';
 import { BrandItems } from './Pages/BrandItems';
+import { View } from './Components/View';
 
 function Home() {
   return (
@@ -56,7 +57,7 @@ function App(){
     <Route path='/editfeature/:id' element={<EditFeatureMobile />} />
     <Route path='/mobile' element={<MobileTable />} />
     <Route path='/brandItems/:brand' element={<BrandItems />} />
-    <Route path='/view/:id' element={<view />} />
+    <Route path='/view/:id' element={<View />} />
   </Routes>
 </Router>
 

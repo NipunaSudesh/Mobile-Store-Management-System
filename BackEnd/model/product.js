@@ -26,6 +26,7 @@ const productSchema = new mongoose.Schema({
         require:true,
         trim: true     
     },
+    type: { type: String, default: 'latest' },
     details:{
         type:String,
         require:true,
