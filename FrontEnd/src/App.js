@@ -56,6 +56,7 @@ function App(){
     <Route path='/editfeature/:id' element={<EditFeatureMobile />} />
     <Route path='/mobile' element={<MobileTable />} />
     <Route path='/brandItems/:brand' element={<BrandItems />} />
+    <Route path='/view/:id' element={<view />} />
   </Routes>
 </Router>
 
