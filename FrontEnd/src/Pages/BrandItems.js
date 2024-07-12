@@ -45,6 +45,7 @@ export const BrandItems = () => {
           [...latestMobile, ...featureMobile].map((mobile) => (
             <ProductCard
               key={mobile._id}
+              id={mobile._id}
               name={mobile.name}
               price={mobile.price}
               image={mobile.imgURL}

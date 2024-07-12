@@ -1,12 +1,19 @@
 import React from 'react'
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 
 
-export const ProductCard = ({name,details,price,image}) => {
+export const ProductCard = ({name,details,price,image,id,type}) => {
+  const navigate =useNavigate();
   const discountedWithOutPrice = price * 1.05;
+
+  const hanleview = ()=>{
+    navigate(`/view/$id`);
+  }
+
   return (
     <div className='h-auto w-[240px] items-center rounded-5g shadow-lg flex flex-col  rounded-[5%] my-10 group hover:bg-gradient-to-b
-    hover:from-gray-900 hover:gray-900 transition-colors duration-1000'>
-      
+    hover:from-gray-900 hover:gray-900 transition-colors duration-1000'
+      onClick={hanleview}>
       <div className="relative w-full m-1 overflow-hidden rounded-lg group
        ">
   <img
@@ -15,13 +22,13 @@ export const ProductCard = ({name,details,price,image}) => {
     alt="src"
   />
   <div className="absolute mb-2 bottom-0 left-0 right-0 mt-3 ml-3 transition-opacity duration-500 opacity-0 group-hover:opacity-100 flex justify-center space-x-2">
-    <button
-      type="button"
+    <Link
+      type="button" 
       className="text-white bg-blue-500 w- hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
       name="addCard"
     >
       Add To Cart
-    </button>
+    </Link>
     <button
       type="button"
       className="text-white bg-blue-500 w-24 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
