@@ -7,7 +7,7 @@ export const ProductCard = ({name,details,price,image,id,type}) => {
   const discountedWithOutPrice = price * 1.05;
 
   const hanleview = ()=>{
-    navigate(`/view/$id`);
+    navigate(`/view/${id}`);
   }
 
   return (
