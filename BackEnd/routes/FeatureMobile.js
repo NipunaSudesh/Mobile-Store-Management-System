@@ -5,11 +5,11 @@ const auth = require("../middleware/authMobile");
 
 //---------------------Featured Mobile-------------------
 
-router.post('/add',auth, async (req, res) => {
+router.post('/add', async (req, res) => {
     const product = new FeaturedMobile(req.body);
     try {
         const savedProduct = await product.save();
-        const token =generateAuthTokenMobile();
+        const token =await product.generateAuthTokenMobile();
         res.status(201).send({savedProduct,token});
     } catch (error) {
         res.status(400).send({ error: 'Failed to add product', message: error.message });
