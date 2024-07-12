@@ -25,6 +25,7 @@ const fetchData = async ()=>{
       console.error(error);
     }
   }
+  
 
   return (
     <div id='FeaturedMobile' className="flex flex-col max-w-[1400px]">

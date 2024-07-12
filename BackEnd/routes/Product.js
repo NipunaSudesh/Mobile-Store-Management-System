@@ -1,11 +1,12 @@
 const express =require("express");
 const router =express.Router();
 const Product =require("../model/product");
+const auth = require("../middleware/authMobile");
 // const FeaturedMobile =require("../model/featuredmobile");
 
 // --------------------latest mobile--------------------------------- 
 
-router.post('/add', async (req, res) => {
+router.post('/add',auth, async (req, res) => {
     const productData = req.body;
     try {
         const newProduct = new Product(productData);
@@ -13,9 +14,11 @@ router.post('/add', async (req, res) => {
 
         const savedProduct = await newProduct.save();
       //  const savedFeaturedMobile = await newFeaturedMobile.save();
+      const token =generateAuthTokenMobile();
 
         res.status(201).json({
-            product: savedProduct
+            product: savedProduct,
+            token
           //  featuredMobile: savedFeaturedMobile
         });
     } catch (error) {
