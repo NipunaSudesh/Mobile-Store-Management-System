@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { TNavBar } from './navbar/TNavBar';
+import { RelatedMobile } from './RelatedMobile';
 
 export const ViewFeature = () => {
   const [mobile, setMobile] = useState({
@@ -44,7 +45,7 @@ useEffect(() => {
   return (
     <div>
       <TNavBar />
-    <div className=' w-full h-screen flex items-center justify-center'>
+    <div className=' w-full flex my-10'>
       <div className=' w-[90%] sml:w-[90%] lgl:w-[80%] h-[70%] flex  gap-2 '>
         <div className= ' w-2/5 items-center justify-center flex group'>
           
@@ -72,6 +73,9 @@ useEffect(() => {
         </div>
 
       </div>
+    </div>
+    <div>
+      <RelatedMobile brand={mobile.brand}/>
     </div>
     </div>
   )
