@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export const ProductCard = ({name,details,price,image,id,type}) => {
   const navigate =useNavigate();
-  const discountedWithOutPrice = price * 1.05;
+  const discountedWithOutPrice = price * 1.1;
 
   const hanleview = ()=>{
     if(type==='feature'){
