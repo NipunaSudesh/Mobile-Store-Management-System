@@ -50,6 +50,7 @@ export const BrandItems = () => {
               price={mobile.price}
               image={mobile.imgURL}
               details={mobile.details}
+              type={mobile.type}
             />
           ))
         }

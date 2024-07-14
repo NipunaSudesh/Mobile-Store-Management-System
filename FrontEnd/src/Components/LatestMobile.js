@@ -34,6 +34,7 @@ export const LatestMobile = () => {
             price={product.price}
             image={product.imgURL}
             details={product.details}
+            type={product.type}
             />
           ))}
 

@@ -59,7 +59,7 @@ const fetchData = async ()=>{
             price={mobile.price}
             image={mobile.imgURL}
             details={mobile.details}
-            type='feature'
+            type={mobile.type}
           />
         </SwiperSlide>
       ))}

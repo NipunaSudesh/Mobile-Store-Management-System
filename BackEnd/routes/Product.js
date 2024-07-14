@@ -50,7 +50,7 @@ router.get('/get/:id' ,async (req,res) =>{
 });
 
 router.get('/get/brand/:brand', async (req, res) => {
-    const brand = req.params.brand;
+    const brand = decodeURIComponent(req.params.brand);
     try {
       const brandItems = await Product.find({ brand: brand });
       if (brandItems.length === 0) {
