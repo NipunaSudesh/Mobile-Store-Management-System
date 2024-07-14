@@ -55,7 +55,15 @@ useEffect(() => {
         <div className= 'w-3/5  p-2 flex flex-col gap-4  justify-center'>
         <div className='w-full flex flex-col gap-4 text-start '>
         <h1 className='text-center text-2xl font-serif font-bold'>{mobile.name}</h1>
-        <h2 className=' text-xl font-semibold'>PRICE : <span className=' '>Rs.{mobile.price}</span> </h2>
+
+        <div className='flex flex-col gap-1'>
+        <h2 className=' text-xl font-semibold'>LKR  <span className=' '> {mobile.price}</span> </h2>
+        <div className='flex gap-4'>
+        <h2 className='text-gray-500 line-through'>LKR {mobile.price*1.1}</h2>
+        <h2 className='text-red-500'> 10% off</h2>
+        </div>
+        </div>
+
         <p className=''>{mobile.description}</p>
         <h2 className='font-semibold uppercase'>CATEGORIES : BRAND PHONES ,{mobile.brand}</h2>
         <h2 className='uppercase font-semibold'>details : {mobile.details}</h2>
