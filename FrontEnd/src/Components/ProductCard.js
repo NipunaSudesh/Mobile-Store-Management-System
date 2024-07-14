@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 export const ProductCard = ({name,details,price,image,id,type}) => {
@@ -7,8 +7,13 @@ export const ProductCard = ({name,details,price,image,id,type}) => {
   const discountedWithOutPrice = price * 1.05;
 
   const hanleview = ()=>{
-    navigate(`/view/${id}`);
+    if(type==='feature'){
+    navigate(`/ViewFeature/${id}`);
   }
+  else{
+    navigate(`/ViewLatest/${id}`);
+  }
+}
 
   return (
     <div className='h-auto w-[240px] items-center rounded-5g shadow-lg flex flex-col  rounded-[5%] my-10 group hover:bg-gradient-to-b

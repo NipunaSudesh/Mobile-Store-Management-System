@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const FeaturedMobile = require("../model/featuredmobile");
+const LatestMobile= require("../model/product");
 const auth = require("../middleware/authMobile");
 
 //---------------------Featured Mobile-------------------
@@ -25,6 +26,46 @@ router.get('/get', async (req, res) => {
     }
 });
 
+// router.get('/get/:id',auth ,async (req,res) =>{
+//     try {
+//         if (req.featured) { 
+//             const mobile = await FeaturedMobile.findById(req.featured._id);
+//             if (!mobile) {
+//               return res.status(404).send({ message: 'not found!' });
+//             }
+//             console.log(mobile);
+//             return res.status(200).send(mobile);
+//         }else if(req.latest){
+//             const mobile = await LatestMobile.findById(req.latest._id);
+//             if (!mobile) {
+//               return res.status(404).send({ message: 'not found!' });
+//             }
+//             console.log(mobile);
+//             return res.status(200).send(mobile);
+//         }else {
+//             return res.status(403).send({ error: 'Access denied' });
+//           }
+//     } catch (error) {
+//         res.status(400).send({ error: 'Failed to get product', message: error.message })
+//     }
+
+
+// });
+
+// router.get('/check/:id', async (req, res) => {
+//     try {
+//       const mobile = await FeaturedMobile.findById(req.params.id) ;
+  
+//       if (mobile) {
+//         return res.status(200).send({ exists: true });
+//       } else {
+//         return res.status(404).send({ exists: false });
+//       }
+//     } catch (error) {
+//       res.status(400).send({ error: 'Failed to check ID', message: error.message });
+//     }
+//   });
+  
 router.get('/get/:id' ,async (req,res) =>{
     // const _id =req.params.id;
     const _id = decodeURIComponent(req.params.id);
