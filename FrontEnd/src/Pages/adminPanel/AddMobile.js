@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export const AddMobile = () => {
     const [name, setName] = useState('');
@@ -46,6 +47,8 @@ export const AddMobile = () => {
         setDescription('');
         //window.location.reload();
         console.log(res.data);
+        // localStorage.setItem('mobileToken', res.data.token);
+        Cookies.set('tokenMobile', res.data.token);
       } catch (error) {
         console.error('Error:', error.response ? error.response.data : error.message);
         setMessage('Product Add failed! Please try again.');
