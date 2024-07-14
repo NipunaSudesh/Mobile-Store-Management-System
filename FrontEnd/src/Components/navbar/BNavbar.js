@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 
 
-export const BNavbar = () => {
+export const BNavBar = () => {
   const [activeLink, setActiveLink] = useState('Home');
   const [role, setRole] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
