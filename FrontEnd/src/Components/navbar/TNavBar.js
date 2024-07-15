@@ -24,7 +24,7 @@ export const TNavBar = () => {
   };
 
   return (
-    <div className='sticky top-0 z-40 items-center justify-center w-full'>
+    <div className=' items-center justify-center w-full'>
       <div className='  shadow   px-16 bg-bodyColor border-b-black flex w-full h-15 mx-auto justify-between items-center font-normal'>
         <a href='/'>
         <div>

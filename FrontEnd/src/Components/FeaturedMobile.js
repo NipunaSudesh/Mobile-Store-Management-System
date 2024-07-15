@@ -48,7 +48,7 @@ const fetchData = async ()=>{
           //   1280: { slidesPerView: 6 }, 
            
           // }}
-          autoplay={{ delay: 2000 }}
+          autoplay={{ delay: 1500 }}
           loop
         >
       {data.map((mobile) => (
