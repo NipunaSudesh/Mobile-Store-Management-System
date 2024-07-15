@@ -35,5 +35,15 @@ router.post('/cart', async (req, res) => {
     }
   });
 
+  router.delete('/delete/:id', async (req,res) =>{
+    // const _id=req.params.id;
+    const _id = decodeURIComponent(req.params.id);
+    try {
+        const deleteProduct = await Card.findByIdAndDelete(_id);
+        res.status(201).send('deleted successful!');
+    } catch (error) {
+        res.status(400).send({ error: 'Failed to delete product', message: error.message })
+    }
+ });
 
 module.exports = router;
