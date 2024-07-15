@@ -4,7 +4,7 @@ import {BNavBar} from './BNavBar';
 
 export const NavBar = () => {
   return (
-    <div className='w-full'>
+    <div className='w-full sticky top-0 z-40'>
       <div>
         <TNavBar />
       </div>

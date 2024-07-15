@@ -1,10 +1,20 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 
 export const ProductCard = ({name,details,price,image,id,type}) => {
   const navigate =useNavigate();
   const discountedWithOutPrice = price * 1.1;
+  const token = Cookies.get('token');
+
+  const handleAddCard =()=>{
+    if(token){
+      
+      navigate('/card');
+    }
+  }
+
 
   const hanleview = ()=>{
     if(type==='feature'){
@@ -30,7 +40,7 @@ export const ProductCard = ({name,details,price,image,id,type}) => {
     <Link
       type="button" 
       className="text-white bg-blue-500 w- hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-      name="addCard"
+      name="addCard" onClick={handleAddCard}
     >
       Add To Cart
     </Link>
