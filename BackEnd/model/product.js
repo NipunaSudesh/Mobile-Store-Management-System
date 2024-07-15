@@ -23,12 +23,12 @@ const productSchema = new mongoose.Schema({
         require:true,
         min: 1990,
     },
+    type: { type: String, default: 'latest' },
     brand:{
         type:String,
         require:true,
         trim: true     
     },
-    type: { type: String, default: 'latest' },
     details:{
         type:String,
         require:true,

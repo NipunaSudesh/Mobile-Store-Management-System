@@ -6,10 +6,30 @@ const CardSchema =new mongoose.Schema({
         ref:'user',
         require:true
     },
-    productId: { type: String, required: true },
-    name: { type: String, required: true },
-    price: { type: Number, required: true },
-    quantity: { type: Number, default: 1 },
+    name: {
+         type: String,
+          required: true },
+    price: { type: Number,
+         required: true 
+        },
+    quantity: {
+         type: Number,
+          default: 1 
+        },
+        brand:{
+            type:String,
+            require:true,
+            trim: true     
+        },
+        details:{
+            type:String,
+            require:true,
+            trim: true 
+        },
+        imgURL:{
+            type:String,
+            require:true, 
+        },
 });
 
 module.exports = mongoose.model('Cart', CardSchema);
