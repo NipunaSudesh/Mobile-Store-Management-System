@@ -4,8 +4,8 @@ import { MdDeleteForever } from "react-icons/md";
 
 export const Cart = () => {
   return (
-    <div className='bg-gray-200 w-full h-[100px] flex  text-start shadow-lg rounded-lg'>
-        <div className='flex gap-2 w-full'>
+    <div className='bg-gray-200 w-full flex  text-start shadow-lg rounded-lg'>
+        <div className='flex gap-2 w-full '>
           <div className='w-1/5 bg-red-200 m-2'>
           <img className='object-cover' src={apple13} alt='' />
           </div>
@@ -19,6 +19,7 @@ export const Cart = () => {
       <MdDeleteForever className='w-6 h-6 hover:text-black text-center text-gray-300 shadow-shadowOne' />
     </div>
         </div>
+  
     </div>
   )
 }
