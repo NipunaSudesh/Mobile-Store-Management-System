@@ -1,35 +1,26 @@
 const mongoose = require("mongoose");
 
 const CardSchema =new mongoose.Schema({
-    user:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'user',
-        require:true
-    },
-    name: {
-         type: String,
-          required: true },
-    price: { type: Number,
-         required: true 
+    userId: {
+         type: mongoose.Schema.Types.ObjectId,
+          ref: 'User',
+           required: true 
         },
+    productId: {
+         type: mongoose.Schema.Types.ObjectId,
+          ref: 'FeaturedMobile',
+           required: true
+         },
+         productType: {
+             type: String,
+              enum: ['FeaturedMobile', 'Product'],
+              required: true 
+            },
     quantity: {
          type: Number,
           default: 1 
-        },
-        brand:{
-            type:String,
-            require:true,
-            trim: true     
-        },
-        details:{
-            type:String,
-            require:true,
-            trim: true 
-        },
-        imgURL:{
-            type:String,
-            require:true, 
-        },
-});
+        }
+
+},{ timestamps: true });
 
 module.exports = mongoose.model('Cart', CardSchema);
