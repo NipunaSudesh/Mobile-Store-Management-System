@@ -7,6 +7,7 @@ const productRouter = require('./Routes/Product');
 const featureMobileRouter = require('./Routes/FeatureMobile');
 const adminRouter = require('./Routes/Admin');
 const orderRouter = require('./Routes/Orders');
+const cardRouter = require('./Routes/Card');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use('/product', productRouter);
 app.use('/feature-mobile', featureMobileRouter);
 app.use('/admin', adminRouter);
 app.use('/order', orderRouter);
+app.use('/card', cardRouter);
 
 const port = 5000;
 
