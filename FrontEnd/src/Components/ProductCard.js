@@ -48,7 +48,7 @@ export const ProductCard = ({name,details,price,image,id,type}) => {
         <h2 className='font-semibold text-blue-500'>{name}</h2>
         <h2 className='font-normal'>{details}</h2>
         <div className='flex gap-4'>
-            <h3><span className=' line-through text-gray-400'>RS.{Math.floor(price * 1.05)}</span></h3>
+            <h3><span className=' line-through text-gray-400'>RS.{Math.floor(discountedWithOutPrice)}</span></h3>
             <h3><span className='text-red-500'>RS.{price}</span></h3>
         </div>
 

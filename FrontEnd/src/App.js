@@ -10,7 +10,7 @@ import {Contact} from './Components/Contact';
 import { Footer } from './Components/Footer ';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { SignUp } from './Pages/SignUp';
-import { AddCard } from './Pages/AddCard';
+import { AddCard } from './Pages/AddCard/AddCard';
 import { Login } from './Pages/Login';
 import { AddProduct } from './Pages/adminPanel/AddProduct';
 import { Profile } from './Pages/Profile';
