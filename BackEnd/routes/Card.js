@@ -4,7 +4,7 @@ const Card =require('../model/card');
 const Latest =require("../model/product");
 const Featured =require("../model/featuredmobile");
 
-router.post('/cart', async (req, res) => {
+router.post('/add', async (req, res) => {
     const { userId, productId, productType } = req.body;
   
     try {
@@ -25,11 +25,11 @@ router.post('/cart', async (req, res) => {
       const cartItem = new Cart({
         userId,
         productId,
-        productType
+        
       });
-  
+      const newproduct = new Card({ userId, productId });
       await cartItem.save();
-      res.status(201).json(cartItem);
+      res.status(201).json(newproduct);
     } catch (error) {
       res.status(500).json({ message: 'Error adding item to cart', error });
     }

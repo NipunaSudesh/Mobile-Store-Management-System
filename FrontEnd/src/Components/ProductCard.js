@@ -1,20 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import axios from 'axios';
 
 
 export const ProductCard = ({name,details,price,image,id,type}) => {
+  const [userId,setUserId]=useState('');
+  const [productId,setProductId]=useState('');
+  const [pType,setPType]=useState('');
   const navigate =useNavigate();
   const discountedWithOutPrice = price * 1.1;
   const token = Cookies.get('token');
 
-  const handleAddCard =()=>{
-    if(token){
-      
-      navigate('/card');
-    }
-  }
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/user/me', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUserId(res.data._id);
+        setProductId(id);
+        setPType(type);
+      } catch (error) {
+        console.log('Failed to fetch user', error);
+      }
+    };
+    fetchUser();
+  }, [id, type, token]);
+
+  const handleAddCard = async (e) => {
+    e.stopPropagation();
+    try {
+      if (token) {
+        await axios.post('http://localhost:5000/card/add', {
+          userId,
+          productId,
+          productType: pType,
+        });
+        console.log('Added to cart');
+        navigate('/cart');
+      } else {
+        navigate('/');
+      }
+    } catch (error) {
+      console.log('Failed to add to cart', error);
+    }
+  };
 
   const hanleview = ()=>{
     if(type==='feature'){
