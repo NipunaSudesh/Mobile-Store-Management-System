@@ -77,7 +77,7 @@ export const AddCard = () => {
         </div>
 
         <div className='w-2/5 flex flex-col gap-2'>
-          <div className='m-4 bg-gray-300 flex flex-col justify-center my-auto mx-auto w-[90%] rounded-lg shadow-xl p-4'>
+          <div className='m-4 bg-gray-200 flex flex-col justify-center my-auto mx-auto w-[90%] rounded-lg shadow-xl p-4'>
             <h1 className='text-xl font-semibold'>Summary</h1>
             <div className='flex flex-col gap-1'>
               <div className='flex justify-between'>
