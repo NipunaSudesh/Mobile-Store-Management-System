@@ -45,10 +45,10 @@ router.post('/add', async (req, res) => {
   }
 });
 
-router.get('/get/:UesrId',async(req,res)=>{
-  const UserId = req.params.UesrId;
+router.get('/get/:UserId',async(req,res)=>{
+  const UserId = req.params.UserId;
   try {
-    const cardItem =await Card.find({UserId:UserId});
+    const cardItem =await Card.find({userId:UserId});
     if(!cardItem){
       console.log('Not found!');
     }
@@ -58,10 +58,10 @@ router.get('/get/:UesrId',async(req,res)=>{
   }
 });
 
-router.get('/get/:ProductId',async(req,res)=>{
-  const productId = req.params.ProductId;
+router.get('/get',async(req,res)=>{
+  
   try {
-    const cardItem =await Card.Featured({productId:productId});
+    const cardItem =await Card.find();
     if(!cardItem){
       console.log('Not found!');
     }
