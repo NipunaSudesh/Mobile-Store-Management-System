@@ -8,13 +8,30 @@ const Featured = require("../model/featuredmobile");
 
 
 router.post('/add', async (req, res) => {
-  const { userId, productId } = req.body;
+  const { userId, productId ,type } = req.body;
 
   try {
-    // Create a new cart item
+    // let product;
+    // switch (type) {
+    //   case 'Latest':
+    //     product = await Latest.findById(productId);
+    //     break;
+    //   case 'Featured':
+    //     product = await Featured.findById(productId);
+    //     break;
+    //   default:
+    //     return res.status(400).json({ message: 'Invalid product type' });
+    // }
+
+    // if (!product) {
+    //   return res.status(404).json({ message: 'Product not found' });
+    // }
+
+
     const cartItem = new Cart({
       userId: userId,
       productId: productId,
+      type:type
     });
 
     // Save the cart item to the database
