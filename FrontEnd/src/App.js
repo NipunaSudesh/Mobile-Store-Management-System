@@ -24,6 +24,7 @@ import { BrandItems } from './Pages/BrandItems';
 import { ViewLatest } from './Components/ViewLatest';
 import { ViewFeature } from './Components/ViewFeature';
 
+
 function Home() {
   return (
 <div className='flex  flex-col gap-5 items-center '>
@@ -60,6 +61,7 @@ function App(){
     <Route path='/brandItems/:brand' element={<BrandItems />} />
     <Route path='/viewLatest/:id' element={<ViewLatest />} />
     <Route path='/viewFeature/:id' element={<ViewFeature />} />
+    
   </Routes>
 </Router>
 
