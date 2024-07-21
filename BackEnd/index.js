@@ -7,7 +7,7 @@ const productRouter = require('./Routes/Product');
 const featureMobileRouter = require('./Routes/FeatureMobile');
 const adminRouter = require('./Routes/Admin');
 const orderRouter = require('./Routes/Orders');
-const cartRouter = require('./Routes/Cart');
+const cartRouter = require('./Routes/Card');
 
 const app = express();
 
