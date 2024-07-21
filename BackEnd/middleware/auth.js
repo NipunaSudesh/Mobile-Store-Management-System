@@ -6,14 +6,14 @@ const auth = async (req, res, next) => {
 
   try {
     const token = req.header("Authorization").replace("Bearer ", "").trim();
-    console.log("Received token:", token);
+    //console.log("Received token:", token);
 
     if (!token) {
       throw new Error("Token not provided");
     }
 
     const decoded = jwt.verify(token, "mysecret");
-    console.log("Decoded token:", decoded);
+  //  console.log("Decoded token:", decoded);
 
     const admin = await Admin.findOne({ _id: decoded._id, 'tokens.token': token });
     if (admin) {

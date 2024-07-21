@@ -36,6 +36,7 @@ export const ProductCard = ({ name, details, price, image, id, type }) => {
     e.stopPropagation();
     try {
       if (token) {
+        navigate('/addcard');
         await axios.post('http://localhost:5000/card/add', {
           userId,
           productId,
@@ -46,7 +47,7 @@ export const ProductCard = ({ name, details, price, image, id, type }) => {
           },
         });
         console.log('Added to cart');
-        navigate('/addcard');
+
       } else {
         navigate('/');
       }

@@ -42,7 +42,20 @@ router.post('/add', async (req, res) => {
   }
 });
 
-module.exports = router;
+router.get('/get/:UesrId',async(req,res)=>{
+  const UserId = req.params.UesrId;
+  try {
+    const cardItem =await Card.find({UserId:UserId});
+    if(!cardItem){
+      console.log('Not found!');
+    }
+    res.status(200).send(cardItem);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred', message: error.message });
+  }
+});
+
+
 
 
 
