@@ -8,6 +8,10 @@ export const AddCard = () => {
   const token = Cookies.get('token');
   const [userId, setUserId] = useState('');
   const [mobile, setMobile] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
+  const [shippingFee, setShippingFee] = useState(0);
+  const perItemShippingFee = 750;
+  const total = subTotal + shippingFee;
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -35,6 +39,10 @@ export const AddCard = () => {
         try {
           const res = await axios.get(`http://localhost:5000/card/get/${userId}`);
           setMobile(res.data);
+          const calculatedSubTotal = res.data.reduce((acc, item) => acc + item.price * item.quantity, 0);
+          const calculatedShippingFee = res.data.reduce((acc, item) => acc + perItemShippingFee * item.quantity, 0);
+          setSubTotal(calculatedSubTotal);
+          setShippingFee(calculatedShippingFee);
         } catch (error) {
           console.log('Failed to fetch product', error);
         }
@@ -74,15 +82,15 @@ export const AddCard = () => {
             <div className='flex flex-col gap-1'>
               <div className='flex justify-between'>
                 <h2>Sub Total</h2>
-                <h2>LKR.12000</h2>
+                <h2>LKR.{subTotal}</h2>
               </div>
               <div className='flex justify-between'>
                 <h2>Shipping Fee</h2>
-                <h2>LKR.120</h2>
+                <h2>LKR.{shippingFee}</h2>
               </div>
               <div className='flex justify-between'>
                 <h2>Total</h2>
-                <h2>LKR.12120</h2>
+                <h2>LKR.{total}</h2>
               </div>
               <div className='flex'>
                 <button
