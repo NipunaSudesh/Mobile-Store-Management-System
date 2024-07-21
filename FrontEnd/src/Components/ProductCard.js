@@ -5,8 +5,11 @@ import axios from 'axios';
 
 export const ProductCard = ({ name, details, price, image, id, type }) => {
   const [userId, setUserId] = useState('');
-  const [productId] = useState(id);
-  const [pType] = useState(type);
+  const [ProductName] = useState(name);
+  const [ProductPrice] = useState(price);
+  const [ProducImage] = useState(image);
+  const [ProductDetails] = useState(details);
+  const [ProductType] = useState(type);
   const navigate = useNavigate();
   const discountedWithoutPrice = price * 1.1;
   const token = Cookies.get('token');
@@ -36,23 +39,25 @@ export const ProductCard = ({ name, details, price, image, id, type }) => {
     e.stopPropagation();
     try {
       if (token) {
-        navigate('/addcard');
         await axios.post('http://localhost:5000/card/add', {
           userId,
-          productId,
-          type: pType,
+          name: ProductName,
+          price: ProductPrice,
+          details: ProductDetails,
+          imgURL: ProducImage,
+          type: ProductType,
         }, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log('Added to cart');
-
+        console.log('Added to card');
+        navigate('/addcard');
       } else {
         navigate('/');
       }
     } catch (error) {
-      console.log('Failed to add to cart', error);
+      console.log('Failed to add to card', error);
     }
   };
 
@@ -76,7 +81,7 @@ export const ProductCard = ({ name, details, price, image, id, type }) => {
         <div className="absolute mb-2 bottom-0 left-0 right-0 mt-3 ml-3 transition-opacity duration-500 opacity-0 group-hover:opacity-100 flex justify-center space-x-2">
           <Link
             type="button"
-            className="text-white bg-blue-500 w- hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             onClick={handleAddCard}
           >
             Add To Cart

@@ -7,30 +7,33 @@ const mongoose = require('mongoose');
 const User = require('../model/user');
 
 router.post('/add', async (req, res) => {
-  const { userId, productId, type } = req.body;
+  const { userId, type,name,price,imgURL,details} = req.body;
 
   try {
-    let product;
+  //   let product;
 
-    switch (type) {
-      case 'Latest':
-        product = await Latest.findById(productId);
-        break;
-      case 'feature':
-        product = await Featured.findById(productId);
-        break;
-      default:
-        return res.status(400).json({ message: 'Invalid product type' });
-    }
+  //   switch (type) {
+  //     case 'Latest':
+  //       product = await Latest.findById(productId);
+  //       break;
+  //     case 'feature':
+  //       product = await Featured.findById(productId);
+  //       break;
+  //     default:
+  //       return res.status(400).json({ message: 'Invalid product type' });
+  //   }
 
-    if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
-    }
+  //   if (!product) {
+  //     return res.status(404).json({ message: 'Product not found' });
+  //   }
 
     const cardItem = new Card({
       userId: new mongoose.Types.ObjectId(userId),
-      productId: new mongoose.Types.ObjectId(productId),
-      type: type,
+      name,
+      price,
+      details,
+      imgURL,
+      type,
     });
 
     await cardItem.save();
@@ -55,6 +58,18 @@ router.get('/get/:UesrId',async(req,res)=>{
   }
 });
 
+router.get('/get/:ProductId',async(req,res)=>{
+  const productId = req.params.ProductId;
+  try {
+    const cardItem =await Card.Featured({productId:productId});
+    if(!cardItem){
+      console.log('Not found!');
+    }
+    res.status(200).send(cardItem);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred', message: error.message });
+  }
+});
 
 
 
