@@ -36,7 +36,7 @@ export const Login = () => {
             setIsMsgError(false);
             clearMessageAfterTimeout();
             setTimeout(() => {
-              navigate('/profile');
+              navigate('/');
             }, 2000);
           } else {
             setMessage('Login failed! Please check your credentials and try again.');

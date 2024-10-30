@@ -22,7 +22,7 @@ router.get('/get', async (req, res) => {
         const products = await FeaturedMobile.find();
         res.status(200).send(products); 
     } catch (error) {
-        res.status(400).send({ error: 'Failed to get products', message: error.message });
+        res.status(400).send({ error: 'Failed to get products aaaaaaaaaaa', message: error.message });
     }
 });
 

@@ -43,6 +43,7 @@ export const AddCard = () => {
           const calculatedShippingFee = res.data.reduce((acc, item) => acc + perItemShippingFee * item.quantity, 0);
           setSubTotal(calculatedSubTotal);
           setShippingFee(calculatedShippingFee);
+        
         } catch (error) {
           console.log('Failed to fetch product', error);
         }

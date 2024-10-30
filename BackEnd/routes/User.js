@@ -51,13 +51,13 @@ router.get("/users",async (req,res)=>{
     }catch(error){
         res.status(500).send({ error: 'Server error' })
     }
+//         const admins = await Admin.find({});
+//         return res.status(200).send({ message: 'Admin users fetched successfully', admins });
+//       } else if (req.user) {  
 });
 // router.get("/users", auth, async (req, res) => {
 //     try {
 //       if (req.admin) {  
-//         const admins = await Admin.find({});
-//         return res.status(200).send({ message: 'Admin users fetched successfully', admins });
-//       } else if (req.user) {  
 //         const users = await User.find({});
 //         return res.status(200).send({ message: 'Regular users fetched successfully', users });
 //       } else {
