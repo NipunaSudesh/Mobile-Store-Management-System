@@ -27,7 +27,7 @@ console.log('id :'.id);
 useEffect(() => {
   const fetchMobile = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/product/get/${id}`);
+      const res = await axios.get(`/product/get/${id}`);
       setMobile(res.data);
       console.log('Feature Mobile Data:', res.data);
     //  const discountedWithOutPrice ={res.data.price}*1.1;

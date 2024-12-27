@@ -33,7 +33,7 @@ export const AddMobile = () => {
   
         console.log('Sending payload:', JSON.stringify(payload, null, 2));
   
-        const res = await axios.post('http://localhost:5000/feature-mobile/add', payload);
+        const res = await axios.post('/feature-mobile/add', payload);
         setMessage('Added Product successful!');
         setIsMsgError(false);
         clearMessageAfterTimeout();

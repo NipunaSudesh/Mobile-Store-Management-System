@@ -13,7 +13,7 @@ useEffect(()=>{
 
 const FetchLatesMobile  = async ()=>{
   try {
-    const res =await axios.get('http://localhost:5000/product/get');
+    const res =await axios.get('/product/get');
     setMobile(res.data);
     console.log(res.data);
   } catch (error) {
@@ -22,7 +22,7 @@ const FetchLatesMobile  = async ()=>{
 };
 const fetchFeatureMobile   = async ()=>{
   try {
-    const res =await axios.get('http://localhost:5000/feature-mobile/get');
+    const res =await axios.get('/feature-mobile/get');
     setFMobile(res.data);
   } catch (error) {
     console.error("Error loading mobile:", error);
@@ -31,7 +31,7 @@ const fetchFeatureMobile   = async ()=>{
 
 const handleDelete = async (id)=>{
   try {
-    await axios.delete(`http://localhost:5000/product/delete/${id}`);
+    await axios.delete(`/product/delete/${id}`);
     FetchLatesMobile();
   } catch (error) {
     console.error('Error deleting mobile:', error);
@@ -39,7 +39,7 @@ const handleDelete = async (id)=>{
 }
 const handleFeatureDelete = async (id)=>{
   try {
-    await axios.delete(`http://localhost:5000/feature-mobile/delete/${id}`);
+    await axios.delete(`/feature-mobile/delete/${id}`);
     fetchFeatureMobile();
   } catch (error) {
     console.error('Error deleting mobile:', error);

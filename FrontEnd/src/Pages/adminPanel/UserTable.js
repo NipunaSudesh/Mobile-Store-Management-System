@@ -12,7 +12,7 @@ const [users,setUsers]=useState([]);
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/user/users');
+      const res = await axios.get('/user/users');
       setUsers(res.data);
       console.log(res.data);
     } catch (error) {
@@ -24,7 +24,7 @@ const [users,setUsers]=useState([]);
   //   try {
   //     const token = localStorage.getItem('authToken'); 
   //     console.log(token)
-  //     await axios.delete(`http://localhost:5000/user/delete/${id}`, {
+  //     await axios.delete(`/user/delete/${id}`, {
   //       headers: {
   //         'Authorization': `Bearer ${token}`
   //       }
@@ -38,7 +38,7 @@ const [users,setUsers]=useState([]);
   // };
   const handleDelete =async (id) =>{
     try {
-      await axios.delete(`http://localhost:5000/user/delete/${id}`);
+      await axios.delete(`/user/delete/${id}`);
       console.log('deleted!!');
       fetchUsers();
     } catch (error) {

@@ -17,7 +17,7 @@ export const ProductCard = ({ name, details, price, image, id, type }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/user/me', {
+        const res = await axios.get('/user/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -39,7 +39,7 @@ export const ProductCard = ({ name, details, price, image, id, type }) => {
     e.stopPropagation();
     try {
       if (token) {
-        await axios.post('http://localhost:5000/card/add', {
+        await axios.post('/card/add', {
           userId,
           name: ProductName,
           price: ProductPrice,

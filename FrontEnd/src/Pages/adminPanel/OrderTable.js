@@ -10,7 +10,7 @@ export const OrderTable = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/order/get');
+      const res = await axios.get('/order/get');
       setOrders(res.data);
       console.log('Fetched Orders!');
     } catch (error) {
@@ -20,7 +20,7 @@ export const OrderTable = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/order/delete/${id}`);
+      await axios.delete(`/order/delete/${id}`);
       fetchOrders();
     } catch (error) {
       console.error('Error deleting order:', error);

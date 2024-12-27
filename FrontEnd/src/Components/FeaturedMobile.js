@@ -18,7 +18,7 @@ useEffect(()=>{
 
 const fetchData = async ()=>{
     try {
-      const res =await axios.get('http://localhost:5000/feature-mobile/get');
+      const res =await axios.get('/feature-mobile/get');
       setDate(res.data);
       console.log('get data');
     } catch (error) {
