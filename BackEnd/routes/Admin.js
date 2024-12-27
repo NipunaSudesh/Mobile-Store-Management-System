@@ -14,9 +14,6 @@ router.post("/register", async (req, res) => {
     }
     const newAdmin = new Admin({ email, name, password });
     await newAdmin.save();
-    // const newUser = new User({ email, name, password });
-    // await newUser.save();
-    //const token = await newAdmin.generateAuthToken();
     res.status(201).send(newAdmin);
   } catch (error) {
     console.error('Error during registration:', error);

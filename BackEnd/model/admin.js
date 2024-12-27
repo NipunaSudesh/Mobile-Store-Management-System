@@ -37,7 +37,6 @@ adminSchema.pre("save", async function(next) {
     next();
 });
 
-
 adminSchema.statics.findByCredentials = async (email, password) => {
     const admin = await Admin.findOne({ email });
 
@@ -70,17 +69,6 @@ adminSchema.methods.generateAuthToken =async function (){
    
     return token;
    }
-
-// userSchema.methods.generateAuthToken = async function() {
-//     const user = this;
-//     const token = jwt.sign({ _id: user._id.toString() }, "mysecret");
-//     console.log("Generated token:", token); 
-//     user.tokens.push({ token });
-//     await user.save();
-//     return token;
-//   };
-  
-
 
 const Admin = mongoose.model("Admin", adminSchema);
 module.exports = Admin;

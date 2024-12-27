@@ -32,7 +32,7 @@ export const AddProduct = () => {
 
       console.log('Sending payload:', JSON.stringify(payload, null, 2));
 
-      const res = await axios.post('http://localhost:5000/product/add', payload);
+      const res = await axios.post('/product/add', payload);
       setMessage('Added Product successful!');
       setIsMsgError(false);
       clearMessageAfterTimeout();

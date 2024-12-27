@@ -20,7 +20,7 @@ useEffect(()=>{
 
 const fetchUsersCount = async ()=>{
   try {
-    const res =await axios.get('http://localhost:5000/user/count');
+    const res =await axios.get('/user/count');
     setUserCount(res.data.count);
   } catch (error) {
     console.error('Error fetching user count:', error);
@@ -28,7 +28,7 @@ const fetchUsersCount = async ()=>{
 }
 const fetchLatestsCount = async ()=>{
   try {
-    const res =await axios.get('http://localhost:5000/product/count');
+    const res =await axios.get('/product/count');
     setLatestCount(res.data.count);
   } catch (error) {
     console.error('Error fetching user count:', error);
@@ -36,7 +36,7 @@ const fetchLatestsCount = async ()=>{
 }
 const fetchFeaturesCount = async ()=>{
   try {
-    const res =await axios.get('http://localhost:5000/feature-mobile/count');
+    const res =await axios.get('/feature-mobile/count');
     setFeatureCount(res.data.count);
   } catch (error) {
     console.error('Error fetching user count:', error);
@@ -44,7 +44,7 @@ const fetchFeaturesCount = async ()=>{
 }
 const fetchOrdersCount = async ()=>{
   try {
-    const res =await axios.get('http://localhost:5000/order/count');
+    const res =await axios.get('/order/count');
     setOrderCount(res.data.count);
   } catch (error) {
     console.error('Error fetching user count:', error);

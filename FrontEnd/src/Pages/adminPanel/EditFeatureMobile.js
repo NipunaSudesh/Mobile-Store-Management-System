@@ -25,7 +25,7 @@ export const EditFeatureMobile = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/feature-mobile/get/${id}`);
+            const res = await axios.get(`/feature-mobile/get/${id}`);
             setMobile(res.data);
         } catch (error) {
             console.error('Error fetching mobile data:', error);
@@ -39,7 +39,7 @@ export const EditFeatureMobile = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            await axios.patch(`http://localhost:5000/feature-mobile/update/${id}`, mobile);
+            await axios.patch(`/feature-mobile/update/${id}`, mobile);
             setMessage('Product updated successfully!');
             setIsMsgError(false);
             clearMessageAfterTimeout();

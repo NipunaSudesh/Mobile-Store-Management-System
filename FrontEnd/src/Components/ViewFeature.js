@@ -27,7 +27,7 @@ console.log(type)
 useEffect(() => {
   const fetchMobile = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/feature-mobile/get/${id}`);
+      const res = await axios.get(`/feature-mobile/get/${id}`);
       setMobile(res.data);
       console.log('Feature Mobile Data:', res.data);
     } catch (error) {

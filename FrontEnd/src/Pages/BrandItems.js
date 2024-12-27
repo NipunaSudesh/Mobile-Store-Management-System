@@ -15,7 +15,7 @@ export const BrandItems = () => {
 
   const fetchLatestBrandData = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/product/get/brand/${brand}`);
+      const res = await axios.get(`/product/get/brand/${brand}`);
       setLatestMobile(res.data);
       console.log('latest mobile');
       console.log(res.data);

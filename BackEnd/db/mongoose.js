@@ -1,17 +1,16 @@
-const mongoose=require("mongoose");
-const mongodbUrl ="mongodb+srv://nipuna:pass123@cluster0.lvhm2yt.mongodb.net/smartMobile?retryWrites=true&w=majority&appName=Cluster0";
+const mongoose = require('mongoose');
+require('dotenv').config(); // Load environment variables from .env file
 
-mongoose.connect(mongodbUrl,
-{useNewUrlParser:true,
-useUnifiedTopology:true }
-);
+const mongodbUrl = process.env.MONGODB_URL;
 
+mongoose.connect(mongodbUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
+const connection = mongoose.connection;
+mongoose.set('strictQuery', true);
 
-
-const connection =mongoose.connection
-mongoose.set('strictQuery',true);
-
-connection.once("open",()=>{
-    console.log("mongoDB connected!")
+connection.once('open', () => {
+    console.log('MongoDB database connection established successfully');
 });

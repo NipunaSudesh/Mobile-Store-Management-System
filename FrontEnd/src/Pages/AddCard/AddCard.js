@@ -16,7 +16,7 @@ export const AddCard = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/user/me', {
+        const res = await axios.get('/user/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

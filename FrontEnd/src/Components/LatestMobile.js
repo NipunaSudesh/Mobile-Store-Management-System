@@ -8,7 +8,7 @@ export const LatestMobile = () => {
 
   const fetchData = async ()=>{
     try {
-      const res =await axios.get('http://localhost:5000/product/get');
+      const res =await axios.get('/product/get');
       setData(res.data);
       console.log(res.data)
     } catch (error) {
