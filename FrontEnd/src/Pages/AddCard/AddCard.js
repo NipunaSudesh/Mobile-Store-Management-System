@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { TNavBar } from '../../Components/navbar/TNavBar';
+import { NavBar } from '../../Components/navbar/NavBar';
 import { CardItem } from './CardItem';
 import Cookies from 'js-cookie';
 import axios from 'axios';
@@ -55,10 +55,10 @@ export const AddCard = () => {
   return (
     <div className='flex flex-col gap-4 w-full'>
       <div>
-        <TNavBar />
+        <NavBar />
       </div>
-      <div className='flex gap-4 mx-10 w-[90%]'>
-        <div className='w-3/5 flex flex-col gap-2'>
+      <div className='flex flex-col md:flex-row gap-4 mx-10 my-4'>
+        <div className='w-full md:w-3/5 flex flex-col gap-2'>
           <h1 className='text-xl font-semibold'>Shopping Cart</h1>
           <div className='mx-2'>
             <h2 className='text-sm font-semibold'>Shopping by Smart Mobile</h2>
@@ -77,7 +77,7 @@ export const AddCard = () => {
           </div>
         </div>
 
-        <div className='w-2/5 flex flex-col gap-2'>
+        <div className='w-full md:w-2/5 flex flex-col gap-2'>
           <div className='m-4 bg-gray-200 flex flex-col justify-center my-auto mx-auto w-[90%] rounded-lg shadow-xl p-4'>
             <h1 className='text-xl font-semibold'>Summary</h1>
             <div className='flex flex-col gap-1'>

@@ -23,20 +23,39 @@ router.post("/register", async (req, res) => {
     res.status(500).send({ error: error.message || 'Server error' });
   }
 });
-
 router.post("/login", async (req, res) => {
   try {
     const admin = await Admin.findByCredentials(req.body.email, req.body.password);
-    const token = await admin.generateAuthToken();
+
+    // ✅ First check if admin exists
     if (!admin) {
-        return res.status(404).send({ message: 'Invalid credentials' });
-      }
-    console.log(admin)
-    res.send({ admin, token });
+      return res.status(404).json({ message: "Invalid credentials" });
+    }
+
+    // ✅ Only then generate token
+    const token = await admin.generateAuthToken();
+
+    console.log(admin);
+    res.status(200).json({ admin, token });
+
   } catch (error) {
-    res.status(500).json({ error: error.message || 'Server error' });
+    res.status(400).json({ error: error.message || "Server error" });
   }
 });
+
+// router.post("/login", async (req, res) => {
+//   try {
+//     const admin = await Admin.findByCredentials(req.body.email, req.body.password);
+//     const token = await admin.generateAuthToken();
+//     if (!admin) {
+//         return res.status(404).send({ message: 'Invalid credentials' });
+//       }
+//     console.log(admin)
+//     res.send({ admin, token });
+//   } catch (error) {
+//     res.status(500).json({ error: error.message || 'Server error' });
+//   }
+// });
 
 router.get("/Admins",auth, async (req, res) => {
   try {

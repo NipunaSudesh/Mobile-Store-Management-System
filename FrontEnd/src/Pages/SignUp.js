@@ -56,7 +56,7 @@ export const SignUp = () => {
 
 
   return (
-    <div className='flex h-screen items-center justify-center'>
+    <div className='flex h-screen items-center justify-center  mx-4'>
     <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4 py-2 bg-green-400 w-full'>Register</h1>
         {message && (
@@ -64,7 +64,7 @@ export const SignUp = () => {
             {message}
           </div>)}
         <form className='w-full max-w-sm' onSubmit={handleSubmit}>
-            <div className='mb-4'>
+            <div className='mb-4  mx-4'>
                 <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="username">Name</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
@@ -76,7 +76,7 @@ export const SignUp = () => {
                 onChange={(e)=>setName(e.target.value)}
                 />
             </div>
-            <div className='mb-4'>
+            <div className='mb-4  mx-4'>
                 <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="email">Email</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
@@ -88,7 +88,7 @@ export const SignUp = () => {
                 onChange={(e)=>setEmail(e.target.value)}
                 />
             </div>
-            <div className='mb-4'>
+            <div className='mb-4  mx-4'>
                 <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="password">Password</label>
                 <input 
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'

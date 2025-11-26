@@ -20,9 +20,9 @@ export const ViewFeature = () => {
 
   const { id } = useParams();
 
-  const type = Cookies.get('type');
-console.log('id :'.id);
-console.log(type)
+//   const type = Cookies.get('type');
+// console.log('id :'.id);
+// console.log(type)
 
 useEffect(() => {
   const fetchMobile = async () => {

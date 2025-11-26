@@ -6,11 +6,12 @@ import { MdMobileScreenShare } from "react-icons/md";
 
 export const Contact = () => {
   return (
-    <div id='AboutUs' className='flex gap-8 w-full bg-gray-200 my-5 py-5'>
-        <div className='w-1/3 mt-4 items-center'>
+  <div className='bg-gray-200 flex w-full'>
+      <div id='AboutUs' className='flex flex-col md:flex-row gap-8 w-full item-center justify-center py-5'>
+       <div className='flex gap-2 p-4 w-full'>
+         <div className='w-1/2 md:1/3 mt-4 items-center gap-2'>
         <img src={logo1} alt='logo' width="80" height="80" className='mx-auto mb-1 logo '/>
             <h2 className='text-2xl text-center'>Smart Mobile(Pvt) Ltd</h2>
-
             <div className='flex gap-2 mt-2 hover:text-blue-500'>
                 <FaAddressCard className='h-6 w-6'/>
             <p>Hunupitiya Road,dalugama,Kelaniya</p>
@@ -31,7 +32,7 @@ export const Contact = () => {
         </div>
         
         
-        <div className='w-1/3 mt-10'>
+        <div className='w-1/2 md:1/3 mt-28 md:mt-10 ml-2'>
             <h2 className='text-xl '>CUSTOMER CARE</h2>
             <p className='gap-2 mt-2 hover:text-blue-500'>My Account</p>
             <p className='gap-2 mt-2 hover:text-blue-500'>Privacy Policy</p>
@@ -39,12 +40,14 @@ export const Contact = () => {
             <p className='gap-2 mt-2 hover:text-blue-500'>Terms & Conditions</p>
             <p className='gap-2 mt-2 hover:text-blue-500'>Online Payments</p>
         </div>
+       </div>
 
-        <div className='w-1/2 '>
+        <div className='w-full md:w-1/2 '>
         <div className='flex m-4 '>
+
     <div className=' flex h-auto w-[500px] flex-col items-center justify-center  py-2 rounded shadow-2xl border-2'>
         <h1 className='text-center text-2xl mb-4'>Send Massage</h1>
-        <form className='w-full max-w-sm'>
+        <form className='w-full max-w-sm px-4 py-4'>
 
             <div className='mb-4'>
                 <lable className='block text-gray-700 text-sm font-bold mb-2' htmlFor="name">Full Name</lable>
@@ -94,5 +97,6 @@ export const Contact = () => {
     </div>
             </div>
     </div>
+  </div>
   )
 }
