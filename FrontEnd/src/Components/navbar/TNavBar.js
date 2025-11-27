@@ -5,6 +5,7 @@ import { logo1 } from "../../assets/index";
 import { RiAccountCircleFill } from "react-icons/ri";
 import { MdShoppingCart } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { CiSearch } from "react-icons/ci";
 
 export const TNavBar = ({ showMenu, setShowMenu }) => {
   const token = Cookies.get("token");
@@ -43,7 +44,7 @@ export const TNavBar = ({ showMenu, setShowMenu }) => {
           <input
             type="text"
             placeholder="Search..."
-            className=" bg-gray-800 text-white px-3 py-2 rounded-md animate-fade w-[80px] md:w-[300px] lg:w-[500px]"
+            className=" bg-gray-800 text-white px-3 py-2 rounded-md animate-fade w-[50px] xs:w-[80px] sml:w-[300px] lg:w-[500px] h-9 mt-1"
           />
               <button
           className="w-9 h-9 bg-black bg-opacity-25 text-white items-center justify-center rounded-md text-xl mt-1"
@@ -51,6 +52,7 @@ export const TNavBar = ({ showMenu, setShowMenu }) => {
         >
           🔍
         </button>
+
       </div>
 
       {/* Icons */}

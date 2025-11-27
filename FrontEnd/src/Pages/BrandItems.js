@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ProductCard } from '../Components/ProductCard';
+import { Header } from '../Components/Header';
+import {NavBar} from '../Components/navbar/NavBar';
 
 export const BrandItems = () => {
   const [latestMobile, setLatestMobile] = useState([]);
@@ -37,9 +39,18 @@ export const BrandItems = () => {
 
   return (
     <div className='flex flex-col'>
-      <div className='bg-green-500 flex h-[60px] items-center justify-center'>
+            <div>
+              <NavBar />
+            </div>
+      <div className='mt-10 mb-5 w-full border-b-2 border-gray-500 items-center justify-center flex'>
+        <h2 className='text-4xl font-semibold uppercase'>{brand} Mobile</h2>
+      </div>
+    {/* <div className='mt-10 mb-5 w-full border-b-2 border-gray-500'> */}
+      {/* <div className='bg-green-500 flex h-[60px] items-center justify-center'>
         <h2 className='text-2xl text-white uppercase'>{brand} Mobile</h2>
       </div>
+    <div className='mt-10 mb-5 w-full border-b-2 border-gray-500'> */}
+
       <div className='grid grid-cols-1 sml:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4  mx-auto'>
         {
           [...latestMobile, ...featureMobile].map((mobile) => (

@@ -1,154 +1,13 @@
-// import React, { useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import Cookies from 'js-cookie';
-// import axios from 'axios';
-
-
-// export const BNavBar = () => {
-//   const [activeLink, setActiveLink] = useState('Home');
-//   const [role, setRole] = useState('');
-//   const [isAdmin, setIsAdmin] = useState(false);
-//   const navigate = useNavigate();
-//   const token = Cookies.get('token');
-
-//   useEffect(() => {
-//     const fetchUser = async () => {
-//       // if (!token) {
-//       //   console.log('No token found, please login.');
-//       //   navigate('/login');
-//       //   return;
-//       // }
-//       try {
-//         const res = await axios.get('http://localhost:5000/user/me', {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         });
-//         setRole(res.data.role);
-//         console.log(res.data.role);
-//           if(res.data.role==='admin'){
-//             setIsAdmin(true);
-//           }
-
-//       } catch (error) {
-//         console.error('Error fetching user data:', error);
-//       }
-//     };
-
-//     fetchUser();
-//   }, [token, navigate]);
-
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const homeSection = document.getElementById('Home');
-//       const brandSection = document.getElementById('Brand');
-//       const latestMobileSection = document.getElementById('LatestMobile');
-//       const featuredMobileSection = document.getElementById('FeaturedMobile');
-//       const aboutUsSection = document.getElementById('AboutUs');
-
-//       const scrollPosition = window.scrollY + 220;
-
-
-//       if (scrollPosition >= homeSection.offsetTop && scrollPosition < brandSection.offsetTop) {
-//         setActiveLink('Home');
-//       } else if (scrollPosition >= brandSection.offsetTop && scrollPosition < latestMobileSection.offsetTop) {
-//         setActiveLink('Brand');
-//       } else if (scrollPosition >= latestMobileSection.offsetTop && scrollPosition < featuredMobileSection.offsetTop) {
-//         setActiveLink('LatestMobile');
-//       } else if (scrollPosition >= featuredMobileSection.offsetTop && scrollPosition < aboutUsSection.offsetTop) {
-//         setActiveLink('FeaturedMobile');
-//       } else if (scrollPosition >= aboutUsSection.offsetTop) {
-//         setActiveLink('AboutUs');
-//       }
-
-//     };
-
-//     window.addEventListener('scroll', handleScroll);
-//     return () => window.removeEventListener('scroll', handleScroll);
-//   }, []);
-
-//   const handleAdminPanel = () => {
-//     setActiveLink('AdminPanal');
-//     navigate("/adminpanel");
-//   }
-
-//   return (
-//     <div className='bg-gray-200 py-1 nav-links items-center justify-center mx-auto shadow-md sticky top-0 z-40'>
-//       <ul className='flex justify-center gap-2 mdl:gap-3 lgl:gap-10 sm:flex-nowrap'>
-//         <li className='p-1 hover:bg-gray-300 rounded-sm'>
-//           <a
-//             className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'Home' ? 'text-red-700 underline' : 'text-blue-500'}`}
-//             href="#Home"
-//             onClick={() => setActiveLink('Home')}
-//           >
-//             Home
-//           </a>
-//         </li>
-//         <li className='p-1 hover:bg-gray-300 rounded-sm'>
-//           <a
-//             className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'Brand' ? 'text-red-700 underline' : 'text-blue-500'}`}
-//             href="#Brand"
-//             onClick={() => setActiveLink('Brand')}
-//           >
-//             Brand
-//           </a>
-//         </li>
-//         <li className='p-1 hover:bg-gray-300 rounded-sm'>
-//           <a
-//             className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'LatestMobile' ? 'text-red-700 underline' : 'text-blue-500'}`}
-//             href="#LatestMobile"
-//             onClick={() => setActiveLink('LatestMobile')}
-//           >
-//             LatestMobile
-//           </a>
-//         </li>
-//         <li className='p-1 hover:bg-gray-300 rounded-sm'>
-//           <a
-//             className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'FeaturedMobile' ? 'text-red-700 underline' : 'text-blue-500'}`}
-//             href="#FeaturedMobile"
-//             onClick={() => setActiveLink('FeaturedMobile')}
-//           >
-//             FeaturedMobile
-//           </a>
-//         </li>
-//         <li className='p-1 hover:bg-gray-300 rounded-sm'>
-//           <a
-//             className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'AboutUs' ? 'text-red-700 underline' : 'text-blue-500'}`}
-//             href="#AboutUs"
-//             onClick={() => setActiveLink('AboutUs')}
-//           >
-//             AboutUs
-//           </a>
-//         </li>
-//         {
-//           isAdmin && (
-//             <li className='p-1 hover:bg-gray-300 rounded-sm'>
-//             <button
-//               className={` text-xl tracking-wide cursor-pointer hover:text-designColor duration-300 ${activeLink === 'AdminPanal' ? 'text-red-700 underline' : 'text-blue-500'}`}
-//               onClick={handleAdminPanel}
-//             >
-//               AdminPanel
-//             </button>
-//           </li>
-//           )
-
-//         }
-//       </ul>
-//     </div>
-//   );
-// };
-
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
 
 export const BNavBar = ({ mobile = false, onClose = () => {} }) => {
-  const [active, setActive] = useState("Home");
   const [isAdmin, setIsAdmin] = useState(false);
   const token = Cookies.get("token");
   const navigate = useNavigate();
+  const location = useLocation(); // ⭐ detect active route
 
   useEffect(() => {
     const getUser = async () => {
@@ -163,39 +22,60 @@ export const BNavBar = ({ mobile = false, onClose = () => {} }) => {
     getUser();
   }, [token]);
 
-  const navTo = (name, anchor) => {
-    setActive(name);
-    window.location.hash = anchor;
+  const goTo = (path) => {
+    navigate(path);
     if (mobile) onClose();
   };
 
   const classes = mobile
-    ? "flex flex-col gap-4"
+    ? "flex flex-col gap-4 bg-white p-4"
     : "flex justify-center gap-6 py-2 bg-gray-200 shadow-md";
+
+  const activeStyle = (path) =>
+    location.pathname === path ? "text-red-600  underline" : "text-gray-800";
 
   return (
     <ul className={classes}>
+      <li>
+        <button className={activeStyle("/")} onClick={() => goTo("/")}>
+          Home
+        </button>
+      </li>
 
-      <li><button className={active === "Home" ? "text-red-700" : ""} onClick={() => navTo("Home", "Home")}>Home</button></li>
-      <li><button className={active === "Brand" ? "text-red-700" : ""} onClick={() => navTo("Brand", "Brand")}>Brand</button></li>
-      <li><button className={active === "LatestMobile" ? "text-red-700" : ""} onClick={() => navTo("LatestMobile", "LatestMobile")}>LatestMobile</button></li>
-      <li><button className={active === "FeaturedMobile" ? "text-red-700" : ""} onClick={() => navTo("FeaturedMobile", "FeaturedMobile")}>FeaturedMobile</button></li>
-      <li><button className={active === "AboutUs" ? "text-red-700" : ""} onClick={() => navTo("AboutUs", "AboutUs")}>AboutUs</button></li>
+      <li>
+        <button className={activeStyle("/brandname")} onClick={() => goTo("/brandname")}>
+          Brand
+        </button>
+      </li>
+
+      <li>
+        <button className={activeStyle("/latestmobile")} onClick={() => goTo("/latestmobile")}>
+          Latest Mobile
+        </button>
+      </li>
+
+      <li>
+        <button className={activeStyle("/featuredmobile")} onClick={() => goTo("/featuredmobile")}>
+          Featured Mobile
+        </button>
+      </li>
+
+      <li>
+        <button className={activeStyle("/contactus")} onClick={() => goTo("/contactus")}>
+          Contact Us
+        </button>
+      </li>
 
       {isAdmin && (
         <li>
           <button
-            className={active === "AdminPanel" ? "text-red-700" : ""}
-            onClick={() => {
-              if (mobile) onClose();
-              navigate("/adminpanel");
-            }}
+            className={activeStyle("/adminpanel")}
+            onClick={() => goTo("/adminpanel")}
           >
-            AdminPanel
+            Admin Panel
           </button>
         </li>
       )}
-
     </ul>
   );
 };
