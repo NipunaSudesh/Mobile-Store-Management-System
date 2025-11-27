@@ -19,8 +19,13 @@ import { AdminPanel } from './Pages/adminPanel/AdminPanel';
 import { DashBoard } from './Pages/adminPanel/DashBoard';
 import { EditLatestMobile } from './Pages/adminPanel/EditLatestMobile';
 import { EditFeatureMobile } from './Pages/adminPanel/EditFeatureMobile';
+import  {BrandName}  from './Pages/BrandName';
 import { MobileTable } from './Pages/adminPanel/MobileTable';
 import { BrandItems } from './Pages/BrandItems';
+import { LatestMobile as LatestMobilePage } from './Pages/LatestMobile'; 
+import { FeaturedMobile as FeaturedMobilePage } from './Pages/FeaturedMobile'; 
+
+import { ContactUs } from './Pages/ContactUs';
 import { ViewLatest } from './Components/ViewLatest';
 import { ViewFeature } from './Components/ViewFeature';
 
@@ -50,6 +55,10 @@ function App(){
     <Route path='/signup' element={<SignUp />} />
     <Route path='/addcard' element={<AddCard />} />
     <Route path='/login' element={<Login />} />
+    <Route path='/brandname' element={<BrandName />} />
+       <Route path='/featuredmobile' element={<FeaturedMobilePage />} />
+        <Route path='/latestmobile' element={<LatestMobilePage />} />
+    <Route path='/contactus' element={<ContactUs />} />
     <Route path='/profile' element={<Profile />} />
     <Route path='/addproduct' element={<AddProduct />} />
     <Route path='/addmobile' element={<AddMobile />} />

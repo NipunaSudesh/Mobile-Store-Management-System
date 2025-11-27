@@ -20,13 +20,13 @@ export const Brands = () => {
         brand: "huawei", logoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ9dXLNC7ZD88yfXGBfEmIF6VkIKz6HjVPPg&s'
     },
     {
-        brand: "oneplus", logoURL: 'https://pngimagesfree.com/wp-content/uploads/Oneplus-PNG-Logo-1.png'
+        brand: "oneplus", logoURL: 'https://1000logos.net/wp-content/uploads/2022/11/OnePlus-Logo.png'
     },
     {
         brand: "googlePixal", logoURL: 'https://styles.redditmedia.com/t5_3fy38/styles/communityIcon_4h9nc2tj54u51.jpg?format=pjpg&s=5850d2f6614d2d739dad06fd3db2bc03732a1654'
     },
     {
-        brand: "xiaomi", logoURL: 'https://seeklogo.com/images/M/mi-mobile-logo-9F4E2AC84D-seeklogo.com.png'
+        brand: "xiaomi", logoURL: 'https://cdn.worldvectorlogo.com/logos/xiaomi-logo-2.svg'
     },
     {
         brand: "oppo", logoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmam6bJjeGmYT5jGWv-qNN90B8A1UB_v-O4g&s'
