@@ -12,7 +12,7 @@ export const AddCard = () => {
   const [shippingFee, setShippingFee] = useState(0);
   const perItemShippingFee = 750;
   const total = subTotal + shippingFee;
-
+  const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -32,9 +32,7 @@ export const AddCard = () => {
       fetchUser();
     }
   }, [token]);
-
-  useEffect(() => {
-    const fetchProduct = async () => {
+ const fetchProduct = async () => {
       if (userId) {
         try {
           const res = await axios.get(`http://localhost:5000/card/get/${userId}`);
@@ -49,8 +47,22 @@ export const AddCard = () => {
         }
       }
     };
+  useEffect(() => {
+   
     fetchProduct();
   }, [userId]);
+const handleDelete = async (id) => {
+  console.log("Deleting card ID:", id); 
+
+  try {
+    await axios.delete(`http://localhost:5000/card/delete/${id}`);
+ 
+    setCartItems(prev => prev.filter(item => item._id !== id));
+ fetchProduct();
+  } catch (err) {
+    console.error("Delete error", err);
+  }
+};
 
   return (
     <div className='flex flex-col gap-4 w-full'>
@@ -67,11 +79,13 @@ export const AddCard = () => {
             {mobile.map((cardDetails) => (
               <CardItem
                 key={cardDetails._id}
+                 _id={cardDetails._id}  
                 name={cardDetails.name}
                 price={cardDetails.price}
                 details={cardDetails.details}
                 imgURL={cardDetails.imgURL}
                 quantity={cardDetails.quantity}
+               onDelete={() => handleDelete(cardDetails._id)}
               />
             ))}
           </div>
