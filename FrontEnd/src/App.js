@@ -28,7 +28,9 @@ import { FeaturedMobile as FeaturedMobilePage } from './Pages/FeaturedMobile';
 import { ContactUs } from './Pages/ContactUs';
 import { ViewLatest } from './Components/ViewLatest';
 import { ViewFeature } from './Components/ViewFeature';
-
+import { PrivacyPolicy } from "./Pages/PrivacyPolicy";
+import { TermsAndConditions } from "./Pages/TermsAndConditions";
+import { ReturnsRefunds } from "./Pages/ReturnsRefunds";
 
 function Home() {
   return (
@@ -70,7 +72,9 @@ function App(){
     <Route path='/brandItems/:brand' element={<BrandItems />} />
     <Route path='/viewLatest/:id' element={<ViewLatest />} />
     <Route path='/viewFeature/:id' element={<ViewFeature />} />
-    
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+    <Route path="/returns-refunds" element={<ReturnsRefunds />} />
   </Routes>
 </Router>
 

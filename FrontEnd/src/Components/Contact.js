@@ -32,12 +32,15 @@ export const Contact = () => {
         </div>
         
         
-        <div className='w-1/2 md:1/3 mt-28 md:mt-10 ml-2'>
+        <div className='w-1/2 md:1/3 mt-28 md:mt-10 ml-2 flex flex-col'>
             <h2 className='text-xl '>CUSTOMER CARE</h2>
             <p className='gap-2 mt-2 hover:text-blue-500'>My Account</p>
-            <p className='gap-2 mt-2 hover:text-blue-500'>Privacy Policy</p>
-            <p className='gap-2 mt-2 hover:text-blue-500'>Returns and Refunds</p>
-            <p className='gap-2 mt-2 hover:text-blue-500'>Terms & Conditions</p>
+
+                <a href="/privacy-policy" className="ap-2 mt-2 hover:text-blue-500">Privacy Policy</a>
+                <a href="/terms-and-conditions" className="ap-2 mt-2 hover:text-blue-500">Terms & Conditions</a>
+                <a href="/returns-refunds" className="ap-2 mt-2 hover:text-blue-500">
+  Returns & Refunds
+</a>
             <p className='gap-2 mt-2 hover:text-blue-500'>Online Payments</p>
         </div>
        </div>
